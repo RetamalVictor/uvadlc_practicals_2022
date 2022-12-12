@@ -52,7 +52,21 @@ class MLP(object):
         #######################
         # PUT YOUR CODE HERE  #
         #######################
-        pass
+        self.n_inputs = n_inputs
+        self.n_hidden = n_hidden
+        self.n_classes = n_classes
+        self.net = []
+
+        for module in range(len(n_hidden)):
+          if module == 0:
+            self.net.append(LinearModule(n_inputs, n_hidden[module],input_layer=True))
+            self.net.append(ELUModule())
+            continue
+          self.net.append(LinearModule(n_hidden[module-1], n_hidden[module]))
+          self.net.append(ELUModule)
+          
+        self.net.append(LinearModule(n_hidden[-1], n_classes))
+        self.net.append(SoftMaxModule())
         #######################
         # END OF YOUR CODE    #
         #######################
@@ -74,7 +88,9 @@ class MLP(object):
         #######################
         # PUT YOUR CODE HERE  #
         #######################
-
+        out = x.copy()
+        for module in self.net:
+          out = module.forward(out)
         #######################
         # END OF YOUR CODE    #
         #######################
@@ -95,7 +111,8 @@ class MLP(object):
         #######################
         # PUT YOUR CODE HERE  #
         #######################
-        pass
+        for module in self.net[:: -1]:
+            dout = module.backward(dout)        
         #######################
         # END OF YOUR CODE    #
         #######################
@@ -112,7 +129,7 @@ class MLP(object):
         #######################
         # PUT YOUR CODE HERE  #
         #######################
-        pass
+        [module.clear_cache() for module in self.net]
         #######################
         # END OF YOUR CODE    #
         #######################

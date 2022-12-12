@@ -91,3 +91,7 @@ def get_cifar10(data_dir='data/', validation_size=5000):
       Dictionary with Train, Validation, Test Datasets
     """
     return read_data_sets(data_dir, validation_size)
+
+if __name__ == '__main__':
+  data = get_cifar10()
+  data['train']

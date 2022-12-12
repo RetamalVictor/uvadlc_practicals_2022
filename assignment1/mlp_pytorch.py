@@ -21,6 +21,7 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import torch
 import torch.nn as nn
 from collections import OrderedDict
 
@@ -59,7 +60,24 @@ class MLP(nn.Module):
         #######################
         # PUT YOUR CODE HERE  #
         #######################
-        pass
+        super().__init__()
+        self.n_inputs = n_inputs
+        self.n_classes = n_classes
+        n_hidden.append(n_classes)
+        self.n_hidden = n_hidden
+        self.use_batch_norm = use_batch_norm
+        self.net = nn.ModuleList()
+        
+        in_features = n_inputs
+        for module in range(len(n_hidden)):
+          hidden_units = n_hidden[module]
+          self.net.append(nn.Linear(in_features, hidden_units))
+          if use_batch_norm:
+            self.net.append(nn.BatchNorm1d(hidden_units))
+          self.net.append(nn.ELU())
+          in_features = hidden_units
+        
+        self.net.append(nn.Linear(in_features, n_classes))
         #######################
         # END OF YOUR CODE    #
         #######################
@@ -81,7 +99,12 @@ class MLP(nn.Module):
         #######################
         # PUT YOUR CODE HERE  #
         #######################
-
+        # out = torch.flatten(x)
+        out = x
+        for module in self.net:
+          out = module(out)
+        
+        # No other transformation 
         #######################
         # END OF YOUR CODE    #
         #######################
@@ -95,3 +118,10 @@ class MLP(nn.Module):
         """
         return next(self.parameters()).device
     
+if __name__ == '__main__':
+  model = MLP(3*128,[128],10)
+
+  x = torch.randn(128, 3)
+  out = model(x)
+  print(out.shape)
+  print(out)

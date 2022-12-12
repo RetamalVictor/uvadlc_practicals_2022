@@ -21,17 +21,20 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+# import ssl
+# ssl._create_default_https_context = ssl._create_unverified_context
 import argparse
 import numpy as np
 import os
 from copy import deepcopy
-from tqdm.auto import tqdm
 from mlp_pytorch import MLP
 import cifar10_utils
 
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import matplotlib.pyplot as plt
+import pickle
 
 
 def confusion_matrix(predictions, targets):
@@ -49,6 +52,15 @@ def confusion_matrix(predictions, targets):
     #######################
     # PUT YOUR CODE HERE  #
     #######################
+    batch_size, n_classes = predictions.shape
+    predictions = torch.argmax(predictions, dim=1)
+    conf_mat = torch.zeros((n_classes, n_classes))
+
+    # Building confusion matrix
+    for i in range(batch_size):
+        pred_class = predictions[i]
+        target_class = targets[i]
+        conf_mat[pred_class, target_class] += 1
 
     #######################
     # END OF YOUR CODE    #
@@ -56,7 +68,7 @@ def confusion_matrix(predictions, targets):
     return conf_mat
 
 
-def confusion_matrix_to_metrics(confusion_matrix, beta=1.):
+def confusion_matrix_to_metrics(confusion_matrix, beta=1.0):
     """
     Converts a confusion matrix to accuracy, precision, recall and f1 scores.
     Args:
@@ -70,6 +82,11 @@ def confusion_matrix_to_metrics(confusion_matrix, beta=1.):
     #######################
     # PUT YOUR CODE HERE  #
     #######################
+    metrics = {}
+    metrics['accuracy']  = torch.sum(torch.diag(confusion_matrix)) / torch.sum(confusion_matrix)
+    metrics['precision'] = torch.diag(confusion_matrix) / (torch.sum(confusion_matrix, axis=1))
+    metrics['recall']    = torch.diag(confusion_matrix) / (torch.sum(confusion_matrix, axis=0))
+    metrics['f1_score']  = (1 + beta**2) * (metrics['precision'] * metrics['recall']) / ((beta**2) * metrics['precision'] + metrics['recall'])
 
     #######################
     # END OF YOUR CODE    #
@@ -77,7 +94,7 @@ def confusion_matrix_to_metrics(confusion_matrix, beta=1.):
     return metrics
 
 
-def evaluate_model(model, data_loader, num_classes=10):
+def evaluate_model(model, data_loader, beta=1, num_classes=10 ):
     """
     Performs the evaluation of the MLP model on a given dataset.
 
@@ -98,13 +115,34 @@ def evaluate_model(model, data_loader, num_classes=10):
     # PUT YOUR CODE HERE  #
     #######################
 
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    loss_module = nn.CrossEntropyLoss().to(device)
+    n_inputs= 32 *32 * 3
+    conf_matrix = torch.zeros((num_classes, num_classes))
+    losses = []
+    for i, data in enumerate(data_loader):
+        image_batch, label_batch = data
+        batch_size = image_batch.shape[0]
+        image_batch = torch.reshape(image_batch, shape=(batch_size, n_inputs))
+        image_batch = image_batch.to(device)
+        label_batch = label_batch.to(device)
+
+        with torch.no_grad():
+            out = model.forward(image_batch)
+            loss = loss_module(out, label_batch)
+            
+        conf_matrix += confusion_matrix(out, label_batch)
+        losses.append(loss.item())
+        metrics = confusion_matrix_to_metrics(conf_matrix,beta)
+        metrics["conf_matrix"] = conf_matrix
+    
     #######################
     # END OF YOUR CODE    #
     #######################
-    return metrics
+    return metrics, np.mean(losses)
 
 
-def train(hidden_dims, lr, use_batch_norm, batch_size, epochs, seed, data_dir):
+def train(hidden_dims, lr, use_batch_norm, batch_size, epochs, seed, data_dir, beta=1, n_classes = 10,n_inputs = 32 * 32 * 3, verbose=True):
     """
     Performs a full training cycle of MLP model.
 
@@ -120,15 +158,15 @@ def train(hidden_dims, lr, use_batch_norm, batch_size, epochs, seed, data_dir):
       model: An instance of 'MLP', the trained model that performed best on the validation set.
       val_accuracies: A list of scalar floats, containing the accuracies of the model on the
                       validation set per epoch (element 0 - performance after epoch 1)
-      test_accuracy: scalar float, average accuracy on the test dataset of the model that 
+      test_accuracy: scalar float, average accuracy on the test dataset of the model that
                      performed best on the validation.
-      logging_info: An arbitrary object containing logging information. This is for you to 
+      logging_info: An arbitrary object containing logging information. This is for you to
                     decide what to put in here.
 
     TODO:
-    - Implement the training of the MLP model. 
+    - Implement the training of the MLP model.
     - Evaluate your model on the whole validation set each epoch.
-    - After finishing training, evaluate your model that performed best on the validation set, 
+    - After finishing training, evaluate your model that performed best on the validation set,
       on the whole test dataset.
     - Integrate _all_ input arguments of this function in your training. You are allowed to add
       additional input argument if you assign it a default value that represents the plain training
@@ -147,35 +185,111 @@ def train(hidden_dims, lr, use_batch_norm, batch_size, epochs, seed, data_dir):
         torch.backends.cudnn.benchmark = False
 
     # Set default device
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     # Loading the dataset
     cifar10 = cifar10_utils.get_cifar10(data_dir)
-    cifar10_loader = cifar10_utils.get_dataloader(cifar10, batch_size=batch_size,
-                                                  return_numpy=False)
+    cifar10_loader = cifar10_utils.get_dataloader(
+        cifar10, batch_size=batch_size, return_numpy=False
+    )
 
     #######################
     # PUT YOUR CODE HERE  #
     #######################
+    print(f"""
+            Device: {device}
+            Learning rate: {lr},
+            Beta: {beta},
+            Hidden dimensions: {hidden_dims},
+            Batch size: {batch_size}, 
+            Epochs: {epochs}
+            """)
+
+    train_loader = cifar10_loader["train"]
+    validation_loader = cifar10_loader["validation"]
+    test_loader = cifar10_loader["test"]
 
     # TODO: Initialize model and loss module
-    model = ...
-    loss_module = ...
-    # TODO: Training loop including validation
-    # TODO: Do optimization with the simple SGD optimizer
-    val_accuracies = ...
-    # TODO: Test best model
-    test_accuracy = ...
-    # TODO: Add any information you might want to save for plotting
-    logging_info = ...
+    model = MLP(n_inputs, hidden_dims, n_classes, use_batch_norm)
+    model.to(device)
+    loss_module = nn.CrossEntropyLoss()
+    loss_module.to(device)
+    optimizer = optim.SGD(model.parameters(), lr=lr)
+    print("Model Initialized")
+    if verbose:
+        print(model)
+
+    training_loss = []
+    validation_loss = []
+    training_acc = []
+    validation_acc = []
+    best_acc = 0.0
+    best_model = None
+
+    for epoch in range(epochs):
+
+        model.train()
+        conf_matrix = torch.zeros((n_classes, n_classes))
+        epoch_losses = []
+        for i, data in enumerate(train_loader):
+            image_batch, label_batch = data
+            image_batch = image_batch.to(device)
+            label_batch = label_batch.to(device)
+            image_batch = torch.reshape(image_batch, shape=(batch_size, n_inputs))
+
+            #Forward pass
+            out = model(image_batch)
+            loss = loss_module(out, label_batch)
+            conf_matrix += confusion_matrix(out, label_batch)
+
+            # Backward pass
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+            epoch_losses.append(loss.item())
+
+        epoch_loss = np.mean(epoch_losses)
+        training_loss.append(epoch_loss)
+        train_metrics = confusion_matrix_to_metrics(conf_matrix)
+        training_acc.append(train_metrics["accuracy"].item())
+
+        # Validation
+        model.eval()
+        val_metrics, val_loss = evaluate_model(model, validation_loader, beta, n_classes)
+        validation_acc.append(val_metrics["accuracy"].item())
+        validation_loss.append(val_loss)
+        if val_metrics["accuracy"].item() > best_acc:
+            best_acc = val_metrics["accuracy"].item()
+            best_model = deepcopy(model)
+        
+        if verbose:
+            print(f"------ Epoch {epoch + 1}: ------ ")
+            print(f"  Training loss: {epoch_loss:.3f}, Accuracy: {training_acc[-1]:.3f}")
+            print(f"  Validation loss: {val_loss:.3f} ---  Accuracy: {validation_acc[-1]:.3f}")
+            print(f"     ")
+
+    # # TODO: Test best model
+    test_metrics, _ = evaluate_model(best_model, test_loader, beta)
+    test_accuracy = test_metrics["accuracy"].item()
+    print(f"TEST Accuracy: {test_accuracy:.3f} for beta == 1 ")
+
+    # # TODO: Add any information you might want to save for plotting
+    logging_info = {
+        "train_loss": training_loss,
+        "training_acc": training_acc,
+        "validation_loss": validation_loss,
+        "validation_acc": validation_acc,
+        "confusion_matrix" : test_metrics['conf_matrix'],
+        "test_metrics": test_metrics
+    }
     #######################
     # END OF YOUR CODE    #
     #######################
 
-    return model, val_accuracies, test_accuracy, logging_info
+    return model, validation_acc, test_accuracy, logging_info
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Command line arguments
     parser = argparse.ArgumentParser()
     
@@ -187,7 +301,7 @@ if __name__ == '__main__':
     
     # Optimizer hyperparameters
     parser.add_argument('--lr', default=0.1, type=float,
-                        help='Learning rate to use')
+                        help='Learning rate to use.')
     parser.add_argument('--batch_size', default=128, type=int,
                         help='Minibatch size')
 
@@ -202,6 +316,12 @@ if __name__ == '__main__':
     args = parser.parse_args()
     kwargs = vars(args)
 
-    train(**kwargs)
-    # Feel free to add any additional functions, such as plotting of the loss curve here
+    for beta in [0.1, 1, 10]:
+        model, validation_acc, test_accuracy, logging_info = train(beta=beta,**kwargs)
+        # Feel free to add any additional functions, such as plotting of the loss curve here
+        print(f"Beta: {beta} -- Test Accuracy {test_accuracy}\n")
+
+    with open("logging_info_torch_bbb.pickle", "wb") as handle:
+        pickle.dump(logging_info, handle, protocol=pickle.HIGHEST_PROTOCOL)
     
+    print("Training finished and saved")
