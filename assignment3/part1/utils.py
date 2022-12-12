@@ -35,8 +35,8 @@ def sample_reparameterize(mean, std):
     #######################
     # PUT YOUR CODE HERE  #
     #######################
-    z = None
-    raise NotImplementedError
+    noise = torch.randn_like(mean)
+    z = mean + noise * std
     #######################
     # END OF YOUR CODE    #
     #######################
@@ -54,17 +54,8 @@ def KLD(mean, log_std):
         KLD - Tensor with one less dimension than mean and log_std (summed over last dimension).
               The values represent the Kullback-Leibler divergence to unit Gaussians.
     """
-
-    #######################
-    # PUT YOUR CODE HERE  #
-    #######################
-    KLD = None
-    raise NotImplementedError
-    #######################
-    # END OF YOUR CODE    #
-    #######################
-    return KLD
-
+    var = log_std.exp().pow(2)
+    return 0.5 * torch.sum(mean.pow(2) + var - 2*log_std - 1, dim=-1)
 
 def elbo_to_bpd(elbo, img_shape):
     """
@@ -78,8 +69,9 @@ def elbo_to_bpd(elbo, img_shape):
     #######################
     # PUT YOUR CODE HERE  #
     #######################
-    bpd = None
-    raise NotImplementedError
+    num_dims = np.prod(img_shape[1:])
+    bpd = elbo / (num_dims * np.log(2))
+    # raise NotImplementedError
     #######################
     # END OF YOUR CODE    #
     #######################
@@ -110,8 +102,16 @@ def visualize_manifold(decoder, grid_size=20):
     #######################
     # PUT YOUR CODE HERE  #
     #######################
-    img_grid = None
-    raise NotImplementedError
+    percentiles = torch.linspace(0.5/grid_size, (grid_size-0.5)/grid_size, grid_size)
+    z = torch.distributions.Normal(0, 1).icdf(percentiles)
+
+    grid = torch.stack(list(torch.meshgrid(z, z, indexing="ij")), dim=-1).reshape(-1, 2)
+    imgs = decoder(grid).softmax(dim=1)
+    
+    img_samples = torch.multinomial(imgs.permute(0, 2, 3, 1).reshape(-1, imgs.shape[1]), num_samples=1)
+    shape = (imgs.shape[0],1,imgs.shape[2], imgs.shape[3])
+    img_samples = img_samples.reshape(shape) / img_samples.max()
+    img_grid = make_grid(img_samples, nrow=grid_size)
     #######################
     # END OF YOUR CODE    #
     #######################

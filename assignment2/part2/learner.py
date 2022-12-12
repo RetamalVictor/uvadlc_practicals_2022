@@ -67,7 +67,11 @@ class Learner:
         # Note: You need to keep the visual prompt's parameters trainable
         # Hint: Check for "prompt_learner" in the parameters' names
 
-        raise NotImplementedError
+        for name, param in self.vpt.named_parameters():
+            if 'prompt_learner' not in name:
+                param.requires_grad = False
+            else:
+                param.requires_grad = True        
         #######################
         # END OF YOUR CODE    #
         #######################
@@ -160,7 +164,6 @@ class Learner:
                 self.args,
                 is_best=is_best,
             )
-
             if is_best:
                 epochs_since_improvement = 0
             else:
@@ -170,6 +173,9 @@ class Learner:
                 if epochs_since_improvement >= self.args.patience:
                     print("The training halted by early stopping criterion.")
                     break
+        
+        with open("results.txt", "a") as f:
+            f.write(f"Method {self.args.method}, Prompt_size {self.args.prompt_size} -- Acc: {acc1}, best Acc: {self.best_acc1}\n")
 
     def train_one_epoch(self, epoch):
         """
@@ -193,11 +199,11 @@ class Learner:
 
         # Switch to train mode
         self.vpt.train()
-
+        print("Training mode")
         num_batches_per_epoch = len(self.train_loader)
 
         end = time.time()
-        for i, (images, target) in enumerate(tqdm(self.train_loader)):
+        for i, (images, target) in enumerate(self.train_loader):
 
             # Measure data loading time
             data_time.update(time.time() - end)
@@ -214,13 +220,19 @@ class Learner:
 
             # Steps ( your usual training loop :) ):
             # - Set the gradients to zero
+            self.optimizer.zero_grad()
             # - Move the images/targets to the device
+            images = images.to(self.device)
+            target = target.to(self.device)
             # - Perform a forward pass (using self.vpt)
+            output = self.vpt(images)
             # - Compute the loss (using self.criterion)
+            loss = self.criterion(output, target)
             # - Perform a backward pass
+            loss.backward()
             # - Update the parameters
+            self.optimizer.step()
 
-            raise NotImplementedError
             #######################
             # END OF YOUR CODE    #
             #######################
@@ -272,7 +284,7 @@ class Learner:
 
         with torch.no_grad():
             end = time.time()
-            for i, (images, target) in enumerate(tqdm(loader)):
+            for i, (images, target) in enumerate(loader):
 
                 #######################
                 # PUT YOUR CODE HERE  #
@@ -282,10 +294,13 @@ class Learner:
 
                 # Steps ( your usual evaluation loop :) ):
                 # - Move the images/targets to the device
+                images = images.to(self.device)
+                target = target.to(self.device)
                 # - Forward pass (using self.vpt)
+                output = self.vpt(images)
                 # - Compute the loss (using self.criterion)
+                loss = self.criterion(output, target)
 
-                raise NotImplementedError
                 #######################
                 # END OF YOUR CODE    #
                 #######################

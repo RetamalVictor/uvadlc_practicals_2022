@@ -175,13 +175,13 @@ def main():
         # PUT YOUR CODE HERE  #
         #######################
         # TODO: Define `classnames` as a list of 10 + 100 class labels from CIFAR10 and CIFAR100
-
-        raise NotImplementedError
+        
+        classnames = cifar10_test.classes + cifar100_test.classes
         #######################
         # END OF YOUR CODE    #
         #######################
 
-        classnames = cifar10_test.classes + cifar100_test.classes
+        # classnames = cifar10_test.classes + cifar100_test.classes
 
         # 5. Load the clip model
         print(f"Loading CLIP (backbone: {args.arch})")
@@ -203,8 +203,15 @@ def main():
         #######################
         # TODO: Compute the text features (for each of the prompts defined above) using CLIP
         # Note: This is similar to the code you wrote in `clipzs.py`
+        text_inputs = clip.tokenize(prompts).to(args.device)
 
-        raise NotImplementedError
+        # Compute the text features (encodings) for each prompt
+        with torch.no_grad():
+            text_features = clip_model.encode_text(text_inputs)
+
+        # Normalize the text features
+        text_features = text_features / text_features.norm(dim=-1, keepdim=True)
+
         #######################
         # END OF YOUR CODE    #
         #######################
@@ -220,7 +227,7 @@ def main():
         # That is, if a class in CIFAR100 corresponded to '4', it should now correspond to '14'
         # Set the result of this to the attribute cifar100_test.targets to override them
 
-        raise NotImplementedError
+        cifar100_test.targets = [x + 10 for x in cifar100_test.targets]        
         #######################
         # END OF YOUR CODE    #
         #######################
@@ -252,13 +259,18 @@ def main():
         # Hint:
         # - accurary_all = acc_cifar10 * (% of cifar10 samples) \
         #                  + acc_cifar100 * (% of cifar100 samples)
+        cf10_count = len(cifar10_loader)
+        cf100_count = len(cifar100_loader)
+        total_count = cf100_count + cf10_count
+        ratio_cifar10_samples = cf10_count / total_count
+        ratio_cifar100_samples = cf100_count / total_count
+        accuracy_all = acc_cifar10 * ratio_cifar10_samples + acc_cifar100 * ratio_cifar100_samples
 
-        raise NotImplementedError
         #######################
         # END OF YOUR CODE    #
         #######################
-
-        print(f"TOP1 Accuracy on cifra10 + cifar100 is: {accuracy_all}")
+        print("Finished")
+        print(f"TOP1 Accuracy on cifra10 + cifar100 is: {accuracy_all:.3f}")
         exit()
     else:
         raise ValueError("Enable flag --evaluate!")

@@ -1,0 +1,1419 @@
+Running experiment with padding and prompt size 30
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=1000, model='clip', arch='ViT-B/32', method='padding', prompt_size=30, text_prompt_template='This is a photo of a {}', root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, visualize_prompt=False, seed=0, model_dir='./save/models', image_dir='./save/images', filename='padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume='./checkpoints/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar', evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='./save/models/padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Downloading https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz to /scratch/lcur0649/cifar-100-python.tar.gz
+  0%|          | 0/169001437 [00:00<?, ?it/s]  0%|          | 65536/169001437 [00:00<07:56, 354178.47it/s]  0%|          | 131072/169001437 [00:00<08:11, 343652.47it/s]  0%|          | 262144/169001437 [00:00<05:42, 492797.84it/s]  0%|          | 491520/169001437 [00:00<02:58, 945989.14it/s]  1%|          | 884736/169001437 [00:00<01:36, 1734805.20it/s]  1%|          | 1769472/169001437 [00:00<00:45, 3683961.06it/s]  2%|▏         | 3375104/169001437 [00:00<00:23, 7160868.44it/s]  3%|▎         | 5144576/169001437 [00:01<00:16, 10175361.25it/s]  4%|▍         | 6979584/169001437 [00:01<00:12, 12536926.62it/s]  5%|▍         | 8355840/169001437 [00:01<00:12, 12782147.47it/s]  6%|▌         | 10452992/169001437 [00:01<00:10, 15155250.98it/s]  7%|▋         | 12451840/169001437 [00:01<00:09, 16568409.78it/s]  9%|▊         | 14548992/169001437 [00:01<00:08, 17822685.14it/s] 10%|▉         | 16547840/169001437 [00:01<00:08, 18451349.78it/s] 11%|█         | 18546688/169001437 [00:01<00:07, 18892814.33it/s] 12%|█▏        | 20905984/169001437 [00:01<00:07, 20275010.02it/s] 14%|█▍        | 23494656/169001437 [00:01<00:06, 21904819.53it/s] 16%|█▌        | 26312704/169001437 [00:02<00:06, 23711849.31it/s] 17%|█▋        | 29294592/169001437 [00:02<00:05, 25388136.63it/s] 19%|█▉        | 32374784/169001437 [00:02<00:05, 26875596.61it/s] 21%|██        | 35618816/169001437 [00:02<00:04, 28511913.43it/s] 23%|██▎       | 38699008/169001437 [00:02<00:04, 29178331.81it/s] 25%|██▍       | 41713664/169001437 [00:02<00:04, 29463524.28it/s] 26%|██▋       | 44662784/169001437 [00:02<00:04, 29324985.17it/s] 28%|██▊       | 47611904/169001437 [00:02<00:04, 29024275.26it/s] 30%|██▉       | 50528256/169001437 [00:02<00:04, 28715303.62it/s] 32%|███▏      | 53411840/169001437 [00:03<00:04, 28243703.58it/s] 33%|███▎      | 56524800/169001437 [00:03<00:03, 29074648.41it/s] 35%|███▌      | 59441152/169001437 [00:03<00:03, 28762877.13it/s] 37%|███▋      | 62324736/169001437 [00:03<00:03, 28269662.20it/s] 39%|███▊      | 65175552/169001437 [00:03<00:03, 28237233.62it/s] 40%|████      | 68124672/169001437 [00:03<00:03, 28604952.77it/s] 42%|████▏     | 71368704/169001437 [00:03<00:03, 29728142.40it/s] 44%|████▍     | 74350592/169001437 [00:03<00:03, 29297032.27it/s] 46%|████▌     | 77299712/169001437 [00:03<00:03, 28899862.21it/s] 48%|████▊     | 80379904/169001437 [00:03<00:03, 29388100.14it/s] 49%|████▉     | 83329024/169001437 [00:04<00:02, 29327888.18it/s] 51%|█████     | 86278144/169001437 [00:04<00:02, 29126539.63it/s] 53%|█████▎    | 89194496/169001437 [00:04<00:02, 29056151.86it/s] 55%|█████▍    | 92110848/169001437 [00:04<00:02, 28527007.07it/s] 56%|█████▋    | 95092736/169001437 [00:04<00:02, 28889538.58it/s] 58%|█████▊    | 98074624/169001437 [00:04<00:02, 29139426.61it/s] 60%|█████▉    | 100990976/169001437 [00:04<00:02, 29080789.43it/s] 61%|██████▏   | 103907328/169001437 [00:04<00:02, 28959021.25it/s] 63%|██████▎   | 106856448/169001437 [00:04<00:02, 28814153.45it/s] 65%|██████▍   | 109740032/169001437 [00:04<00:02, 28742873.39it/s] 67%|██████▋   | 112787456/169001437 [00:05<00:01, 29120142.56it/s] 69%|██████▊   | 115900416/169001437 [00:05<00:01, 29464942.32it/s] 70%|███████   | 118882304/169001437 [00:05<00:01, 29458457.19it/s] 72%|███████▏  | 121896960/169001437 [00:05<00:01, 29598473.95it/s] 74%|███████▍  | 125009920/169001437 [00:05<00:01, 29875865.38it/s] 76%|███████▌  | 128057344/169001437 [00:05<00:01, 29941068.30it/s] 78%|███████▊  | 131072000/169001437 [00:05<00:01, 29919073.06it/s] 79%|███████▉  | 134086656/169001437 [00:05<00:01, 29792963.65it/s] 81%|████████  | 137166848/169001437 [00:05<00:01, 29937360.66it/s] 83%|████████▎ | 140312576/169001437 [00:05<00:00, 30227482.78it/s] 85%|████████▍ | 143425536/169001437 [00:06<00:00, 30322370.62it/s] 87%|████████▋ | 146604032/169001437 [00:06<00:00, 30576162.95it/s] 89%|████████▊ | 149716992/169001437 [00:06<00:00, 30561311.39it/s] 90%|█████████ | 152829952/169001437 [00:06<00:00, 30553089.05it/s] 92%|█████████▏| 155910144/169001437 [00:06<00:00, 30483437.99it/s] 94%|█████████▍| 159055872/169001437 [00:06<00:00, 30542481.73it/s] 96%|█████████▌| 162136064/169001437 [00:06<00:00, 29865302.21it/s] 98%|█████████▊| 165150720/169001437 [00:06<00:00, 29413020.20it/s] 99%|█████████▉| 168099840/169001437 [00:06<00:00, 28680648.42it/s]100%|██████████| 169001437/169001437 [00:06<00:00, 24385788.00it/s]
+Extracting /scratch/lcur0649/cifar-100-python.tar.gz to /scratch/lcur0649
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+  0%|                                               | 0.00/338M [00:00<?, ?iB/s]  2%|▊                                     | 7.75M/338M [00:00<00:05, 66.8MiB/s]  5%|█▉                                    | 17.6M/338M [00:00<00:03, 86.4MiB/s]  8%|██▉                                   | 26.5M/338M [00:00<00:03, 89.0MiB/s] 11%|████                                  | 36.3M/338M [00:00<00:03, 94.4MiB/s] 14%|█████▏                                | 46.1M/338M [00:00<00:03, 96.8MiB/s] 16%|██████▏                               | 55.4M/338M [00:00<00:03, 94.4MiB/s] 19%|███████▎                              | 64.5M/338M [00:00<00:03, 84.2MiB/s] 22%|████████▎                             | 73.6M/338M [00:00<00:03, 87.6MiB/s] 25%|█████████▍                            | 83.4M/338M [00:00<00:02, 91.7MiB/s] 27%|██████████▍                           | 92.3M/338M [00:01<00:02, 91.7MiB/s] 30%|███████████▋                           | 101M/338M [00:01<00:02, 92.5MiB/s] 33%|████████████▉                          | 112M/338M [00:01<00:02, 96.9MiB/s] 36%|█████████████▉                         | 121M/338M [00:01<00:02, 82.0MiB/s] 38%|██████████████▉                        | 129M/338M [00:01<00:02, 83.7MiB/s] 41%|████████████████                       | 140M/338M [00:01<00:02, 90.1MiB/s] 44%|█████████████████▏                     | 148M/338M [00:01<00:02, 90.5MiB/s] 47%|██████████████████▏                    | 157M/338M [00:01<00:02, 75.7MiB/s] 49%|███████████████████                    | 165M/338M [00:02<00:02, 77.5MiB/s] 52%|████████████████████                   | 174M/338M [00:02<00:02, 81.6MiB/s] 54%|█████████████████████                  | 182M/338M [00:02<00:02, 74.5MiB/s] 56%|█████████████████████▉                 | 190M/338M [00:02<00:02, 74.4MiB/s] 59%|███████████████████████                | 199M/338M [00:02<00:01, 81.7MiB/s] 62%|████████████████████████               | 208M/338M [00:02<00:01, 80.9MiB/s] 64%|████████████████████████▉              | 216M/338M [00:02<00:01, 80.1MiB/s] 66%|█████████████████████████▊             | 224M/338M [00:02<00:01, 80.5MiB/s] 69%|██████████████████████████▉            | 234M/338M [00:02<00:01, 87.0MiB/s] 72%|████████████████████████████           | 243M/338M [00:02<00:01, 91.4MiB/s] 75%|█████████████████████████████▏         | 252M/338M [00:03<00:00, 91.7MiB/s] 78%|██████████████████████████████▏        | 262M/338M [00:03<00:00, 94.5MiB/s] 81%|███████████████████████████████▍       | 272M/338M [00:03<00:00, 97.9MiB/s] 83%|████████████████████████████████▌      | 281M/338M [00:03<00:00, 98.3MiB/s] 86%|█████████████████████████████████▌     | 291M/338M [00:03<00:00, 88.6MiB/s] 89%|██████████████████████████████████▌    | 300M/338M [00:03<00:00, 89.8MiB/s] 91%|███████████████████████████████████▋   | 309M/338M [00:03<00:00, 91.6MiB/s] 94%|████████████████████████████████████▋  | 318M/338M [00:03<00:00, 91.3MiB/s] 97%|█████████████████████████████████████▋ | 326M/338M [00:03<00:00, 90.7MiB/s] 99%|██████████████████████████████████████▋| 335M/338M [00:04<00:00, 91.5MiB/s]100%|███████████████████████████████████████| 338M/338M [00:04<00:00, 87.4MiB/s]
+List of prompts:
+['This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+=> loading checkpoint './checkpoints/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar'
+=> loaded checkpoint './checkpoints/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar' (epoch 1)
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+("Parameters to be updated: {'prompt_learner.pad_up', "
+ "'prompt_learner.pad_right', 'prompt_learner.pad_left', "
+ "'prompt_learner.pad_down'}")
+Number of prompt parameters:  69840
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to /scratch/lcur0649/cifar-10-python.tar.gz
+  0%|          | 0/170498071 [00:00<?, ?it/s]  0%|          | 32768/170498071 [00:00<12:02, 235893.65it/s]  0%|          | 98304/170498071 [00:00<08:05, 351138.51it/s]  0%|          | 229376/170498071 [00:00<05:30, 514920.94it/s]  0%|          | 393216/170498071 [00:00<03:27, 821304.11it/s]  0%|          | 786432/170498071 [00:00<01:40, 1697026.94it/s]  1%|          | 1409024/170498071 [00:00<00:56, 2984505.32it/s]  2%|▏         | 2785280/170498071 [00:00<00:27, 6107684.72it/s]  3%|▎         | 4456448/170498071 [00:00<00:18, 9189634.57it/s]  4%|▎         | 6356992/170498071 [00:01<00:13, 12034076.69it/s]  5%|▍         | 8290304/170498071 [00:01<00:11, 14148147.06it/s]  6%|▌         | 10158080/170498071 [00:01<00:10, 15474902.72it/s]  7%|▋         | 12058624/170498071 [00:01<00:09, 16518148.47it/s]  8%|▊         | 14024704/170498071 [00:01<00:08, 17430648.91it/s]  9%|▉         | 16121856/170498071 [00:01<00:08, 18475034.09it/s] 11%|█         | 18317312/170498071 [00:01<00:07, 19497802.10it/s] 12%|█▏        | 20480000/170498071 [00:01<00:07, 20130394.24it/s] 13%|█▎        | 22740992/170498071 [00:01<00:07, 20870938.50it/s] 15%|█▍        | 25067520/170498071 [00:02<00:06, 21175011.54it/s] 16%|█▌        | 27557888/170498071 [00:02<00:06, 22117910.40it/s] 18%|█▊        | 30048256/170498071 [00:02<00:06, 22937300.45it/s] 19%|█▉        | 32604160/170498071 [00:02<00:05, 23658060.90it/s] 21%|██        | 35323904/170498071 [00:02<00:05, 24693360.96it/s] 22%|██▏       | 38207488/170498071 [00:02<00:05, 23696549.18it/s] 24%|██▍       | 41189376/170498071 [00:02<00:05, 24611411.26it/s] 26%|██▌       | 44236800/170498071 [00:02<00:04, 26097997.66it/s] 28%|██▊       | 47382528/170498071 [00:02<00:04, 27614511.79it/s] 30%|██▉       | 50462720/170498071 [00:02<00:04, 28508925.33it/s] 31%|███▏      | 53575680/170498071 [00:03<00:03, 29233965.94it/s] 33%|███▎      | 56524800/170498071 [00:03<00:03, 29193183.26it/s] 35%|███▍      | 59604992/170498071 [00:03<00:03, 29648870.73it/s] 37%|███▋      | 62586880/170498071 [00:03<00:03, 29203837.94it/s] 38%|███▊      | 65536000/170498071 [00:03<00:03, 29062477.14it/s] 40%|████      | 68452352/170498071 [00:03<00:03, 29060923.16it/s] 42%|████▏     | 71499776/170498071 [00:03<00:03, 29393959.41it/s] 44%|████▍     | 74678272/170498071 [00:03<00:03, 29803147.22it/s] 46%|████▌     | 77824000/170498071 [00:03<00:03, 30219821.91it/s] 47%|████▋     | 80969728/170498071 [00:03<00:02, 29982153.69it/s] 49%|████▉     | 84148224/170498071 [00:04<00:02, 30265063.16it/s] 51%|█████     | 87195648/170498071 [00:04<00:02, 30092253.89it/s] 53%|█████▎    | 90243072/170498071 [00:04<00:02, 30026630.74it/s] 55%|█████▍    | 93290496/170498071 [00:04<00:02, 29876311.98it/s] 56%|█████▋    | 96305152/170498071 [00:04<00:02, 29875923.00it/s] 58%|█████▊    | 99319808/170498071 [00:04<00:02, 29814894.29it/s] 60%|██████    | 102301696/170498071 [00:04<00:02, 29571812.71it/s] 62%|██████▏   | 105283584/170498071 [00:04<00:02, 29616001.17it/s] 63%|██████▎   | 108265472/170498071 [00:04<00:02, 29524251.66it/s] 65%|██████▌   | 111312896/170498071 [00:04<00:02, 29534946.65it/s] 67%|██████▋   | 114360320/170498071 [00:05<00:01, 29724813.66it/s] 69%|██████▉   | 117440512/170498071 [00:05<00:01, 29843115.43it/s] 71%|███████   | 120455168/170498071 [00:05<00:01, 29739334.36it/s] 72%|███████▏  | 123535360/170498071 [00:05<00:01, 29963806.55it/s] 74%|███████▍  | 126713856/170498071 [00:05<00:01, 30346663.24it/s] 76%|███████▌  | 129761280/170498071 [00:05<00:01, 22984693.73it/s] 78%|███████▊  | 133038080/170498071 [00:05<00:01, 25353361.73it/s] 80%|███████▉  | 135823360/170498071 [00:06<00:01, 20518443.94it/s] 81%|████████  | 138182656/170498071 [00:06<00:01, 17762674.26it/s] 82%|████████▏ | 140214272/170498071 [00:06<00:01, 18232487.53it/s] 83%|████████▎ | 142245888/170498071 [00:06<00:01, 18611679.39it/s] 85%|████████▍ | 144277504/170498071 [00:06<00:01, 19016663.94it/s] 86%|████████▌ | 146472960/170498071 [00:06<00:01, 19772200.97it/s] 87%|████████▋ | 148570112/170498071 [00:06<00:01, 20097128.83it/s] 88%|████████▊ | 150700032/170498071 [00:06<00:00, 20397582.96it/s] 90%|████████▉ | 152928256/170498071 [00:06<00:00, 20911867.43it/s] 91%|█████████ | 155189248/170498071 [00:07<00:00, 21337271.87it/s] 92%|█████████▏| 157548544/170498071 [00:07<00:00, 21971119.20it/s] 94%|█████████▍| 159973376/170498071 [00:07<00:00, 22639392.73it/s] 95%|█████████▌| 162529280/170498071 [00:07<00:00, 23502638.14it/s] 97%|█████████▋| 165216256/170498071 [00:07<00:00, 24499515.50it/s] 99%|█████████▊| 168001536/170498071 [00:07<00:00, 25490181.75it/s]100%|██████████| 170498071/170498071 [00:07<00:00, 22400493.33it/s]
+Extracting /scratch/lcur0649/cifar-10-python.tar.gz to /scratch/lcur0649
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a airplane',
+ 'This is a photo of a automobile',
+ 'This is a photo of a bird',
+ 'This is a photo of a cat',
+ 'This is a photo of a deer',
+ 'This is a photo of a dog',
+ 'This is a photo of a frog',
+ 'This is a photo of a horse',
+ 'This is a photo of a ship',
+ 'This is a photo of a truck',
+ 'This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+Validate: [ 0/79]	Time  1.962 ( 1.962)	Loss 1.2480e+00 (1.2480e+00)	Prompt Acc@1  72.66 ( 72.66)
+ * Prompt Acc@1 71.790
+Validate: [ 0/79]	Time  1.046 ( 1.046)	Loss 1.3535e+00 (1.3535e+00)	Prompt Acc@1  66.41 ( 66.41)
+ * Prompt Acc@1 53.990
+Finished
+TOP1 Accuracy on cifra10 + cifar100 is: 62.890
+Running experiment with padding and prompt size 30
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=1000, model='clip', arch='ViT-B/32', method='padding', prompt_size=30, text_prompt_template='This is a photo of a {}', root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, visualize_prompt=False, seed=0, model_dir='./save/models', image_dir='./save/images', filename='padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume='./checkpoints/padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar', evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='./save/models/padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Files already downloaded and verified
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+=> loading checkpoint './checkpoints/padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar'
+=> loaded checkpoint './checkpoints/padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar' (epoch 3)
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+("Parameters to be updated: {'prompt_learner.pad_down', "
+ "'prompt_learner.pad_right', 'prompt_learner.pad_up', "
+ "'prompt_learner.pad_left'}")
+Number of prompt parameters:  69840
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a airplane',
+ 'This is a photo of a automobile',
+ 'This is a photo of a bird',
+ 'This is a photo of a cat',
+ 'This is a photo of a deer',
+ 'This is a photo of a dog',
+ 'This is a photo of a frog',
+ 'This is a photo of a horse',
+ 'This is a photo of a ship',
+ 'This is a photo of a truck',
+ 'This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+Validate: [ 0/79]	Time  1.898 ( 1.898)	Loss 1.7705e+00 (1.7705e+00)	Prompt Acc@1  65.62 ( 65.62)
+ * Prompt Acc@1 66.280
+Validate: [ 0/79]	Time  0.982 ( 0.982)	Loss 1.1172e+00 (1.1172e+00)	Prompt Acc@1  75.78 ( 75.78)
+ * Prompt Acc@1 63.230
+Finished
+TOP1 Accuracy on cifra10 + cifar100 is: 64.755
+Running experiment with fixed_patch and prompt size 1
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=1000, model='clip', arch='ViT-B/32', method='fixed_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, visualize_prompt=False, seed=0, model_dir='./save/models', image_dir='./save/images', filename='fixed_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume='./checkpoints/fixed_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar', evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='./save/models/fixed_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Files already downloaded and verified
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+=> loading checkpoint './checkpoints/fixed_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar'
+=> loaded checkpoint './checkpoints/fixed_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar' (epoch 6)
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+"Parameters to be updated: {'prompt_learner.patch'}"
+Number of prompt parameters:  3
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a airplane',
+ 'This is a photo of a automobile',
+ 'This is a photo of a bird',
+ 'This is a photo of a cat',
+ 'This is a photo of a deer',
+ 'This is a photo of a dog',
+ 'This is a photo of a frog',
+ 'This is a photo of a horse',
+ 'This is a photo of a ship',
+ 'This is a photo of a truck',
+ 'This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+Validate: [ 0/79]	Time  1.987 ( 1.987)	Loss 1.2109e+00 (1.2109e+00)	Prompt Acc@1  70.31 ( 70.31)
+ * Prompt Acc@1 74.470
+Validate: [ 0/79]	Time  1.010 ( 1.010)	Loss 1.2080e+00 (1.2080e+00)	Prompt Acc@1  69.53 ( 69.53)
+ * Prompt Acc@1 62.430
+Finished
+TOP1 Accuracy on cifra10 + cifar100 is: 68.450
+Running experiment with fixed_patch and prompt size 1
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=1000, model='clip', arch='ViT-B/32', method='fixed_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, visualize_prompt=False, seed=0, model_dir='./save/models', image_dir='./save/images', filename='fixed_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume='./checkpoints/fixed_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar', evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='./save/models/fixed_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Files already downloaded and verified
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+=> loading checkpoint './checkpoints/fixed_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar'
+=> loaded checkpoint './checkpoints/fixed_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar' (epoch 15)
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+"Parameters to be updated: {'prompt_learner.patch'}"
+Number of prompt parameters:  3
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a airplane',
+ 'This is a photo of a automobile',
+ 'This is a photo of a bird',
+ 'This is a photo of a cat',
+ 'This is a photo of a deer',
+ 'This is a photo of a dog',
+ 'This is a photo of a frog',
+ 'This is a photo of a horse',
+ 'This is a photo of a ship',
+ 'This is a photo of a truck',
+ 'This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+Validate: [ 0/79]	Time  2.002 ( 2.002)	Loss 1.1797e+00 (1.1797e+00)	Prompt Acc@1  71.09 ( 71.09)
+ * Prompt Acc@1 75.120
+Validate: [ 0/79]	Time  1.013 ( 1.013)	Loss 1.2227e+00 (1.2227e+00)	Prompt Acc@1  70.31 ( 70.31)
+ * Prompt Acc@1 62.470
+Finished
+TOP1 Accuracy on cifra10 + cifar100 is: 68.795
+Running experiment with random_patch and prompt size 1
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=1000, model='clip', arch='ViT-B/32', method='random_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, visualize_prompt=False, seed=0, model_dir='./save/models', image_dir='./save/images', filename='random_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume='./checkpoints/random_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar', evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='./save/models/random_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Files already downloaded and verified
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+=> loading checkpoint './checkpoints/random_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar'
+=> loaded checkpoint './checkpoints/random_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar' (epoch 1)
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+"Parameters to be updated: {'prompt_learner.random_patch'}"
+Number of prompt parameters:  3
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a airplane',
+ 'This is a photo of a automobile',
+ 'This is a photo of a bird',
+ 'This is a photo of a cat',
+ 'This is a photo of a deer',
+ 'This is a photo of a dog',
+ 'This is a photo of a frog',
+ 'This is a photo of a horse',
+ 'This is a photo of a ship',
+ 'This is a photo of a truck',
+ 'This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+Validate: [ 0/79]	Time  2.098 ( 2.098)	Loss 1.1621e+00 (1.1621e+00)	Prompt Acc@1  76.56 ( 76.56)
+ * Prompt Acc@1 74.720
+Validate: [ 0/79]	Time  1.016 ( 1.016)	Loss 1.1689e+00 (1.1689e+00)	Prompt Acc@1  71.88 ( 71.88)
+ * Prompt Acc@1 62.110
+Finished
+TOP1 Accuracy on cifra10 + cifar100 is: 68.415
+Running experiment with random_patch and prompt size 1
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=1000, model='clip', arch='ViT-B/32', method='random_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, visualize_prompt=False, seed=0, model_dir='./save/models', image_dir='./save/images', filename='random_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume='./checkpoints/random_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar', evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='./save/models/random_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Files already downloaded and verified
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+=> loading checkpoint './checkpoints/random_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar'
+=> loaded checkpoint './checkpoints/random_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar' (epoch 5)
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+"Parameters to be updated: {'prompt_learner.random_patch'}"
+Number of prompt parameters:  3
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a airplane',
+ 'This is a photo of a automobile',
+ 'This is a photo of a bird',
+ 'This is a photo of a cat',
+ 'This is a photo of a deer',
+ 'This is a photo of a dog',
+ 'This is a photo of a frog',
+ 'This is a photo of a horse',
+ 'This is a photo of a ship',
+ 'This is a photo of a truck',
+ 'This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+Validate: [ 0/79]	Time  1.897 ( 1.897)	Loss 1.0918e+00 (1.0918e+00)	Prompt Acc@1  75.00 ( 75.00)
+ * Prompt Acc@1 75.240
+Validate: [ 0/79]	Time  0.926 ( 0.926)	Loss 1.2295e+00 (1.2295e+00)	Prompt Acc@1  69.53 ( 69.53)
+ * Prompt Acc@1 61.580
+Finished
+TOP1 Accuracy on cifra10 + cifar100 is: 68.410

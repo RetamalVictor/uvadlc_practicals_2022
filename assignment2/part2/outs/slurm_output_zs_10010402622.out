@@ -1,0 +1,65 @@
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to /scratch/lcur0649/cifar-10-python.tar.gz
+  0%|          | 0/170498071 [00:00<?, ?it/s]  0%|          | 65536/170498071 [00:00<08:22, 339324.44it/s]  0%|          | 131072/170498071 [00:00<08:21, 339984.84it/s]  0%|          | 229376/170498071 [00:00<06:50, 414734.68it/s]  0%|          | 458752/170498071 [00:00<03:11, 886887.35it/s]  1%|          | 917504/170498071 [00:00<01:30, 1864583.53it/s]  1%|          | 1736704/170498071 [00:00<00:46, 3598006.74it/s]  2%|▏         | 2949120/170498071 [00:00<00:27, 5995560.78it/s]  3%|▎         | 4751360/170498071 [00:01<00:17, 9433444.71it/s]  4%|▍         | 6684672/170498071 [00:01<00:13, 12303257.86it/s]  5%|▌         | 8716288/170498071 [00:01<00:11, 14641004.03it/s]  6%|▌         | 10649600/170498071 [00:01<00:10, 14779176.08it/s]  7%|▋         | 12648448/170498071 [00:01<00:09, 16160743.75it/s]  9%|▊         | 14680064/170498071 [00:01<00:10, 15343174.88it/s] 10%|▉         | 16842752/170498071 [00:01<00:09, 16959586.44it/s] 11%|█▏        | 19202048/170498071 [00:01<00:08, 18768233.86it/s] 13%|█▎        | 21594112/170498071 [00:01<00:07, 20211894.73it/s] 14%|█▍        | 24084480/170498071 [00:02<00:06, 21548959.70it/s] 16%|█▌        | 26607616/170498071 [00:02<00:06, 22616290.17it/s] 17%|█▋        | 29196288/170498071 [00:02<00:05, 23566355.95it/s] 19%|█▊        | 31850496/170498071 [00:02<00:05, 24444074.15it/s] 20%|██        | 34603008/170498071 [00:02<00:05, 25356440.50it/s] 22%|██▏       | 37421056/170498071 [00:02<00:05, 26187289.26it/s] 24%|██▎       | 40337408/170498071 [00:02<00:04, 27061084.76it/s] 25%|██▌       | 43286528/170498071 [00:02<00:04, 27686342.79it/s] 27%|██▋       | 46399488/170498071 [00:02<00:04, 28692025.91it/s] 29%|██▉       | 49315840/170498071 [00:02<00:04, 28827526.29it/s] 31%|███       | 52232192/170498071 [00:03<00:04, 28918702.23it/s] 32%|███▏      | 55312384/170498071 [00:03<00:03, 29459375.84it/s] 34%|███▍      | 58359808/170498071 [00:03<00:03, 29755217.48it/s] 36%|███▌      | 61341696/170498071 [00:03<00:03, 29564771.23it/s] 38%|███▊      | 64323584/170498071 [00:03<00:03, 28722469.31it/s] 39%|███▉      | 67207168/170498071 [00:03<00:03, 28442953.94it/s] 41%|████      | 70057984/170498071 [00:03<00:03, 28142449.18it/s] 43%|████▎     | 72876032/170498071 [00:03<00:03, 27995538.70it/s] 44%|████▍     | 75694080/170498071 [00:03<00:03, 27951669.21it/s] 46%|████▌     | 78512128/170498071 [00:03<00:03, 27869585.33it/s] 48%|████▊     | 81330176/170498071 [00:04<00:03, 27928905.10it/s] 50%|████▉     | 84443136/170498071 [00:04<00:03, 28329274.40it/s] 51%|█████▏    | 87523328/170498071 [00:04<00:02, 28457185.04it/s] 53%|█████▎    | 90570752/170498071 [00:04<00:02, 28532309.72it/s] 55%|█████▍    | 93716480/170498071 [00:04<00:02, 28740570.40it/s] 57%|█████▋    | 96763904/170498071 [00:04<00:02, 28711833.53it/s] 59%|█████▊    | 99778560/170498071 [00:04<00:02, 28700570.31it/s] 60%|██████    | 102825984/170498071 [00:04<00:02, 28764556.76it/s] 62%|██████▏   | 105775104/170498071 [00:04<00:02, 28750844.20it/s] 64%|██████▍   | 108822528/170498071 [00:05<00:02, 28724653.83it/s] 66%|██████▌   | 111869952/170498071 [00:05<00:02, 28733079.80it/s] 67%|██████▋   | 114982912/170498071 [00:05<00:01, 28701132.39it/s] 69%|██████▉   | 117997568/170498071 [00:05<00:01, 28764467.50it/s] 71%|███████   | 121044992/170498071 [00:05<00:01, 28791039.12it/s] 73%|███████▎  | 124092416/170498071 [00:05<00:01, 28799460.98it/s] 75%|███████▍  | 127172608/170498071 [00:05<00:01, 28872233.45it/s] 76%|███████▋  | 130285568/170498071 [00:05<00:01, 28867042.62it/s] 78%|███████▊  | 133201920/170498071 [00:05<00:01, 28773353.26it/s] 80%|███████▉  | 136282112/170498071 [00:05<00:01, 28768077.30it/s] 82%|████████▏ | 139395072/170498071 [00:06<00:01, 28851343.98it/s] 84%|████████▎ | 142442496/170498071 [00:06<00:00, 28790980.57it/s] 85%|████████▌ | 145522688/170498071 [00:06<00:00, 28830320.62it/s] 87%|████████▋ | 148504576/170498071 [00:06<00:00, 28765156.81it/s] 89%|████████▉ | 151486464/170498071 [00:06<00:00, 28850324.33it/s] 91%|█████████ | 154566656/170498071 [00:06<00:00, 29154703.69it/s] 92%|█████████▏| 157679616/170498071 [00:06<00:00, 29632935.58it/s] 94%|█████████▍| 160825344/170498071 [00:06<00:00, 29780410.38it/s] 96%|█████████▌| 163971072/170498071 [00:06<00:00, 29757862.30it/s] 98%|█████████▊| 167116800/170498071 [00:07<00:00, 30223325.87it/s]100%|█████████▉| 170295296/170498071 [00:07<00:00, 30608146.68it/s]100%|██████████| 170498071/170498071 [00:07<00:00, 23821857.95it/s]
+/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 12 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Extracting /scratch/lcur0649/cifar-10-python.tar.gz to /scratch/lcur0649
+Using prompt template: This is a photo of a {}
+Using device: cuda
+Loading CLIP (backbone: ViT-B/32)
+  0%|                                               | 0.00/338M [00:00<?, ?iB/s]  1%|▎                                     | 3.04M/338M [00:00<00:11, 31.9MiB/s]  5%|█▊                                    | 16.2M/338M [00:00<00:03, 94.1MiB/s]  9%|███▌                                   | 30.4M/338M [00:00<00:02, 119MiB/s] 13%|█████▏                                 | 44.8M/338M [00:00<00:02, 132MiB/s] 18%|██████▊                                | 59.3M/338M [00:00<00:02, 139MiB/s] 22%|████████▋                              | 75.0M/338M [00:00<00:01, 148MiB/s] 26%|██████████▎                            | 89.1M/338M [00:00<00:01, 141MiB/s] 30%|████████████▏                           | 103M/338M [00:00<00:01, 141MiB/s] 34%|█████████████▊                          | 116M/338M [00:00<00:01, 141MiB/s] 39%|███████████████▍                        | 130M/338M [00:01<00:01, 143MiB/s] 43%|█████████████████                       | 144M/338M [00:01<00:01, 144MiB/s] 47%|██████████████████▊                     | 158M/338M [00:01<00:01, 145MiB/s] 51%|████████████████████▍                   | 173M/338M [00:01<00:01, 146MiB/s] 55%|██████████████████████                  | 187M/338M [00:01<00:01, 130MiB/s] 59%|███████████████████████▌                | 199M/338M [00:01<00:01, 108MiB/s] 62%|████████████████████████▎              | 210M/338M [00:01<00:01, 97.1MiB/s] 65%|█████████████████████████▍             | 220M/338M [00:01<00:01, 90.7MiB/s] 68%|██████████████████████████▍            | 229M/338M [00:02<00:01, 86.4MiB/s] 70%|███████████████████████████▍           | 238M/338M [00:02<00:01, 83.6MiB/s] 73%|████████████████████████████▍          | 246M/338M [00:02<00:01, 81.5MiB/s] 75%|█████████████████████████████▎         | 254M/338M [00:02<00:01, 79.9MiB/s] 77%|██████████████████████████████▏        | 262M/338M [00:02<00:01, 78.8MiB/s] 80%|███████████████████████████████        | 269M/338M [00:02<00:00, 78.2MiB/s] 82%|███████████████████████████████▉       | 277M/338M [00:02<00:00, 77.2MiB/s] 84%|████████████████████████████████▊      | 284M/338M [00:02<00:00, 77.1MiB/s] 86%|█████████████████████████████████▋     | 291M/338M [00:02<00:00, 77.5MiB/s] 89%|██████████████████████████████████▌    | 299M/338M [00:03<00:00, 77.7MiB/s] 91%|███████████████████████████████████▍   | 307M/338M [00:03<00:00, 77.8MiB/s] 93%|████████████████████████████████████▎  | 314M/338M [00:03<00:00, 78.5MiB/s] 95%|█████████████████████████████████████▏ | 322M/338M [00:03<00:00, 79.2MiB/s] 98%|██████████████████████████████████████▏| 330M/338M [00:03<00:00, 80.5MiB/s]100%|████████████████████████████████████████| 338M/338M [00:03<00:00, 101MiB/s]
+
+
+List of prompts:
+['This is a photo of a airplane',
+ 'This is a photo of a automobile',
+ 'This is a photo of a bird',
+ 'This is a photo of a cat',
+ 'This is a photo of a deer',
+ 'This is a photo of a dog',
+ 'This is a photo of a frog',
+ 'This is a photo of a horse',
+ 'This is a photo of a ship',
+ 'This is a photo of a truck']
+Precomputing text features
+Iterating over test set of cifar10
+Traceback (most recent call last):
+  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/.//clipzs.py", line 398, in <module>
+    main()
+  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/.//clipzs.py", line 385, in main
+    predictions = clipzs.model_inference(inputs)
+  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/.//clipzs.py", line 209, in model_inference
+    image_features = self.clip_model(image)
+  File "/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+TypeError: CLIP.forward() missing 1 required positional argument: 'text'
+/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 12 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Files already downloaded and verified
+Using prompt template: This is a photo of a {}
+Using device: cuda
+Loading CLIP (backbone: ViT-B/32)
+
+
+List of prompts:
+['This is a photo of a airplane',
+ 'This is a photo of a automobile',
+ 'This is a photo of a bird',
+ 'This is a photo of a cat',
+ 'This is a photo of a deer',
+ 'This is a photo of a dog',
+ 'This is a photo of a frog',
+ 'This is a photo of a horse',
+ 'This is a photo of a ship',
+ 'This is a photo of a truck']
+Precomputing text features
+Iterating over train set of cifar10
+Traceback (most recent call last):
+  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/.//clipzs.py", line 398, in <module>
+    main()
+  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/.//clipzs.py", line 385, in main
+    predictions = clipzs.model_inference(inputs)
+  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/.//clipzs.py", line 209, in model_inference
+    image_features = self.clip_model(image)
+  File "/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+TypeError: CLIP.forward() missing 1 required positional argument: 'text'

@@ -28,7 +28,7 @@ from torchvision.datasets import CIFAR10, CIFAR100
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 import torch.nn as nn
-from utils import AverageMeter, set_seed
+from utils import AverageMeter, set_seed, accuracy
 
 
 DATASET = {"cifar10": CIFAR10, "cifar100": CIFAR100}
@@ -162,16 +162,21 @@ class ZeroshotCLIP(nn.Module):
 
         # Steps:
         # - Tokenize each text prompt using CLIP's tokenizer.
-        # - Compute the text features (encodings) for each prompt.
-        # - Normalize the text features.
-        # - Return a tensor of shape (num_prompts, 512).
+        text_inputs = clip.tokenize(prompts).to(device)
+
+        # Compute the text features (encodings) for each prompt
+        with torch.no_grad():
+            text_features = clip_model.encode_text(text_inputs)
+
+        # Normalize the text features
+        text_features = text_features / text_features.norm(dim=-1, keepdim=True)
+
+        # Return a tensor of shape (num_prompts, 512)
+        return text_features
 
         # Hint:
         # - Read the CLIP API documentation for more details:
         #   https://github.com/openai/CLIP#api
-
-        # remove this line once you implement the function
-        raise NotImplementedError("Implement the precompute_text_features function.")
 
         #######################
         # END OF YOUR CODE    #
@@ -199,18 +204,22 @@ class ZeroshotCLIP(nn.Module):
         #   i.e., compute the logits w.r.t. each of the prompts defined earlier.
 
         # Steps:
-        # - Compute the image features (encodings) using the CLIP model.
-        # - Normalize the image features.
-        # - Compute similarity logits between the image features and the text features.
-        #   You need to multiply the similarity logits with the logit scale (clip_model.logit_scale).
-        # - Return logits of shape (num_classes,).
+        # Compute the image features (encodings) using the CLIP model
+        with torch.no_grad():
+            image_features = self.clip_model.encode_image(image)
+
+        # Normalize the image features
+        image_features = image_features / image_features.norm(dim=-1, keepdim=True)
+
+        # Compute similarity logits between the image features and the text features
+        similarity = self.clip_model.logit_scale * (image_features @ self.text_features.T).softmax(dim=-1)
+
+        # Return logits of shape (num_classes,)
+        return similarity
 
         # Hint:
         # - Read the CLIP API documentation for more details:
         #   https://github.com/openai/CLIP#api
-
-        # remove this line once you implement the function
-        raise NotImplementedError("Implement the model_inference function.")
 
         #######################
         # END OF YOUR CODE    #
@@ -370,18 +379,59 @@ def main():
     # - Before filling this part, you should first complete the ZeroShotCLIP class
     # - Updating the accuracy meter is as simple as calling top1.update(accuracy, batch_size)
     # - You can use the model_inference method of the ZeroshotCLIP class to get the logits
-
-    # you can remove the following line once you have implemented the inference loop
-    raise NotImplementedError("Implement the inference loop")
-
+    batch_size = loader.batch_size
+    for i, data in enumerate(loader):
+        inputs, targets = data
+        inputs, targets = inputs.to(device), targets.to(device)
+        predictions = clipzs.model_inference(inputs)
+        # predictions = predictions.argmax(dim=-1)
+        calculated_acc = accuracy(predictions,targets)
+        top1.update(calculated_acc[0].item(), inputs.shape[0])
     #######################
     # END OF YOUR CODE    #
     #######################
 
     print(
-        f"Zero-shot CLIP top-1 accuracy on {args.dataset}/{args.split}: {top1.val*100}"
+        f"Zero-shot CLIP top-1 accuracy on {args.dataset}/{args.split}: {top1.avg}"
     )
+
+def main3b():
+    # Part 0.0: Read options from command line & fix seed
+    args = parse_option()
+    device = args.device
+    set_seed(args.seed)
+
+    # Part 0.1: set number of workers to max the number of CPU cores
+    args.num_workers = min(args.num_workers, os.cpu_count())
+
+    # Part 1. Load dataset and create dataloader
+    _, preprocess = clip.load(args.arch)
+    dataset = load_dataset(args.dataset, args.root, args.split, preprocess)
+
+    loader = DataLoader(
+        dataset=dataset, batch_size=args.batch_size, num_workers=args.num_workers
+    )
+
+    # Part 2. Initialize the inference class: ZeroshotCLIP
+    print("Using prompt template:", args.prompt_template)
+    clipzs = ZeroshotCLIP(args=args, dataset=dataset, template=args.prompt_template)
+
+    # define the metric tracker for top1 accuracy
+    top1 = AverageMeter("Acc@1", ":6.2f")
+
+    # Part 3. (Optional) Visualize predictions
+    if args.visualize_predictions:
+        num_viz = 8
+        idx = np.random.choice(len(dataset), num_viz, replace=False)
+        images = [dataset[i][0] for i in idx]
+        images = torch.stack(images).to(device)
+        logits = clipzs.model_inference(images)
+
+        c_names = ",".join(args.class_names) if args.class_names else "default"
+        fig_file = f"{args.dataset}-{args.split}_{c_names}.png"
+        visualize_predictions(images, logits, clipzs.class_names, fig_file)
 
 
 if __name__ == "__main__":
     main()
+    # main3b()

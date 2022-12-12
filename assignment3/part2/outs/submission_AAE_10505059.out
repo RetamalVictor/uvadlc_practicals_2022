@@ -1,0 +1,240 @@
+Global seed set to 42
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to /scratch/MNIST/raw/train-images-idx3-ubyte.gz
+  0%|          | 0/9912422 [00:00<?, ?it/s]100%|██████████| 9912422/9912422 [00:00<00:00, 108030669.65it/s]
+Extracting /scratch/MNIST/raw/train-images-idx3-ubyte.gz to /scratch/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to /scratch/MNIST/raw/train-labels-idx1-ubyte.gz
+  0%|          | 0/28881 [00:00<?, ?it/s]100%|██████████| 28881/28881 [00:00<00:00, 94859587.96it/s]
+Extracting /scratch/MNIST/raw/train-labels-idx1-ubyte.gz to /scratch/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to /scratch/MNIST/raw/t10k-images-idx3-ubyte.gz
+  0%|          | 0/1648877 [00:00<?, ?it/s]100%|██████████| 1648877/1648877 [00:00<00:00, 155221443.08it/s]
+Extracting /scratch/MNIST/raw/t10k-images-idx3-ubyte.gz to /scratch/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to /scratch/MNIST/raw/t10k-labels-idx1-ubyte.gz
+  0%|          | 0/4542 [00:00<?, ?it/s]100%|██████████| 4542/4542 [00:00<00:00, 19844300.80it/s]
+Extracting /scratch/MNIST/raw/t10k-labels-idx1-ubyte.gz to /scratch/MNIST/raw
+
+/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Using device cuda:0
+====> Epoch 0 : Average loss: 0.2843
+====> Epoch 1 : Average loss: 0.0971
+====> Epoch 2 : Average loss: 0.0827
+====> Epoch 3 : Average loss: 0.0805
+====> Epoch 4 : Average loss: 0.0822
+====> Epoch 5 : Average loss: 0.0863
+====> Epoch 6 : Average loss: 0.0933
+====> Epoch 7 : Average loss: 0.1019
+====> Epoch 8 : Average loss: 0.1140
+====> Epoch 9 : Average loss: 0.1236
+====> Epoch 10 : Average loss: 0.1353
+====> Epoch 11 : Average loss: 0.1514
+====> Epoch 12 : Average loss: 0.1673
+====> Epoch 13 : Average loss: 0.1792
+====> Epoch 14 : Average loss: 0.1924
+====> Epoch 15 : Average loss: 0.2072
+====> Epoch 16 : Average loss: 0.2215
+====> Epoch 17 : Average loss: 0.2273
+====> Epoch 18 : Average loss: 0.2409
+====> Epoch 19 : Average loss: 0.2453
+====> Epoch 20 : Average loss: 0.2491
+====> Epoch 21 : Average loss: 0.2574
+====> Epoch 22 : Average loss: 0.2635
+====> Epoch 23 : Average loss: 0.2673
+====> Epoch 24 : Average loss: 0.2732
+====> Epoch 25 : Average loss: 0.2744
+====> Epoch 26 : Average loss: 0.2793
+====> Epoch 27 : Average loss: 0.2787
+====> Epoch 28 : Average loss: 0.2782
+====> Epoch 29 : Average loss: 0.2819
+====> Epoch 30 : Average loss: 0.2794
+====> Epoch 31 : Average loss: 0.2785
+====> Epoch 32 : Average loss: 0.2769
+====> Epoch 33 : Average loss: 0.2792
+====> Epoch 34 : Average loss: 0.2772
+====> Epoch 35 : Average loss: 0.2779
+====> Epoch 36 : Average loss: 0.2742
+====> Epoch 37 : Average loss: 0.2754
+====> Epoch 38 : Average loss: 0.2738
+====> Epoch 39 : Average loss: 0.2688
+====> Epoch 40 : Average loss: 0.2711
+====> Epoch 41 : Average loss: 0.2675
+====> Epoch 42 : Average loss: 0.2691
+====> Epoch 43 : Average loss: 0.2677
+====> Epoch 44 : Average loss: 0.2633
+====> Epoch 45 : Average loss: 0.2619
+====> Epoch 46 : Average loss: 0.2645
+====> Epoch 47 : Average loss: 0.2625
+====> Epoch 48 : Average loss: 0.2576
+====> Epoch 49 : Average loss: 0.2569
+====> Epoch 50 : Average loss: 0.2597
+====> Epoch 51 : Average loss: 0.2560
+====> Epoch 52 : Average loss: 0.2523
+====> Epoch 53 : Average loss: 0.2500
+====> Epoch 54 : Average loss: 0.2496
+====> Epoch 55 : Average loss: 0.2488
+====> Epoch 56 : Average loss: 0.2472
+====> Epoch 57 : Average loss: 0.2420
+====> Epoch 58 : Average loss: 0.2440
+====> Epoch 59 : Average loss: 0.2415
+====> Epoch 60 : Average loss: 0.2410
+====> Epoch 61 : Average loss: 0.2395
+====> Epoch 62 : Average loss: 0.2369
+====> Epoch 63 : Average loss: 0.2360
+====> Epoch 64 : Average loss: 0.2326
+====> Epoch 65 : Average loss: 0.2323
+====> Epoch 66 : Average loss: 0.2323
+====> Epoch 67 : Average loss: 0.2296
+====> Epoch 68 : Average loss: 0.2272
+====> Epoch 69 : Average loss: 0.2282
+====> Epoch 70 : Average loss: 0.2242
+====> Epoch 71 : Average loss: 0.2246
+====> Epoch 72 : Average loss: 0.2236
+====> Epoch 73 : Average loss: 0.2212
+====> Epoch 74 : Average loss: 0.2135
+====> Epoch 75 : Average loss: 0.2111
+====> Epoch 76 : Average loss: 0.2114
+====> Epoch 77 : Average loss: 0.2122
+====> Epoch 78 : Average loss: 0.2110
+====> Epoch 79 : Average loss: 0.2025
+====> Epoch 80 : Average loss: 0.2030
+====> Epoch 81 : Average loss: 0.2056
+====> Epoch 82 : Average loss: 0.2019
+====> Epoch 83 : Average loss: 0.2017
+====> Epoch 84 : Average loss: 0.2002
+====> Epoch 85 : Average loss: 0.2007
+====> Epoch 86 : Average loss: 0.1976
+====> Epoch 87 : Average loss: 0.1969
+====> Epoch 88 : Average loss: 0.1975
+====> Epoch 89 : Average loss: 0.1932
+====> Epoch 90 : Average loss: 0.1889
+====> Epoch 91 : Average loss: 0.1895
+====> Epoch 92 : Average loss: 0.1868
+====> Epoch 93 : Average loss: 0.1879
+====> Epoch 94 : Average loss: 0.1898
+====> Epoch 95 : Average loss: 0.1827
+====> Epoch 96 : Average loss: 0.1825
+====> Epoch 97 : Average loss: 0.1798
+====> Epoch 98 : Average loss: 0.1788
+====> Epoch 99 : Average loss: 0.1820
+Global seed set to 42
+/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Using device cuda:0
+====> Epoch 0 : Average loss: 1.3189
+====> Epoch 1 : Average loss: 1.3019
+====> Epoch 2 : Average loss: 1.3170
+====> Epoch 3 : Average loss: 1.2773
+====> Epoch 4 : Average loss: 1.2163
+====> Epoch 5 : Average loss: 1.1866
+====> Epoch 6 : Average loss: 1.1865
+====> Epoch 7 : Average loss: 1.1939
+====> Epoch 8 : Average loss: 1.1963
+====> Epoch 9 : Average loss: 1.1960
+====> Epoch 10 : Average loss: 1.1917
+====> Epoch 11 : Average loss: 1.1922
+====> Epoch 12 : Average loss: 1.1903
+====> Epoch 13 : Average loss: 1.1957
+====> Epoch 14 : Average loss: 1.1942
+====> Epoch 15 : Average loss: 1.1894
+====> Epoch 16 : Average loss: 1.1898
+====> Epoch 17 : Average loss: 1.1912
+====> Epoch 18 : Average loss: 1.1919
+====> Epoch 19 : Average loss: 1.1895
+====> Epoch 20 : Average loss: 1.1883
+====> Epoch 21 : Average loss: 1.1877
+====> Epoch 22 : Average loss: 1.1891
+====> Epoch 23 : Average loss: 1.1900
+====> Epoch 24 : Average loss: 1.1860
+====> Epoch 25 : Average loss: 1.1879
+====> Epoch 26 : Average loss: 1.1891
+====> Epoch 27 : Average loss: 1.1881
+====> Epoch 28 : Average loss: 1.1894
+====> Epoch 29 : Average loss: 1.1929
+====> Epoch 30 : Average loss: 1.1894
+====> Epoch 31 : Average loss: 1.1898
+====> Epoch 32 : Average loss: 1.1883
+====> Epoch 33 : Average loss: 1.1925
+====> Epoch 34 : Average loss: 1.1928
+====> Epoch 35 : Average loss: 1.1897
+====> Epoch 36 : Average loss: 1.1934
+====> Epoch 37 : Average loss: 1.1951
+====> Epoch 38 : Average loss: 1.1916
+====> Epoch 39 : Average loss: 1.1930
+====> Epoch 40 : Average loss: 1.1938
+====> Epoch 41 : Average loss: 1.1942
+====> Epoch 42 : Average loss: 1.1951
+====> Epoch 43 : Average loss: 1.1919
+====> Epoch 44 : Average loss: 1.1951
+====> Epoch 45 : Average loss: 1.1917
+====> Epoch 46 : Average loss: 1.1966
+====> Epoch 47 : Average loss: 1.1904
+====> Epoch 48 : Average loss: 1.1941
+====> Epoch 49 : Average loss: 1.1911
+====> Epoch 50 : Average loss: 1.1949
+====> Epoch 51 : Average loss: 1.1897
+====> Epoch 52 : Average loss: 1.1939
+====> Epoch 53 : Average loss: 1.1916
+====> Epoch 54 : Average loss: 1.1911
+====> Epoch 55 : Average loss: 1.1911
+====> Epoch 56 : Average loss: 1.1937
+====> Epoch 57 : Average loss: 1.1910
+====> Epoch 58 : Average loss: 1.1926
+====> Epoch 59 : Average loss: 1.1912
+====> Epoch 60 : Average loss: 1.1889
+====> Epoch 61 : Average loss: 1.1961
+====> Epoch 62 : Average loss: 1.1930
+====> Epoch 63 : Average loss: 1.1916
+====> Epoch 64 : Average loss: 1.1896
+====> Epoch 65 : Average loss: 1.1920
+====> Epoch 66 : Average loss: 1.1925
+====> Epoch 67 : Average loss: 1.1866
+====> Epoch 68 : Average loss: 1.1883
+====> Epoch 69 : Average loss: 1.1902
+====> Epoch 70 : Average loss: 1.1927
+====> Epoch 71 : Average loss: 1.1925
+====> Epoch 72 : Average loss: 1.1917
+====> Epoch 73 : Average loss: 1.1936
+====> Epoch 74 : Average loss: 1.1905
+====> Epoch 75 : Average loss: 1.1942
+====> Epoch 76 : Average loss: 1.1916
+====> Epoch 77 : Average loss: 1.1906
+====> Epoch 78 : Average loss: 1.1893
+====> Epoch 79 : Average loss: 1.1889
+====> Epoch 80 : Average loss: 1.1897
+====> Epoch 81 : Average loss: 1.1898
+====> Epoch 82 : Average loss: 1.1904
+====> Epoch 83 : Average loss: 1.1911
+====> Epoch 84 : Average loss: 1.1911
+====> Epoch 85 : Average loss: 1.1923
+====> Epoch 86 : Average loss: 1.1904
+====> Epoch 87 : Average loss: 1.1877
+====> Epoch 88 : Average loss: 1.1894
+====> Epoch 89 : Average loss: 1.1890
+====> Epoch 90 : Average loss: 1.1880
+====> Epoch 91 : Average loss: 1.1902
+====> Epoch 92 : Average loss: 1.1868
+====> Epoch 93 : Average loss: 1.1936
+====> Epoch 94 : Average loss: 1.1869
+====> Epoch 95 : Average loss: 1.1891
+====> Epoch 96 : Average loss: 1.1933
+====> Epoch 97 : Average loss: 1.1917
+====> Epoch 98 : Average loss: 1.1901
+====> Epoch 99 : Average loss: 1.1894
+usage: train.py [-h] [--z_dim Z_DIM] [--batch_size BATCH_SIZE]
+                [--lambda_ LAMBDA_] [--ae_lr AE_LR] [--d_lr D_LR]
+                [--data_dir DATA_DIR] [--epochs EPOCHS] [--seed SEED]
+                [--num_workers NUM_WORKERS] [--log_dir LOG_DIR] [--no-cuda]
+train.py: error: unrecognized arguments: --lr 1e-4
+srun: error: r31n2: task 0: Exited with exit code 2
+usage: train.py [-h] [--z_dim Z_DIM] [--batch_size BATCH_SIZE]
+                [--lambda_ LAMBDA_] [--ae_lr AE_LR] [--d_lr D_LR]
+                [--data_dir DATA_DIR] [--epochs EPOCHS] [--seed SEED]
+                [--num_workers NUM_WORKERS] [--log_dir LOG_DIR] [--no-cuda]
+train.py: error: unrecognized arguments: --lr 1e-4
+srun: error: r31n2: task 0: Exited with exit code 2

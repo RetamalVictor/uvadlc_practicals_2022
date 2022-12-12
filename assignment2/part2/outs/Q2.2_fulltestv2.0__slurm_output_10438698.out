@@ -1,0 +1,417 @@
+Running experiment on cifar10 with fixed_patch and prompt size 1
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=7, model='clip', arch='ViT-B/32', method='fixed_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar10', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='fixed_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/fixed_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to /scratch/lcur0649/cifar-10-python.tar.gz
+  0%|          | 0/170498071 [00:00<?, ?it/s]  0%|          | 65536/170498071 [00:00<08:10, 347621.54it/s]  0%|          | 131072/170498071 [00:00<08:20, 340533.01it/s]  0%|          | 229376/170498071 [00:00<05:20, 531583.63it/s]  0%|          | 327680/170498071 [00:00<05:28, 518239.80it/s]  0%|          | 425984/170498071 [00:00<05:31, 512466.17it/s]  0%|          | 524288/170498071 [00:01<05:32, 511071.44it/s]  0%|          | 622592/170498071 [00:01<04:39, 608812.60it/s]  1%|          | 917504/170498071 [00:01<02:27, 1146211.26it/s]  1%|          | 1277952/170498071 [00:01<01:37, 1742917.41it/s]  1%|▏         | 2293760/170498071 [00:01<00:42, 3924618.27it/s]  2%|▏         | 4096000/170498071 [00:01<00:21, 7734955.34it/s]  4%|▎         | 5996544/170498071 [00:01<00:15, 10874882.95it/s]  5%|▍         | 7831552/170498071 [00:01<00:12, 13001043.18it/s]  6%|▌         | 9863168/170498071 [00:01<00:10, 15105227.36it/s]  7%|▋         | 12025856/170498071 [00:01<00:09, 15938916.79it/s]  8%|▊         | 14319616/170498071 [00:02<00:08, 17899162.18it/s] 10%|▉         | 16711680/170498071 [00:02<00:08, 17234876.98it/s] 11%|█         | 19070976/170498071 [00:02<00:08, 18828844.12it/s] 13%|█▎        | 21561344/170498071 [00:02<00:07, 20479058.93it/s] 14%|█▍        | 24051712/170498071 [00:02<00:06, 21689303.76it/s] 16%|█▌        | 26869760/170498071 [00:02<00:06, 23499180.62it/s] 17%|█▋        | 29753344/170498071 [00:02<00:05, 25038077.29it/s] 19%|█▉        | 32768000/170498071 [00:02<00:05, 26494537.45it/s] 21%|██        | 35815424/170498071 [00:02<00:04, 27565330.47it/s] 23%|██▎       | 38961152/170498071 [00:03<00:04, 28713478.44it/s] 25%|██▍       | 41877504/170498071 [00:03<00:04, 28834312.38it/s] 26%|██▋       | 45088768/170498071 [00:03<00:04, 29787527.76it/s] 28%|██▊       | 48300032/170498071 [00:03<00:04, 30445511.46it/s] 30%|███       | 51380224/170498071 [00:03<00:03, 30257478.46it/s] 32%|███▏      | 54624256/170498071 [00:03<00:03, 30901984.24it/s] 34%|███▍      | 57737216/170498071 [00:03<00:03, 30827070.52it/s] 36%|███▌      | 60850176/170498071 [00:03<00:03, 30892297.32it/s] 38%|███▊      | 63963136/170498071 [00:03<00:03, 30842749.90it/s] 39%|███▉      | 67076096/170498071 [00:03<00:03, 30759962.77it/s] 41%|████      | 70156288/170498071 [00:04<00:03, 30682137.32it/s] 43%|████▎     | 73236480/170498071 [00:04<00:03, 30629053.18it/s] 45%|████▍     | 76316672/170498071 [00:04<00:03, 30576924.14it/s] 47%|████▋     | 79396864/170498071 [00:04<00:02, 30548235.39it/s] 48%|████▊     | 82477056/170498071 [00:04<00:02, 30525726.37it/s] 50%|█████     | 85557248/170498071 [00:04<00:02, 30498488.09it/s] 52%|█████▏    | 88637440/170498071 [00:04<00:02, 30500308.32it/s] 54%|█████▍    | 91717632/170498071 [00:04<00:02, 30501842.56it/s] 56%|█████▌    | 94797824/170498071 [00:04<00:02, 30482371.92it/s] 57%|█████▋    | 97878016/170498071 [00:04<00:02, 30498888.21it/s] 59%|█████▉    | 100958208/170498071 [00:05<00:02, 30494155.09it/s] 61%|██████    | 104038400/170498071 [00:05<00:02, 30486374.77it/s] 63%|██████▎   | 107118592/170498071 [00:05<00:02, 30488957.22it/s] 65%|██████▍   | 110198784/170498071 [00:05<00:01, 30499899.25it/s] 66%|██████▋   | 113278976/170498071 [00:05<00:01, 30453351.81it/s] 68%|██████▊   | 116326400/170498071 [00:05<00:01, 30344344.88it/s] 70%|███████   | 119373824/170498071 [00:05<00:01, 30302779.44it/s] 72%|███████▏  | 122421248/170498071 [00:05<00:01, 30263142.10it/s] 74%|███████▎  | 125534208/170498071 [00:05<00:01, 30413025.20it/s] 76%|███████▌  | 128745472/170498071 [00:05<00:01, 30734298.14it/s] 77%|███████▋  | 131956736/170498071 [00:06<00:01, 30935592.09it/s] 79%|███████▉  | 135102464/170498071 [00:06<00:01, 30944813.56it/s] 81%|████████  | 138215424/170498071 [00:06<00:01, 30743063.56it/s] 83%|████████▎ | 141295616/170498071 [00:06<00:00, 30641876.96it/s] 85%|████████▍ | 144474112/170498071 [00:06<00:00, 30817090.11it/s] 87%|████████▋ | 147652608/170498071 [00:06<00:00, 30907958.29it/s] 88%|████████▊ | 150765568/170498071 [00:06<00:00, 30446210.17it/s] 90%|█████████ | 154009600/170498071 [00:06<00:00, 31007712.09it/s] 92%|█████████▏| 157286400/170498071 [00:06<00:00, 31515579.13it/s] 94%|█████████▍| 160464896/170498071 [00:07<00:00, 31445284.10it/s] 96%|█████████▌| 163643392/170498071 [00:07<00:00, 31373949.63it/s] 98%|█████████▊| 166821888/170498071 [00:07<00:00, 31349622.99it/s]100%|█████████▉| 170000384/170498071 [00:07<00:00, 30736614.65it/s]100%|██████████| 170498071/170498071 [00:07<00:00, 23286841.58it/s]
+Extracting /scratch/lcur0649/cifar-10-python.tar.gz to /scratch/lcur0649
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+  0%|                                               | 0.00/338M [00:00<?, ?iB/s]  7%|██▊                                    | 23.9M/338M [00:00<00:01, 251MiB/s] 14%|█████▌                                 | 47.8M/338M [00:00<00:01, 232MiB/s] 21%|████████▎                              | 72.4M/338M [00:00<00:01, 243MiB/s] 29%|███████████▎                           | 98.2M/338M [00:00<00:00, 254MiB/s] 36%|██████████████▌                         | 123M/338M [00:00<00:00, 252MiB/s] 44%|█████████████████▍                      | 147M/338M [00:00<00:00, 254MiB/s] 51%|████████████████████▎                   | 172M/338M [00:00<00:00, 255MiB/s] 58%|███████████████████████▏                | 196M/338M [00:00<00:00, 251MiB/s] 65%|██████████████████████████              | 220M/338M [00:00<00:00, 244MiB/s] 73%|█████████████████████████████▎          | 248M/338M [00:01<00:00, 258MiB/s] 82%|████████████████████████████████▌       | 275M/338M [00:01<00:00, 268MiB/s] 89%|███████████████████████████████████▋    | 301M/338M [00:01<00:00, 263MiB/s] 97%|██████████████████████████████████████▋ | 326M/338M [00:01<00:00, 253MiB/s]100%|████████████████████████████████████████| 338M/338M [00:01<00:00, 253MiB/s]
+List of prompts:
+['This is a photo of a airplane',
+ 'This is a photo of a automobile',
+ 'This is a photo of a bird',
+ 'This is a photo of a cat',
+ 'This is a photo of a deer',
+ 'This is a photo of a dog',
+ 'This is a photo of a frog',
+ 'This is a photo of a horse',
+ 'This is a photo of a ship',
+ 'This is a photo of a truck']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+"Parameters to be updated: {'prompt_learner.patch'}"
+Number of prompt parameters:  3
+Validate: [ 0/79]	Time  2.201 ( 2.201)	Loss 2.0898e+00 (2.0898e+00)	Prompt Acc@1  89.84 ( 89.84)
+ * Prompt Acc@1 88.990
+Running experiment on cifar10 with random_patch and prompt size 1
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=7, model='clip', arch='ViT-B/32', method='random_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar10', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='random_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/random_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Files already downloaded and verified
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a airplane',
+ 'This is a photo of a automobile',
+ 'This is a photo of a bird',
+ 'This is a photo of a cat',
+ 'This is a photo of a deer',
+ 'This is a photo of a dog',
+ 'This is a photo of a frog',
+ 'This is a photo of a horse',
+ 'This is a photo of a ship',
+ 'This is a photo of a truck']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+"Parameters to be updated: {'prompt_learner.random_patch'}"
+Number of prompt parameters:  3
+Validate: [ 0/79]	Time  2.008 ( 2.008)	Loss 2.0898e+00 (2.0898e+00)	Prompt Acc@1  90.62 ( 90.62)
+ * Prompt Acc@1 89.200
+Running experiment on cifar10 with padding and prompt size 30
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=7, model='clip', arch='ViT-B/32', method='padding', prompt_size=30, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar10', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Files already downloaded and verified
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a airplane',
+ 'This is a photo of a automobile',
+ 'This is a photo of a bird',
+ 'This is a photo of a cat',
+ 'This is a photo of a deer',
+ 'This is a photo of a dog',
+ 'This is a photo of a frog',
+ 'This is a photo of a horse',
+ 'This is a photo of a ship',
+ 'This is a photo of a truck']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+("Parameters to be updated: {'prompt_learner.pad_down', "
+ "'prompt_learner.pad_up', 'prompt_learner.pad_left', "
+ "'prompt_learner.pad_right'}")
+Number of prompt parameters:  69840
+Validate: [ 0/79]	Time  2.045 ( 2.045)	Loss 2.1348e+00 (2.1348e+00)	Prompt Acc@1  76.56 ( 76.56)
+ * Prompt Acc@1 77.330
+Running experiment on cifar100 with fixed_patch and prompt size 1
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=7, model='clip', arch='ViT-B/32', method='fixed_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='fixed_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/fixed_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Downloading https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz to /scratch/lcur0649/cifar-100-python.tar.gz
+  0%|          | 0/169001437 [00:00<?, ?it/s]  0%|          | 65536/169001437 [00:00<08:08, 346023.44it/s]  0%|          | 131072/169001437 [00:00<08:15, 340516.04it/s]  0%|          | 294912/169001437 [00:00<03:50, 732888.22it/s]  0%|          | 622592/169001437 [00:00<01:52, 1499029.62it/s]  1%|          | 1277952/169001437 [00:00<00:55, 3021069.67it/s]  1%|▏         | 2326528/169001437 [00:00<00:31, 5264753.67it/s]  2%|▏         | 3932160/169001437 [00:00<00:19, 8469470.57it/s]  4%|▎         | 6094848/169001437 [00:00<00:13, 12404049.96it/s]  5%|▍         | 7700480/169001437 [00:01<00:11, 13488383.65it/s]  6%|▌         | 9633792/169001437 [00:01<00:10, 15226632.85it/s]  7%|▋         | 11730944/169001437 [00:01<00:09, 16942713.85it/s]  8%|▊         | 13991936/169001437 [00:01<00:08, 18620061.71it/s] 10%|▉         | 16285696/169001437 [00:01<00:08, 18069741.35it/s] 11%|█         | 18677760/169001437 [00:01<00:08, 17905870.07it/s] 12%|█▏        | 21069824/169001437 [00:01<00:07, 19476984.78it/s] 14%|█▍        | 23691264/169001437 [00:01<00:06, 21161826.17it/s] 16%|█▌        | 26411008/169001437 [00:01<00:06, 22848317.20it/s] 17%|█▋        | 29261824/169001437 [00:02<00:05, 24460404.66it/s] 19%|█▉        | 32210944/169001437 [00:02<00:05, 25909620.37it/s] 21%|██        | 35225600/169001437 [00:02<00:04, 27148604.92it/s] 23%|██▎       | 38273024/169001437 [00:02<00:04, 28118198.49it/s] 24%|██▍       | 41353216/169001437 [00:02<00:04, 28682408.91it/s] 26%|██▌       | 44335104/169001437 [00:02<00:04, 28995791.44it/s] 28%|██▊       | 47448064/169001437 [00:02<00:04, 29498133.10it/s] 30%|██▉       | 50561024/169001437 [00:02<00:03, 29816774.97it/s] 32%|███▏      | 53608448/169001437 [00:02<00:03, 29859092.22it/s] 34%|███▎      | 56655872/169001437 [00:02<00:03, 29663049.54it/s] 35%|███▌      | 59637760/169001437 [00:03<00:03, 29559209.72it/s] 37%|███▋      | 62652416/169001437 [00:03<00:03, 29369501.00it/s] 39%|███▉      | 65601536/169001437 [00:03<00:03, 29280194.46it/s] 41%|████      | 68550656/169001437 [00:03<00:03, 29115657.32it/s] 42%|████▏     | 71467008/169001437 [00:03<00:03, 28933314.96it/s] 44%|████▍     | 74383360/169001437 [00:03<00:03, 28861858.11it/s] 46%|████▌     | 77365248/169001437 [00:03<00:03, 28914772.36it/s] 48%|████▊     | 80314368/169001437 [00:03<00:03, 28961088.92it/s] 49%|████▉     | 83230720/169001437 [00:03<00:02, 28868107.74it/s] 51%|█████     | 86179840/169001437 [00:03<00:02, 28833494.47it/s] 53%|█████▎    | 89128960/169001437 [00:04<00:02, 28897359.96it/s] 55%|█████▍    | 92143616/169001437 [00:04<00:02, 29020797.84it/s] 56%|█████▌    | 95059968/169001437 [00:04<00:02, 28969383.92it/s] 58%|█████▊    | 98009088/169001437 [00:04<00:02, 29042784.79it/s] 60%|█████▉    | 100925440/169001437 [00:04<00:02, 28927431.60it/s] 61%|██████▏   | 103907328/169001437 [00:04<00:02, 29187662.43it/s] 63%|██████▎   | 106856448/169001437 [00:04<00:02, 29029927.22it/s] 65%|██████▍   | 109772800/169001437 [00:04<00:02, 29038139.00it/s] 67%|██████▋   | 112820224/169001437 [00:04<00:01, 29286611.74it/s] 69%|██████▊   | 115867648/169001437 [00:05<00:01, 29357587.96it/s] 70%|███████   | 118816768/169001437 [00:05<00:01, 29236110.33it/s] 72%|███████▏  | 121765888/169001437 [00:05<00:01, 29073307.36it/s] 74%|███████▍  | 124780544/169001437 [00:05<00:01, 29205731.74it/s] 76%|███████▌  | 127762432/169001437 [00:05<00:01, 29347436.82it/s] 77%|███████▋  | 130908160/169001437 [00:05<00:01, 29776915.32it/s] 79%|███████▉  | 134086656/169001437 [00:05<00:01, 30168172.01it/s] 81%|████████  | 137265152/169001437 [00:05<00:01, 30368832.19it/s] 83%|████████▎ | 140345344/169001437 [00:05<00:00, 30192434.14it/s] 85%|████████▍ | 143425536/169001437 [00:05<00:00, 30106119.23it/s] 87%|████████▋ | 146538496/169001437 [00:06<00:00, 30264297.79it/s] 89%|████████▊ | 149585920/169001437 [00:06<00:00, 30248859.96it/s] 90%|█████████ | 152797184/169001437 [00:06<00:00, 30588727.87it/s] 92%|█████████▏| 155975680/169001437 [00:06<00:00, 30756717.12it/s] 94%|█████████▍| 159088640/169001437 [00:06<00:00, 30542609.16it/s] 96%|█████████▌| 162234368/169001437 [00:06<00:00, 30802418.13it/s] 98%|█████████▊| 165380096/169001437 [00:06<00:00, 30945581.78it/s]100%|█████████▉| 168525824/169001437 [00:06<00:00, 30902653.39it/s]100%|██████████| 169001437/169001437 [00:06<00:00, 25006971.16it/s]
+Extracting /scratch/lcur0649/cifar-100-python.tar.gz to /scratch/lcur0649
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+"Parameters to be updated: {'prompt_learner.patch'}"
+Number of prompt parameters:  3
+Validate: [ 0/79]	Time  1.997 ( 1.997)	Loss 4.3242e+00 (4.3242e+00)	Prompt Acc@1  74.22 ( 74.22)
+ * Prompt Acc@1 63.080
+Running experiment on cifar100 with random_patch and prompt size 1
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=7, model='clip', arch='ViT-B/32', method='random_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='random_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/random_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Files already downloaded and verified
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+"Parameters to be updated: {'prompt_learner.random_patch'}"
+Number of prompt parameters:  3
+Validate: [ 0/79]	Time  2.025 ( 2.025)	Loss 4.3242e+00 (4.3242e+00)	Prompt Acc@1  74.22 ( 74.22)
+ * Prompt Acc@1 63.230
+Running experiment on cifar100 with padding and prompt size 30
+Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=7, model='clip', arch='ViT-B/32', method='padding', prompt_size=30, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Files already downloaded and verified
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['This is a photo of a apple',
+ 'This is a photo of a aquarium fish',
+ 'This is a photo of a baby',
+ 'This is a photo of a bear',
+ 'This is a photo of a beaver',
+ 'This is a photo of a bed',
+ 'This is a photo of a bee',
+ 'This is a photo of a beetle',
+ 'This is a photo of a bicycle',
+ 'This is a photo of a bottle',
+ 'This is a photo of a bowl',
+ 'This is a photo of a boy',
+ 'This is a photo of a bridge',
+ 'This is a photo of a bus',
+ 'This is a photo of a butterfly',
+ 'This is a photo of a camel',
+ 'This is a photo of a can',
+ 'This is a photo of a castle',
+ 'This is a photo of a caterpillar',
+ 'This is a photo of a cattle',
+ 'This is a photo of a chair',
+ 'This is a photo of a chimpanzee',
+ 'This is a photo of a clock',
+ 'This is a photo of a cloud',
+ 'This is a photo of a cockroach',
+ 'This is a photo of a couch',
+ 'This is a photo of a crab',
+ 'This is a photo of a crocodile',
+ 'This is a photo of a cup',
+ 'This is a photo of a dinosaur',
+ 'This is a photo of a dolphin',
+ 'This is a photo of a elephant',
+ 'This is a photo of a flatfish',
+ 'This is a photo of a forest',
+ 'This is a photo of a fox',
+ 'This is a photo of a girl',
+ 'This is a photo of a hamster',
+ 'This is a photo of a house',
+ 'This is a photo of a kangaroo',
+ 'This is a photo of a keyboard',
+ 'This is a photo of a lamp',
+ 'This is a photo of a lawn mower',
+ 'This is a photo of a leopard',
+ 'This is a photo of a lion',
+ 'This is a photo of a lizard',
+ 'This is a photo of a lobster',
+ 'This is a photo of a man',
+ 'This is a photo of a maple tree',
+ 'This is a photo of a motorcycle',
+ 'This is a photo of a mountain',
+ 'This is a photo of a mouse',
+ 'This is a photo of a mushroom',
+ 'This is a photo of a oak tree',
+ 'This is a photo of a orange',
+ 'This is a photo of a orchid',
+ 'This is a photo of a otter',
+ 'This is a photo of a palm tree',
+ 'This is a photo of a pear',
+ 'This is a photo of a pickup truck',
+ 'This is a photo of a pine tree',
+ 'This is a photo of a plain',
+ 'This is a photo of a plate',
+ 'This is a photo of a poppy',
+ 'This is a photo of a porcupine',
+ 'This is a photo of a possum',
+ 'This is a photo of a rabbit',
+ 'This is a photo of a raccoon',
+ 'This is a photo of a ray',
+ 'This is a photo of a road',
+ 'This is a photo of a rocket',
+ 'This is a photo of a rose',
+ 'This is a photo of a sea',
+ 'This is a photo of a seal',
+ 'This is a photo of a shark',
+ 'This is a photo of a shrew',
+ 'This is a photo of a skunk',
+ 'This is a photo of a skyscraper',
+ 'This is a photo of a snail',
+ 'This is a photo of a snake',
+ 'This is a photo of a spider',
+ 'This is a photo of a squirrel',
+ 'This is a photo of a streetcar',
+ 'This is a photo of a sunflower',
+ 'This is a photo of a sweet pepper',
+ 'This is a photo of a table',
+ 'This is a photo of a tank',
+ 'This is a photo of a telephone',
+ 'This is a photo of a television',
+ 'This is a photo of a tiger',
+ 'This is a photo of a tractor',
+ 'This is a photo of a train',
+ 'This is a photo of a trout',
+ 'This is a photo of a tulip',
+ 'This is a photo of a turtle',
+ 'This is a photo of a wardrobe',
+ 'This is a photo of a whale',
+ 'This is a photo of a willow tree',
+ 'This is a photo of a wolf',
+ 'This is a photo of a woman',
+ 'This is a photo of a worm']
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+("Parameters to be updated: {'prompt_learner.pad_left', "
+ "'prompt_learner.pad_down', 'prompt_learner.pad_up', "
+ "'prompt_learner.pad_right'}")
+Number of prompt parameters:  69840
+Validate: [ 0/79]	Time  2.014 ( 2.014)	Loss 4.3594e+00 (4.3594e+00)	Prompt Acc@1  53.91 ( 53.91)
+ * Prompt Acc@1 47.340

@@ -21,7 +21,7 @@ import torch.nn as nn
 
 from utils import sample_reparameterize, KLD, elbo_to_bpd
 from cnn_encoder_decoder import CNNEncoder, CNNDecoder
-import train_torch
+# import train_torch
 import train_pl
 
 """
@@ -29,7 +29,7 @@ The following variables determine which training file to check.
 - Set TEST_LIGHTNING to True if you are using train_pl.py
 - Set TEST_TORCH to True if you are using train_torch.py
 """
-TEST_LIGHTNING = False
+TEST_LIGHTNING = True
 TEST_TORCH = False
 
 if not (TEST_LIGHTNING or TEST_TORCH):
@@ -171,7 +171,7 @@ class TestCNNEncoderDecoder(unittest.TestCase):
                 self.assertTrue((mean.shape[0] == 32 and mean.shape[1] == z_dim),
                                  msg="The shape of the mean output should be batch_size x z_dim")
                 self.assertTrue((log_std.shape[0] == 32 and log_std.shape[1] == z_dim),
-                                 msg="The shape of the log_std output should be batch_size x z_dim")
+                                 msg=f"The shape of the log_std output should be batch_size x z_dim, now the shape is {log_std.shape[0]} x {log_std.shape[1]}. It should be 32x{z_dim}")
                 all_means.append(mean.reshape(-1))
                 all_log_std.append(log_std.reshape(-1))
             means = torch.cat(all_means, dim=0)

@@ -6,8 +6,8 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=3
 #SBATCH --time=04:00:00
-#SBATCH --mem=32000M
-#SBATCH --output=slurm_output_%A.out
+#SBATCH --mem=50000M
+#SBATCH --output=outs/Q2.2_fulltestv2.0__slurm_output_%A.out
 
 module purge
 module load 2021
@@ -25,26 +25,34 @@ text_prompt_template="This is a photo of a {}"
 epochs=20
 
 ## Set of experiments on CIFAR-10
-dataset="cifar10"
 root=/scratch/$USER
 mkdir -p $root
 
-datasets=(cifar10)
-methods=(fixed_patch)
-prompt_sizes=(1)
+datasets=(cifar10 cifar100)
+methods=(fixed_patch random_patch padding custom_patch)
+prompt_sizes=(1 1 30 30)
+
+model_dir="$HOME/uvadlc_practicals_2022/assignment2/part2/checkpoints"
+image_dir="$HOME/uvadlc_practicals_2022/assignment2/part2/images"
 
 for dataset in "${datasets[@]}"; do
     for i in "${!methods[@]}"; do
-        method=${methods[$i]}
-        prompt_size=${prompt_sizes[$i]}
-        echo "Running experiment on $dataset with $method and prompt size $prompt_size"
-        python $code_dir/main.py \
-            --dataset $dataset \
-            --arch $arch \
-            --text_prompt_template "$text_prompt_template" \
-            --epochs $epochs \
-            --method $method \
-            --prompt_size $prompt_size \
-            --root $root
+	method=${methods[$i]}
+	prompt_size=${prompt_sizes[$i]}
+	echo "Running experiment on $dataset with $method and prompt size $prompt_size"
+	python $code_dir/main.py \
+	    --dataset $dataset \
+	    --arch $arch \
+	    --text_prompt_template "$text_prompt_template" \
+	    --epochs $epochs \
+	    --method $method \
+	    --prompt_size $prompt_size \
+	    --root $root \
+	    --num_workers 3 \
+	    --print_freq 100 \
+	    --patience 10 \
+	    --model_dir $model_dir \
+	    --image_dir $image_dir \
+		--evaluate
     done
 done

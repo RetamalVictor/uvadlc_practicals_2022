@@ -1,0 +1,13 @@
+Method padding, Prompt_size 30 -- Acc: 87.09, best Acc: 87.21
+Method fixed_patch, Prompt_size 1 -- Acc: 64.07, best Acc: 64.14
+Method random_patch, Prompt_size 1 -- Acc: 63.96, best Acc: 64.22
+Method padding, Prompt_size 30 -- Acc: 61.57, best Acc: 63.82
+Method fixed_patch, Prompt_size 1 -- Acc: 88.93, best Acc: 89.05
+--------------------------------------------------------------
+Method fixed_patch, Prompt_size 1 -- Acc: 88.17, best Acc: 88.5
+Method random_patch, Prompt_size 1 -- Acc: 88.83, best Acc: 88.98
+Method padding, Prompt_size 30 -- Acc: 87.48, best Acc: 88.17
+Method fixed_patch, Prompt_size 1 -- Acc: 65.25, best Acc: 65.31
+Method random_patch, Prompt_size 1 -- Acc: 64.12, best Acc: 64.65
+Method padding, Prompt_size 30 -- Acc: 62.69, best Acc: 64.06
+--------------------------------------------------------------

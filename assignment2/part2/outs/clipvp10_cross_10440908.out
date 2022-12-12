@@ -1,0 +1,1 @@
+/var/spool/slurm/slurmd/job10440908/slurm_script: line 44: ./checkpoints/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar: syntax error: operand expected (error token is "./checkpoints/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar")

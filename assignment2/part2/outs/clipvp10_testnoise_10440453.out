@@ -1,0 +1,37 @@
+/var/spool/slurm/slurmd/job10440453/slurm_script: line 31: ./images: Is a directory
+/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 16 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Namespace(print_freq=10, save_freq=50, batch_size=128, num_workers=16, epochs=1000, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=1000, model='clip', arch='ViT-B/32', method='padding', prompt_size=30, text_prompt_template='A photo of a {}', root='./data', dataset='cifar10', image_size=224, test_noise=True, visualize_prompt=False, seed=0, model_dir='./save/models', image_dir='./save/images', filename='padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume='./checkpoints/padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar', evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='./save/models/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
+Files already downloaded and verified
+Files already downloaded and verified
+Building custom CLIP
+Loading CLIP (backbone: ViT-B/32)
+List of prompts:
+['A photo of a airplane',
+ 'A photo of a automobile',
+ 'A photo of a bird',
+ 'A photo of a cat',
+ 'A photo of a deer',
+ 'A photo of a dog',
+ 'A photo of a frog',
+ 'A photo of a horse',
+ 'A photo of a ship',
+ 'A photo of a truck']
+=> loading checkpoint './checkpoints/padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar'
+=> loaded checkpoint './checkpoints/padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar' (epoch 3)
+Turning off gradients in both the image and the text encoder
+Parameters to be updated:
+("Parameters to be updated: {'prompt_learner.pad_right', "
+ "'prompt_learner.pad_left', 'prompt_learner.pad_up', "
+ "'prompt_learner.pad_down'}")
+Number of prompt parameters:  69840
+Model evaluation w/ random noise
+Validate: [ 0/79]	Time  9.132 ( 9.132)	Loss 5.2246e-01 (5.2246e-01)	Prompt Acc@1  82.03 ( 82.03)
+Validate: [10/79]	Time  0.268 ( 1.068)	Loss 4.7949e-01 (5.4246e-01)	Prompt Acc@1  86.72 ( 83.66)
+Validate: [20/79]	Time  0.254 ( 0.687)	Loss 5.3271e-01 (5.6224e-01)	Prompt Acc@1  83.59 ( 83.56)
+Validate: [30/79]	Time  0.257 ( 0.548)	Loss 5.3711e-01 (5.6092e-01)	Prompt Acc@1  88.28 ( 83.97)
+Validate: [40/79]	Time  0.307 ( 0.487)	Loss 7.6904e-01 (5.5379e-01)	Prompt Acc@1  76.56 ( 83.90)
+Validate: [50/79]	Time  0.213 ( 0.439)	Loss 7.4414e-01 (5.6096e-01)	Prompt Acc@1  75.78 ( 83.41)
+Validate: [60/79]	Time  0.212 ( 0.402)	Loss 5.2930e-01 (5.6006e-01)	Prompt Acc@1  82.81 ( 83.52)
+Validate: [70/79]	Time  0.214 ( 0.376)	Loss 5.5371e-01 (5.6115e-01)	Prompt Acc@1  82.03 ( 83.37)
+ * Prompt Acc@1 83.390
