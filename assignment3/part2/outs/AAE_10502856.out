@@ -1,56 +1,0 @@
-Global seed set to 42
-Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to /scratch/MNIST/raw/train-images-idx3-ubyte.gz
-  0%|          | 0/9912422 [00:00<?, ?it/s]100%|██████████| 9912422/9912422 [00:00<00:00, 120578159.83it/s]
-Extracting /scratch/MNIST/raw/train-images-idx3-ubyte.gz to /scratch/MNIST/raw
-
-Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to /scratch/MNIST/raw/train-labels-idx1-ubyte.gz
-  0%|          | 0/28881 [00:00<?, ?it/s]100%|██████████| 28881/28881 [00:00<00:00, 100778447.44it/s]
-Extracting /scratch/MNIST/raw/train-labels-idx1-ubyte.gz to /scratch/MNIST/raw
-
-Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to /scratch/MNIST/raw/t10k-images-idx3-ubyte.gz
-  0%|          | 0/1648877 [00:00<?, ?it/s]100%|██████████| 1648877/1648877 [00:00<00:00, 86970465.25it/s]
-Extracting /scratch/MNIST/raw/t10k-images-idx3-ubyte.gz to /scratch/MNIST/raw
-
-Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
-Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to /scratch/MNIST/raw/t10k-labels-idx1-ubyte.gz
-  0%|          | 0/4542 [00:00<?, ?it/s]100%|██████████| 4542/4542 [00:00<00:00, 21190799.52it/s]
-Extracting /scratch/MNIST/raw/t10k-labels-idx1-ubyte.gz to /scratch/MNIST/raw
-
-/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-Using device cuda:0
-====> Epoch 0 : Average loss: 0.3461
-====> Epoch 1 : Average loss: 0.2369
-====> Epoch 2 : Average loss: 0.1555
-====> Epoch 3 : Average loss: 0.1312
-====> Epoch 4 : Average loss: 0.1181
-====> Epoch 5 : Average loss: 0.1080
-====> Epoch 6 : Average loss: 0.1018
-====> Epoch 7 : Average loss: 0.0979
-====> Epoch 8 : Average loss: 0.0945
-====> Epoch 9 : Average loss: 0.0916
-====> Epoch 10 : Average loss: 0.0895
-====> Epoch 11 : Average loss: 0.0874
-====> Epoch 12 : Average loss: 0.0856
-====> Epoch 13 : Average loss: 0.0840
-====> Epoch 14 : Average loss: 0.0824
-====> Epoch 15 : Average loss: 0.0811
-====> Epoch 16 : Average loss: 0.0796
-====> Epoch 17 : Average loss: 0.0785
-====> Epoch 18 : Average loss: 0.0772
-====> Epoch 19 : Average loss: 0.0763
-====> Epoch 20 : Average loss: 0.0752
-====> Epoch 21 : Average loss: 0.0745
-====> Epoch 22 : Average loss: 0.0733
-====> Epoch 23 : Average loss: 0.0726
-====> Epoch 24 : Average loss: 0.0717
-====> Epoch 25 : Average loss: 0.0711
-====> Epoch 26 : Average loss: 0.0703
-====> Epoch 27 : Average loss: 0.0700
-====> Epoch 28 : Average loss: 0.0688
-====> Epoch 29 : Average loss: 0.0684
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-slurmstepd: error: *** JOB 10502856 ON r31n2 CANCELLED AT 2022-12-12T10:27:47 ***

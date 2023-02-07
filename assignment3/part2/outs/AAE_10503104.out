@@ -1,6 +1,0 @@
-usage: train.py [-h] [--z_dim Z_DIM] [--batch_size BATCH_SIZE]
-                [--lambda_ LAMBDA_] [--ae_lr AE_LR] [--d_lr D_LR]
-                [--data_dir DATA_DIR] [--epochs EPOCHS] [--seed SEED]
-                [--num_workers NUM_WORKERS] [--log_dir LOG_DIR] [--no-cuda]
-train.py: error: unrecognized arguments: --lr 1e-4
-srun: error: r30n2: task 0: Exited with exit code 2

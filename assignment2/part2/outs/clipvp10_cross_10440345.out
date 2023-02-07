@@ -1,241 +1,0 @@
-/var/spool/slurm/slurmd/job10440345/slurm_script: line 31: ./images: Is a directory
-Namespace(print_freq=10, save_freq=50, batch_size=128, num_workers=16, epochs=1000, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=1000, model='clip', arch='ViT-B/32', method='padding', prompt_size=30, text_prompt_template='This a photo of a {}', root='./data', dataset='cifar100', image_size=224, test_noise=False, visualize_prompt=False, seed=0, model_dir='./save/models', image_dir='./save/images', filename='padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume='./checkpoints/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar', evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='./save/models/padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
-Downloading https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz to ./data/cifar-100-python.tar.gz
-  0%|          | 0/169001437 [00:00<?, ?it/s]  0%|          | 65536/169001437 [00:00<08:26, 333603.05it/s]  0%|          | 131072/169001437 [00:00<06:04, 462765.71it/s]  0%|          | 196608/169001437 [00:00<05:16, 532843.35it/s]  0%|          | 360448/169001437 [00:00<03:08, 892971.34it/s]  0%|          | 688128/169001437 [00:00<01:42, 1649701.92it/s]  1%|          | 1343488/169001437 [00:00<00:52, 3191083.10it/s]  2%|▏         | 2686976/169001437 [00:00<00:26, 6346719.68it/s]  3%|▎         | 4227072/169001437 [00:00<00:18, 9050349.70it/s]  4%|▎         | 6062080/169001437 [00:01<00:13, 11850168.31it/s]  5%|▍         | 7962624/169001437 [00:01<00:11, 13995142.39it/s]  6%|▌         | 9895936/169001437 [00:01<00:10, 15580968.00it/s]  7%|▋         | 11993088/169001437 [00:01<00:09, 17193837.75it/s]  8%|▊         | 14188544/169001437 [00:01<00:08, 18585607.85it/s] 10%|▉         | 16580608/169001437 [00:01<00:07, 20158215.48it/s] 11%|█▏        | 19070976/169001437 [00:01<00:06, 21565543.62it/s] 13%|█▎        | 21659648/169001437 [00:01<00:06, 22841750.36it/s] 14%|█▍        | 24444928/169001437 [00:01<00:05, 24299956.15it/s] 16%|█▌        | 27197440/169001437 [00:01<00:05, 25219158.13it/s] 18%|█▊        | 29982720/169001437 [00:02<00:05, 25999701.03it/s] 19%|█▉        | 32800768/169001437 [00:02<00:05, 26637695.35it/s] 21%|██        | 35717120/169001437 [00:02<00:04, 27387937.53it/s] 23%|██▎       | 38699008/169001437 [00:02<00:04, 28114966.49it/s] 25%|██▍       | 41746432/169001437 [00:02<00:04, 28719177.45it/s] 27%|██▋       | 44793856/169001437 [00:02<00:04, 29095816.58it/s] 28%|██▊       | 48070656/169001437 [00:02<00:04, 29915677.05it/s] 30%|███       | 51314688/169001437 [00:02<00:03, 30404096.24it/s] 32%|███▏      | 54493184/169001437 [00:02<00:03, 30610667.76it/s] 34%|███▍      | 57573376/169001437 [00:02<00:03, 30378073.92it/s] 36%|███▌      | 60620800/169001437 [00:03<00:03, 29958964.28it/s] 38%|███▊      | 63635456/169001437 [00:03<00:03, 29627055.02it/s] 39%|███▉      | 66617344/169001437 [00:03<00:03, 29222393.88it/s] 41%|████      | 69566464/169001437 [00:03<00:03, 28620481.81it/s] 43%|████▎     | 72450048/169001437 [00:03<00:03, 27750151.39it/s] 45%|████▍     | 75235328/169001437 [00:03<00:03, 27614091.65it/s] 46%|████▌     | 78020608/169001437 [00:03<00:03, 27537413.11it/s] 48%|████▊     | 80805888/169001437 [00:03<00:03, 27433458.41it/s] 49%|████▉     | 83558400/169001437 [00:03<00:03, 27444583.94it/s] 51%|█████     | 86310912/169001437 [00:03<00:03, 27332681.67it/s] 53%|█████▎    | 89260032/169001437 [00:04<00:02, 27509704.59it/s] 55%|█████▍    | 92176384/169001437 [00:04<00:02, 27619221.11it/s] 56%|█████▌    | 95059968/169001437 [00:04<00:02, 27584042.98it/s] 58%|█████▊    | 97943552/169001437 [00:04<00:02, 27583563.26it/s] 60%|█████▉    | 100794368/169001437 [00:04<00:02, 27672994.04it/s] 61%|██████▏   | 103677952/169001437 [00:04<00:02, 27628813.55it/s] 63%|██████▎   | 106594304/169001437 [00:04<00:02, 27635790.02it/s] 65%|██████▍   | 109543424/169001437 [00:04<00:02, 27659601.94it/s] 67%|██████▋   | 112459776/169001437 [00:04<00:02, 27816238.87it/s] 68%|██████▊   | 115277824/169001437 [00:05<00:01, 27760983.82it/s] 70%|██████▉   | 118161408/169001437 [00:05<00:01, 27798907.61it/s] 72%|███████▏  | 121077760/169001437 [00:05<00:01, 27901157.31it/s] 73%|███████▎  | 123928576/169001437 [00:05<00:01, 27934323.29it/s] 75%|███████▌  | 126812160/169001437 [00:05<00:01, 27901882.87it/s] 77%|███████▋  | 129695744/169001437 [00:05<00:01, 27818386.72it/s] 78%|███████▊  | 132546560/169001437 [00:05<00:01, 27874156.93it/s] 80%|████████  | 135495680/169001437 [00:05<00:01, 28331733.76it/s] 82%|████████▏ | 138674176/169001437 [00:05<00:01, 29169670.26it/s] 84%|████████▍ | 141885440/169001437 [00:05<00:00, 29817436.02it/s] 86%|████████▌ | 145129472/169001437 [00:06<00:00, 30330382.87it/s] 88%|████████▊ | 148373504/169001437 [00:06<00:00, 30697477.28it/s] 90%|████████▉ | 151519232/169001437 [00:06<00:00, 30747444.52it/s] 91%|█████████▏| 154632192/169001437 [00:06<00:00, 30686987.21it/s] 93%|█████████▎| 157810688/169001437 [00:06<00:00, 30769012.30it/s] 95%|█████████▌| 160956416/169001437 [00:06<00:00, 30783204.47it/s] 97%|█████████▋| 164069376/169001437 [00:06<00:00, 30719790.92it/s] 99%|█████████▉| 167247872/169001437 [00:06<00:00, 30830102.63it/s]100%|██████████| 169001437/169001437 [00:06<00:00, 24792616.00it/s]
-/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 16 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-Extracting ./data/cifar-100-python.tar.gz to ./data
-Files already downloaded and verified
-Building custom CLIP
-Loading CLIP (backbone: ViT-B/32)
-List of prompts:
-['This a photo of a apple',
- 'This a photo of a aquarium fish',
- 'This a photo of a baby',
- 'This a photo of a bear',
- 'This a photo of a beaver',
- 'This a photo of a bed',
- 'This a photo of a bee',
- 'This a photo of a beetle',
- 'This a photo of a bicycle',
- 'This a photo of a bottle',
- 'This a photo of a bowl',
- 'This a photo of a boy',
- 'This a photo of a bridge',
- 'This a photo of a bus',
- 'This a photo of a butterfly',
- 'This a photo of a camel',
- 'This a photo of a can',
- 'This a photo of a castle',
- 'This a photo of a caterpillar',
- 'This a photo of a cattle',
- 'This a photo of a chair',
- 'This a photo of a chimpanzee',
- 'This a photo of a clock',
- 'This a photo of a cloud',
- 'This a photo of a cockroach',
- 'This a photo of a couch',
- 'This a photo of a crab',
- 'This a photo of a crocodile',
- 'This a photo of a cup',
- 'This a photo of a dinosaur',
- 'This a photo of a dolphin',
- 'This a photo of a elephant',
- 'This a photo of a flatfish',
- 'This a photo of a forest',
- 'This a photo of a fox',
- 'This a photo of a girl',
- 'This a photo of a hamster',
- 'This a photo of a house',
- 'This a photo of a kangaroo',
- 'This a photo of a keyboard',
- 'This a photo of a lamp',
- 'This a photo of a lawn mower',
- 'This a photo of a leopard',
- 'This a photo of a lion',
- 'This a photo of a lizard',
- 'This a photo of a lobster',
- 'This a photo of a man',
- 'This a photo of a maple tree',
- 'This a photo of a motorcycle',
- 'This a photo of a mountain',
- 'This a photo of a mouse',
- 'This a photo of a mushroom',
- 'This a photo of a oak tree',
- 'This a photo of a orange',
- 'This a photo of a orchid',
- 'This a photo of a otter',
- 'This a photo of a palm tree',
- 'This a photo of a pear',
- 'This a photo of a pickup truck',
- 'This a photo of a pine tree',
- 'This a photo of a plain',
- 'This a photo of a plate',
- 'This a photo of a poppy',
- 'This a photo of a porcupine',
- 'This a photo of a possum',
- 'This a photo of a rabbit',
- 'This a photo of a raccoon',
- 'This a photo of a ray',
- 'This a photo of a road',
- 'This a photo of a rocket',
- 'This a photo of a rose',
- 'This a photo of a sea',
- 'This a photo of a seal',
- 'This a photo of a shark',
- 'This a photo of a shrew',
- 'This a photo of a skunk',
- 'This a photo of a skyscraper',
- 'This a photo of a snail',
- 'This a photo of a snake',
- 'This a photo of a spider',
- 'This a photo of a squirrel',
- 'This a photo of a streetcar',
- 'This a photo of a sunflower',
- 'This a photo of a sweet pepper',
- 'This a photo of a table',
- 'This a photo of a tank',
- 'This a photo of a telephone',
- 'This a photo of a television',
- 'This a photo of a tiger',
- 'This a photo of a tractor',
- 'This a photo of a train',
- 'This a photo of a trout',
- 'This a photo of a tulip',
- 'This a photo of a turtle',
- 'This a photo of a wardrobe',
- 'This a photo of a whale',
- 'This a photo of a willow tree',
- 'This a photo of a wolf',
- 'This a photo of a woman',
- 'This a photo of a worm']
-=> loading checkpoint './checkpoints/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar'
-=> loaded checkpoint './checkpoints/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1/model_best.pth.tar' (epoch 1)
-Turning off gradients in both the image and the text encoder
-Parameters to be updated:
-("Parameters to be updated: {'prompt_learner.pad_left', "
- "'prompt_learner.pad_right', 'prompt_learner.pad_down', "
- "'prompt_learner.pad_up'}")
-Number of prompt parameters:  69840
-Files already downloaded and verified
-Files already downloaded and verified
-Files already downloaded and verified
-Files already downloaded and verified
-Loading CLIP (backbone: ViT-B/32)
-List of prompts:
-['This a photo of a airplane',
- 'This a photo of a automobile',
- 'This a photo of a bird',
- 'This a photo of a cat',
- 'This a photo of a deer',
- 'This a photo of a dog',
- 'This a photo of a frog',
- 'This a photo of a horse',
- 'This a photo of a ship',
- 'This a photo of a truck',
- 'This a photo of a apple',
- 'This a photo of a aquarium fish',
- 'This a photo of a baby',
- 'This a photo of a bear',
- 'This a photo of a beaver',
- 'This a photo of a bed',
- 'This a photo of a bee',
- 'This a photo of a beetle',
- 'This a photo of a bicycle',
- 'This a photo of a bottle',
- 'This a photo of a bowl',
- 'This a photo of a boy',
- 'This a photo of a bridge',
- 'This a photo of a bus',
- 'This a photo of a butterfly',
- 'This a photo of a camel',
- 'This a photo of a can',
- 'This a photo of a castle',
- 'This a photo of a caterpillar',
- 'This a photo of a cattle',
- 'This a photo of a chair',
- 'This a photo of a chimpanzee',
- 'This a photo of a clock',
- 'This a photo of a cloud',
- 'This a photo of a cockroach',
- 'This a photo of a couch',
- 'This a photo of a crab',
- 'This a photo of a crocodile',
- 'This a photo of a cup',
- 'This a photo of a dinosaur',
- 'This a photo of a dolphin',
- 'This a photo of a elephant',
- 'This a photo of a flatfish',
- 'This a photo of a forest',
- 'This a photo of a fox',
- 'This a photo of a girl',
- 'This a photo of a hamster',
- 'This a photo of a house',
- 'This a photo of a kangaroo',
- 'This a photo of a keyboard',
- 'This a photo of a lamp',
- 'This a photo of a lawn mower',
- 'This a photo of a leopard',
- 'This a photo of a lion',
- 'This a photo of a lizard',
- 'This a photo of a lobster',
- 'This a photo of a man',
- 'This a photo of a maple tree',
- 'This a photo of a motorcycle',
- 'This a photo of a mountain',
- 'This a photo of a mouse',
- 'This a photo of a mushroom',
- 'This a photo of a oak tree',
- 'This a photo of a orange',
- 'This a photo of a orchid',
- 'This a photo of a otter',
- 'This a photo of a palm tree',
- 'This a photo of a pear',
- 'This a photo of a pickup truck',
- 'This a photo of a pine tree',
- 'This a photo of a plain',
- 'This a photo of a plate',
- 'This a photo of a poppy',
- 'This a photo of a porcupine',
- 'This a photo of a possum',
- 'This a photo of a rabbit',
- 'This a photo of a raccoon',
- 'This a photo of a ray',
- 'This a photo of a road',
- 'This a photo of a rocket',
- 'This a photo of a rose',
- 'This a photo of a sea',
- 'This a photo of a seal',
- 'This a photo of a shark',
- 'This a photo of a shrew',
- 'This a photo of a skunk',
- 'This a photo of a skyscraper',
- 'This a photo of a snail',
- 'This a photo of a snake',
- 'This a photo of a spider',
- 'This a photo of a squirrel',
- 'This a photo of a streetcar',
- 'This a photo of a sunflower',
- 'This a photo of a sweet pepper',
- 'This a photo of a table',
- 'This a photo of a tank',
- 'This a photo of a telephone',
- 'This a photo of a television',
- 'This a photo of a tiger',
- 'This a photo of a tractor',
- 'This a photo of a train',
- 'This a photo of a trout',
- 'This a photo of a tulip',
- 'This a photo of a turtle',
- 'This a photo of a wardrobe',
- 'This a photo of a whale',
- 'This a photo of a willow tree',
- 'This a photo of a wolf',
- 'This a photo of a woman',
- 'This a photo of a worm']
-Traceback (most recent call last):
-  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/cross_dataset.py", line 283, in <module>
-    main()
-  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/cross_dataset.py", line 206, in main
-    text_inputs = clip.tokenize(prompts).to(device)
-NameError: name 'device' is not defined

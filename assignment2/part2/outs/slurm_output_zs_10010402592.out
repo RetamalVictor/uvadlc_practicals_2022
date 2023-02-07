@@ -1,65 +1,0 @@
-Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to /scratch/lcur0649/cifar-10-python.tar.gz
-  0%|          | 0/170498071 [00:00<?, ?it/s]  0%|          | 65536/170498071 [00:00<08:08, 349168.36it/s]  0%|          | 131072/170498071 [00:00<08:19, 341284.38it/s]  0%|          | 262144/170498071 [00:00<05:46, 491175.64it/s]  0%|          | 458752/170498071 [00:00<03:17, 861517.14it/s]  1%|          | 917504/170498071 [00:00<01:31, 1844216.50it/s]  1%|          | 1802240/170498071 [00:00<00:44, 3759324.97it/s]  2%|▏         | 3112960/170498071 [00:00<00:26, 6384787.88it/s]  3%|▎         | 4325376/170498071 [00:01<00:20, 8022220.07it/s]  4%|▎         | 6160384/170498071 [00:01<00:14, 11008775.40it/s]  5%|▍         | 8126464/170498071 [00:01<00:12, 13512916.33it/s]  6%|▌         | 10190848/170498071 [00:01<00:10, 15584923.66it/s]  7%|▋         | 12320768/170498071 [00:01<00:09, 17264827.12it/s]  9%|▊         | 14548992/170498071 [00:01<00:08, 17869981.82it/s] 10%|▉         | 16842752/170498071 [00:01<00:08, 19199430.92it/s] 11%|█▏        | 19234816/170498071 [00:01<00:08, 18151814.30it/s] 13%|█▎        | 21725184/170498071 [00:01<00:07, 19777450.03it/s] 14%|█▍        | 24248320/170498071 [00:02<00:06, 21237817.86it/s] 16%|█▌        | 27033600/170498071 [00:02<00:06, 23076119.23it/s] 18%|█▊        | 29949952/170498071 [00:02<00:05, 24793185.14it/s] 19%|█▉        | 32997376/170498071 [00:02<00:05, 26411342.74it/s] 21%|██        | 36143104/170498071 [00:02<00:04, 27878833.99it/s] 23%|██▎       | 39190528/170498071 [00:02<00:04, 28635854.41it/s] 25%|██▍       | 42270720/170498071 [00:02<00:04, 29152061.19it/s] 27%|██▋       | 45547520/170498071 [00:02<00:04, 30203996.72it/s] 29%|██▊       | 48660480/170498071 [00:02<00:04, 30364668.93it/s] 30%|███       | 51904512/170498071 [00:02<00:03, 30795988.87it/s] 32%|███▏      | 55148544/170498071 [00:03<00:03, 31263145.47it/s] 34%|███▍      | 58294272/170498071 [00:03<00:03, 31258272.07it/s] 36%|███▌      | 61440000/170498071 [00:03<00:03, 31266757.26it/s] 38%|███▊      | 64585728/170498071 [00:03<00:03, 31085250.01it/s] 40%|███▉      | 67698688/170498071 [00:03<00:03, 30913062.08it/s] 42%|████▏     | 70877184/170498071 [00:03<00:03, 30850511.69it/s] 43%|████▎     | 74088448/170498071 [00:03<00:03, 31218124.79it/s] 45%|████▌     | 77266944/170498071 [00:03<00:02, 31100497.13it/s] 47%|████▋     | 80379904/170498071 [00:03<00:02, 30884498.02it/s] 49%|████▉     | 83689472/170498071 [00:03<00:02, 31534684.70it/s] 51%|█████     | 86933504/170498071 [00:04<00:02, 31669039.02it/s] 53%|█████▎    | 90144768/170498071 [00:04<00:02, 31619364.03it/s] 55%|█████▍    | 93356032/170498071 [00:04<00:02, 31764374.37it/s] 57%|█████▋    | 96534528/170498071 [00:04<00:02, 31629177.37it/s] 59%|█████▊    | 99778560/170498071 [00:04<00:02, 31633804.45it/s] 60%|██████    | 102957056/170498071 [00:04<00:02, 29442098.04it/s] 62%|██████▏   | 106102784/170498071 [00:04<00:02, 29442790.05it/s] 64%|██████▍   | 109248512/170498071 [00:04<00:02, 29789920.94it/s] 66%|██████▌   | 112558080/170498071 [00:04<00:01, 30718761.77it/s] 68%|██████▊   | 115703808/170498071 [00:05<00:01, 30842793.00it/s] 70%|██████▉   | 118915072/170498071 [00:05<00:01, 31211572.21it/s] 72%|███████▏  | 122060800/170498071 [00:05<00:01, 31083898.24it/s] 73%|███████▎  | 125206528/170498071 [00:05<00:01, 31145014.67it/s] 75%|███████▌  | 128352256/170498071 [00:05<00:01, 30991790.06it/s] 77%|███████▋  | 131465216/170498071 [00:05<00:01, 30850628.56it/s] 79%|███████▉  | 134578176/170498071 [00:05<00:01, 30771113.01it/s] 81%|████████  | 137658368/170498071 [00:05<00:01, 30647289.28it/s] 83%|████████▎ | 140771328/170498071 [00:05<00:00, 30647206.82it/s] 84%|████████▍ | 143917056/170498071 [00:05<00:00, 30712426.59it/s] 86%|████████▌ | 146997248/170498071 [00:06<00:00, 30641207.40it/s] 88%|████████▊ | 150077440/170498071 [00:06<00:00, 30562185.91it/s] 90%|████████▉ | 153288704/170498071 [00:06<00:00, 31018984.22it/s] 92%|█████████▏| 156401664/170498071 [00:06<00:00, 31011619.69it/s] 94%|█████████▎| 159612928/170498071 [00:06<00:00, 31319947.46it/s] 96%|█████████▌| 162856960/170498071 [00:06<00:00, 31636695.17it/s] 97%|█████████▋| 166100992/170498071 [00:06<00:00, 31846934.91it/s] 99%|█████████▉| 169312256/170498071 [00:06<00:00, 31444845.84it/s]100%|██████████| 170498071/170498071 [00:06<00:00, 25190132.83it/s]
-/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 12 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-Extracting /scratch/lcur0649/cifar-10-python.tar.gz to /scratch/lcur0649
-Using prompt template: This is a photo of a {}
-Using device: cuda
-Loading CLIP (backbone: ViT-B/32)
-  0%|                                               | 0.00/338M [00:00<?, ?iB/s]  1%|▏                                     | 2.16M/338M [00:00<00:15, 22.3MiB/s]  5%|█▊                                    | 16.1M/338M [00:00<00:03, 94.7MiB/s] 10%|███▉                                   | 33.8M/338M [00:00<00:02, 136MiB/s] 15%|█████▋                                 | 49.0M/338M [00:00<00:02, 145MiB/s] 19%|███████▎                               | 62.9M/338M [00:00<00:01, 145MiB/s] 23%|████████▉                              | 77.3M/338M [00:00<00:01, 147MiB/s] 27%|██████████▋                            | 92.3M/338M [00:00<00:01, 150MiB/s] 32%|████████████▋                           | 107M/338M [00:00<00:01, 151MiB/s] 36%|██████████████▍                         | 122M/338M [00:00<00:01, 153MiB/s] 41%|████████████████▏                       | 137M/338M [00:01<00:01, 154MiB/s] 45%|██████████████████                      | 152M/338M [00:01<00:01, 156MiB/s] 50%|███████████████████▊                    | 167M/338M [00:01<00:01, 157MiB/s] 54%|█████████████████████▋                  | 183M/338M [00:01<00:01, 159MiB/s] 59%|███████████████████████▍                | 198M/338M [00:01<00:00, 153MiB/s] 63%|█████████████████████████▏              | 213M/338M [00:01<00:00, 140MiB/s] 67%|██████████████████████████▊             | 226M/338M [00:01<00:00, 133MiB/s] 71%|████████████████████████████▎           | 239M/338M [00:01<00:00, 117MiB/s] 74%|█████████████████████████████▋          | 251M/338M [00:01<00:00, 104MiB/s] 77%|██████████████████████████████▏        | 261M/338M [00:02<00:00, 97.4MiB/s] 80%|███████████████████████████████▎       | 271M/338M [00:02<00:00, 92.7MiB/s] 83%|████████████████████████████████▎      | 280M/338M [00:02<00:00, 90.2MiB/s] 85%|█████████████████████████████████▎     | 289M/338M [00:02<00:00, 87.7MiB/s] 88%|██████████████████████████████████▎    | 297M/338M [00:02<00:00, 85.1MiB/s] 90%|███████████████████████████████████▏   | 305M/338M [00:02<00:00, 84.3MiB/s] 93%|████████████████████████████████████▏  | 313M/338M [00:02<00:00, 83.6MiB/s] 95%|█████████████████████████████████████  | 321M/338M [00:02<00:00, 78.3MiB/s] 97%|█████████████████████████████████████▉ | 329M/338M [00:03<00:00, 63.4MiB/s] 99%|██████████████████████████████████████▋| 335M/338M [00:03<00:00, 54.8MiB/s]100%|████████████████████████████████████████| 338M/338M [00:03<00:00, 106MiB/s]
-
-
-List of prompts:
-['This is a photo of a airplane',
- 'This is a photo of a automobile',
- 'This is a photo of a bird',
- 'This is a photo of a cat',
- 'This is a photo of a deer',
- 'This is a photo of a dog',
- 'This is a photo of a frog',
- 'This is a photo of a horse',
- 'This is a photo of a ship',
- 'This is a photo of a truck']
-Precomputing text features
-Iterating over test set of cifar10
-Traceback (most recent call last):
-  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/.//clipzs.py", line 397, in <module>
-    main()
-  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/.//clipzs.py", line 384, in main
-    out = clipzs(inputs)
-  File "/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 244, in _forward_unimplemented
-    raise NotImplementedError(f"Module [{type(self).__name__}] is missing the required \"forward\" function")
-NotImplementedError: Module [ZeroshotCLIP] is missing the required "forward" function
-/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:554: UserWarning: This DataLoader will create 12 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-Files already downloaded and verified
-Using prompt template: This is a photo of a {}
-Using device: cuda
-Loading CLIP (backbone: ViT-B/32)
-
-
-List of prompts:
-['This is a photo of a airplane',
- 'This is a photo of a automobile',
- 'This is a photo of a bird',
- 'This is a photo of a cat',
- 'This is a photo of a deer',
- 'This is a photo of a dog',
- 'This is a photo of a frog',
- 'This is a photo of a horse',
- 'This is a photo of a ship',
- 'This is a photo of a truck']
-Precomputing text features
-Iterating over train set of cifar10
-Traceback (most recent call last):
-  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/.//clipzs.py", line 397, in <module>
-    main()
-  File "/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/.//clipzs.py", line 384, in main
-    out = clipzs(inputs)
-  File "/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/home/lcur0649/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 244, in _forward_unimplemented
-    raise NotImplementedError(f"Module [{type(self).__name__}] is missing the required \"forward\" function")
-NotImplementedError: Module [ZeroshotCLIP] is missing the required "forward" function

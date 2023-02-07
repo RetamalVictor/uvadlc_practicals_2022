@@ -1,1122 +1,0 @@
-Running experiment on cifar10 with fixed_patch and prompt size 1
-Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=10, model='clip', arch='ViT-B/32', method='fixed_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar10', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='fixed_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=False, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/fixed_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
-Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to /scratch/lcur0649/cifar-10-python.tar.gz
-  0%|          | 0/170498071 [00:00<?, ?it/s]  0%|          | 65536/170498071 [00:00<08:06, 350528.20it/s]  0%|          | 131072/170498071 [00:00<08:19, 341163.23it/s]  0%|          | 262144/170498071 [00:00<05:46, 491126.03it/s]  0%|          | 458752/170498071 [00:00<03:17, 861508.77it/s]  1%|          | 884736/170498071 [00:00<01:36, 1758230.72it/s]  1%|          | 1769472/170498071 [00:00<00:45, 3696351.58it/s]  2%|▏         | 3047424/170498071 [00:00<00:26, 6246591.25it/s]  3%|▎         | 5013504/170498071 [00:01<00:16, 10079387.82it/s]  4%|▍         | 6946816/170498071 [00:01<00:12, 12755617.12it/s]  5%|▌         | 9109504/170498071 [00:01<00:10, 15352069.34it/s]  7%|▋         | 11239424/170498071 [00:01<00:09, 17092927.38it/s]  8%|▊         | 13500416/170498071 [00:01<00:08, 18722373.35it/s]  9%|▉         | 15761408/170498071 [00:01<00:08, 18453532.32it/s] 11%|█         | 18153472/170498071 [00:01<00:08, 17984247.86it/s] 12%|█▏        | 20545536/170498071 [00:01<00:07, 19276896.74it/s] 14%|█▎        | 23232512/170498071 [00:01<00:06, 21266133.76it/s] 15%|█▌        | 26017792/170498071 [00:02<00:06, 23092599.52it/s] 17%|█▋        | 28901376/170498071 [00:02<00:05, 24729567.66it/s] 19%|█▊        | 31948800/170498071 [00:02<00:05, 26392780.92it/s] 21%|██        | 35160064/170498071 [00:02<00:04, 28061805.08it/s] 23%|██▎       | 38404096/170498071 [00:02<00:04, 29334055.47it/s] 24%|██▍       | 41418752/170498071 [00:02<00:04, 29570406.40it/s] 26%|██▌       | 44400640/170498071 [00:02<00:04, 29630819.57it/s] 28%|██▊       | 47382528/170498071 [00:02<00:04, 29685393.17it/s] 30%|██▉       | 50364416/170498071 [00:02<00:04, 29706162.80it/s] 31%|███▏      | 53346304/170498071 [00:02<00:03, 29722301.88it/s] 33%|███▎      | 56393728/170498071 [00:03<00:03, 29786523.57it/s] 35%|███▍      | 59572224/170498071 [00:03<00:03, 30198150.33it/s] 37%|███▋      | 62717952/170498071 [00:03<00:03, 30419290.24it/s] 39%|███▊      | 65830912/170498071 [00:03<00:03, 30520601.08it/s] 40%|████      | 68976640/170498071 [00:03<00:03, 30641024.92it/s] 42%|████▏     | 72187904/170498071 [00:03<00:03, 31057907.72it/s] 44%|████▍     | 75300864/170498071 [00:03<00:03, 31071653.79it/s] 46%|████▌     | 78512128/170498071 [00:03<00:02, 30992139.49it/s] 48%|████▊     | 81657856/170498071 [00:03<00:02, 30927490.75it/s] 50%|████▉     | 84836352/170498071 [00:03<00:02, 30989990.48it/s] 52%|█████▏    | 87949312/170498071 [00:04<00:02, 30939546.62it/s] 53%|█████▎    | 91095040/170498071 [00:04<00:02, 30851069.40it/s] 55%|█████▌    | 94208000/170498071 [00:04<00:02, 30530767.06it/s] 57%|█████▋    | 97288192/170498071 [00:04<00:02, 30488857.09it/s] 59%|█████▉    | 100368384/170498071 [00:04<00:02, 30483213.07it/s] 61%|██████    | 103481344/170498071 [00:04<00:02, 30520674.11it/s] 63%|██████▎   | 106692608/170498071 [00:04<00:02, 30977553.48it/s] 64%|██████▍   | 109805568/170498071 [00:04<00:01, 30900928.51it/s] 66%|██████▌   | 112951296/170498071 [00:04<00:01, 30903345.64it/s] 68%|██████▊   | 116064256/170498071 [00:04<00:01, 30461771.30it/s] 70%|██████▉   | 119209984/170498071 [00:05<00:01, 30647596.40it/s] 72%|███████▏  | 122454016/170498071 [00:05<00:01, 30881196.47it/s] 74%|███████▎  | 125566976/170498071 [00:05<00:01, 30814366.29it/s] 76%|███████▌  | 128778240/170498071 [00:05<00:01, 30851184.06it/s] 77%|███████▋  | 131891200/170498071 [00:05<00:01, 30810991.02it/s] 79%|███████▉  | 135004160/170498071 [00:05<00:01, 30402230.27it/s] 81%|████████  | 138182656/170498071 [00:05<00:01, 30797435.35it/s] 83%|████████▎ | 141426688/170498071 [00:05<00:00, 31278688.72it/s] 85%|████████▍ | 144670720/170498071 [00:05<00:00, 31615092.49it/s] 87%|████████▋ | 147849216/170498071 [00:06<00:00, 31631513.97it/s] 89%|████████▊ | 151027712/170498071 [00:06<00:00, 31183705.18it/s] 90%|█████████ | 154173440/170498071 [00:06<00:00, 30481873.42it/s] 92%|█████████▏| 157253632/170498071 [00:06<00:00, 30483800.30it/s] 94%|█████████▍| 160366592/170498071 [00:06<00:00, 30523603.85it/s] 96%|█████████▌| 163512320/170498071 [00:06<00:00, 30636609.93it/s] 98%|█████████▊| 166625280/170498071 [00:06<00:00, 30634330.77it/s]100%|█████████▉| 169771008/170498071 [00:06<00:00, 30768311.53it/s]100%|██████████| 170498071/170498071 [00:06<00:00, 25291793.84it/s]
-Extracting /scratch/lcur0649/cifar-10-python.tar.gz to /scratch/lcur0649
-Files already downloaded and verified
-Building custom CLIP
-Loading CLIP (backbone: ViT-B/32)
-  0%|                                               | 0.00/338M [00:00<?, ?iB/s]  6%|██▍                                    | 20.8M/338M [00:00<00:01, 218MiB/s] 14%|█████▎                                 | 46.2M/338M [00:00<00:01, 246MiB/s] 21%|████████                               | 69.7M/338M [00:00<00:01, 243MiB/s] 27%|██████████▋                            | 92.8M/338M [00:00<00:01, 230MiB/s] 34%|█████████████▌                          | 115M/338M [00:00<00:01, 229MiB/s] 42%|████████████████▉                       | 143M/338M [00:00<00:00, 252MiB/s] 50%|████████████████████▏                   | 170M/338M [00:00<00:00, 261MiB/s] 59%|███████████████████████▌                | 199M/338M [00:00<00:00, 276MiB/s] 67%|██████████████████████████▋             | 226M/338M [00:00<00:00, 260MiB/s] 74%|█████████████████████████████▋          | 251M/338M [00:01<00:00, 233MiB/s] 81%|████████████████████████████████▍       | 274M/338M [00:01<00:00, 190MiB/s] 87%|██████████████████████████████████▋     | 293M/338M [00:01<00:00, 183MiB/s] 92%|████████████████████████████████████▉   | 312M/338M [00:01<00:00, 180MiB/s] 98%|███████████████████████████████████████ | 330M/338M [00:01<00:00, 183MiB/s]100%|████████████████████████████████████████| 338M/338M [00:01<00:00, 215MiB/s]
-List of prompts:
-['This is a photo of a airplane',
- 'This is a photo of a automobile',
- 'This is a photo of a bird',
- 'This is a photo of a cat',
- 'This is a photo of a deer',
- 'This is a photo of a dog',
- 'This is a photo of a frog',
- 'This is a photo of a horse',
- 'This is a photo of a ship',
- 'This is a photo of a truck']
-Turning off gradients in both the image and the text encoder
-Parameters to be updated:
-"Parameters to be updated: {'prompt_learner.patch'}"
-Number of prompt parameters:  3
-Training mode
-Epoch: [0][  0/313]	Time  2.197 ( 2.197)	Data  0.714 ( 0.714)	Loss 2.9736e-01 (2.9736e-01)	Acc@1  92.19 ( 92.19)
-Epoch: [0][100/313]	Time  0.415 ( 0.424)	Data  0.016 ( 0.023)	Loss 2.0977e+00 (2.0694e+00)	Acc@1  85.16 ( 88.56)
-Epoch: [0][200/313]	Time  0.411 ( 0.416)	Data  0.016 ( 0.019)	Loss 2.0781e+00 (2.0783e+00)	Acc@1  89.06 ( 88.82)
-Epoch: [0][300/313]	Time  0.412 ( 0.415)	Data  0.016 ( 0.018)	Loss 2.0820e+00 (2.0813e+00)	Acc@1  90.62 ( 88.80)
-Validate: [ 0/79]	Time  0.970 ( 0.970)	Loss 2.0879e+00 (2.0879e+00)	Prompt Acc@1  84.38 ( 84.38)
- * Prompt Acc@1 88.320
-saved best file
-Training mode
-Epoch: [1][  0/313]	Time  1.307 ( 1.307)	Data  0.892 ( 0.892)	Loss 2.0859e+00 (2.0859e+00)	Acc@1  91.41 ( 91.41)
-Epoch: [1][100/313]	Time  0.412 ( 0.421)	Data  0.017 ( 0.026)	Loss 2.0957e+00 (2.0867e+00)	Acc@1  85.16 ( 88.60)
-Epoch: [1][200/313]	Time  0.411 ( 0.416)	Data  0.016 ( 0.021)	Loss 2.0781e+00 (2.0869e+00)	Acc@1  89.06 ( 88.82)
-Epoch: [1][300/313]	Time  0.414 ( 0.415)	Data  0.016 ( 0.020)	Loss 2.0820e+00 (2.0870e+00)	Acc@1  90.62 ( 88.81)
-Validate: [ 0/79]	Time  0.927 ( 0.927)	Loss 2.0879e+00 (2.0879e+00)	Prompt Acc@1  84.38 ( 84.38)
- * Prompt Acc@1 88.320
-There's no improvement for 1 epochs.
-Training mode
-Epoch: [2][  0/313]	Time  1.131 ( 1.131)	Data  0.702 ( 0.702)	Loss 2.0859e+00 (2.0859e+00)	Acc@1  91.41 ( 91.41)
-Epoch: [2][100/313]	Time  0.406 ( 0.419)	Data  0.016 ( 0.024)	Loss 2.0957e+00 (2.0866e+00)	Acc@1  85.16 ( 88.61)
-Epoch: [2][200/313]	Time  0.404 ( 0.415)	Data  0.016 ( 0.020)	Loss 2.0781e+00 (2.0867e+00)	Acc@1  89.06 ( 88.84)
-Epoch: [2][300/313]	Time  0.407 ( 0.414)	Data  0.015 ( 0.019)	Loss 2.0820e+00 (2.0868e+00)	Acc@1  91.41 ( 88.84)
-Validate: [ 0/79]	Time  0.979 ( 0.979)	Loss 2.0879e+00 (2.0879e+00)	Prompt Acc@1  84.38 ( 84.38)
- * Prompt Acc@1 88.350
-saved best file
-Training mode
-Epoch: [3][  0/313]	Time  1.103 ( 1.103)	Data  0.706 ( 0.706)	Loss 2.0859e+00 (2.0859e+00)	Acc@1  91.41 ( 91.41)
-Epoch: [3][100/313]	Time  0.410 ( 0.420)	Data  0.016 ( 0.024)	Loss 2.0957e+00 (2.0864e+00)	Acc@1  85.94 ( 88.67)
-Epoch: [3][200/313]	Time  0.417 ( 0.418)	Data  0.017 ( 0.020)	Loss 2.0781e+00 (2.0866e+00)	Acc@1  89.06 ( 88.92)
-Epoch: [3][300/313]	Time  0.415 ( 0.417)	Data  0.016 ( 0.019)	Loss 2.0820e+00 (2.0867e+00)	Acc@1  91.41 ( 88.90)
-Validate: [ 0/79]	Time  0.983 ( 0.983)	Loss 2.0879e+00 (2.0879e+00)	Prompt Acc@1  84.38 ( 84.38)
- * Prompt Acc@1 88.450
-saved best file
-Training mode
-Epoch: [4][  0/313]	Time  1.123 ( 1.123)	Data  0.709 ( 0.709)	Loss 2.0859e+00 (2.0859e+00)	Acc@1  92.19 ( 92.19)
-Epoch: [4][100/313]	Time  0.417 ( 0.423)	Data  0.016 ( 0.024)	Loss 2.0957e+00 (2.0863e+00)	Acc@1  85.94 ( 88.70)
-Epoch: [4][200/313]	Time  0.406 ( 0.419)	Data  0.015 ( 0.020)	Loss 2.0781e+00 (2.0866e+00)	Acc@1  89.84 ( 88.94)
-Epoch: [4][300/313]	Time  0.417 ( 0.418)	Data  0.018 ( 0.019)	Loss 2.0820e+00 (2.0867e+00)	Acc@1  91.41 ( 88.94)
-Validate: [ 0/79]	Time  0.966 ( 0.966)	Loss 2.0879e+00 (2.0879e+00)	Prompt Acc@1  87.50 ( 87.50)
- * Prompt Acc@1 88.440
-There's no improvement for 1 epochs.
-Training mode
-Epoch: [5][  0/313]	Time  1.261 ( 1.261)	Data  0.832 ( 0.832)	Loss 2.0840e+00 (2.0840e+00)	Acc@1  92.97 ( 92.97)
-Epoch: [5][100/313]	Time  0.408 ( 0.424)	Data  0.016 ( 0.026)	Loss 2.0898e+00 (2.0851e+00)	Acc@1  84.38 ( 89.01)
-Epoch: [5][200/313]	Time  0.413 ( 0.419)	Data  0.016 ( 0.021)	Loss 2.0723e+00 (2.0842e+00)	Acc@1  92.97 ( 89.29)
-Epoch: [5][300/313]	Time  0.431 ( 0.418)	Data  0.022 ( 0.020)	Loss 2.0742e+00 (2.0835e+00)	Acc@1  89.84 ( 89.22)
-Validate: [ 0/79]	Time  0.962 ( 0.962)	Loss 2.0840e+00 (2.0840e+00)	Prompt Acc@1  89.06 ( 89.06)
- * Prompt Acc@1 88.500
-saved best file
-Training mode
-Epoch: [6][  0/313]	Time  1.249 ( 1.249)	Data  0.839 ( 0.839)	Loss 2.0801e+00 (2.0801e+00)	Acc@1  92.19 ( 92.19)
-Epoch: [6][100/313]	Time  0.421 ( 0.426)	Data  0.017 ( 0.026)	Loss 2.0859e+00 (2.0812e+00)	Acc@1  85.94 ( 88.88)
-Epoch: [6][200/313]	Time  0.422 ( 0.421)	Data  0.029 ( 0.021)	Loss 2.0703e+00 (2.0811e+00)	Acc@1  92.97 ( 89.21)
-Epoch: [6][300/313]	Time  0.414 ( 0.420)	Data  0.016 ( 0.020)	Loss 2.0742e+00 (2.0809e+00)	Acc@1  89.84 ( 89.15)
-Validate: [ 0/79]	Time  1.005 ( 1.005)	Loss 2.0840e+00 (2.0840e+00)	Prompt Acc@1  89.06 ( 89.06)
- * Prompt Acc@1 88.400
-There's no improvement for 1 epochs.
-Training mode
-Epoch: [7][  0/313]	Time  1.164 ( 1.164)	Data  0.754 ( 0.754)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  91.41 ( 91.41)
-Epoch: [7][100/313]	Time  0.411 ( 0.424)	Data  0.016 ( 0.025)	Loss 2.0859e+00 (2.0797e+00)	Acc@1  86.72 ( 88.98)
-Epoch: [7][200/313]	Time  0.418 ( 0.420)	Data  0.016 ( 0.021)	Loss 2.0703e+00 (2.0799e+00)	Acc@1  92.97 ( 89.20)
-Epoch: [7][300/313]	Time  0.415 ( 0.418)	Data  0.017 ( 0.020)	Loss 2.0723e+00 (2.0799e+00)	Acc@1  89.84 ( 89.16)
-Validate: [ 0/79]	Time  0.986 ( 0.986)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 88.260
-There's no improvement for 2 epochs.
-Training mode
-Epoch: [8][  0/313]	Time  1.118 ( 1.118)	Data  0.695 ( 0.695)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  92.19 ( 92.19)
-Epoch: [8][100/313]	Time  0.412 ( 0.424)	Data  0.016 ( 0.024)	Loss 2.0859e+00 (2.0795e+00)	Acc@1  86.72 ( 89.03)
-Epoch: [8][200/313]	Time  0.415 ( 0.420)	Data  0.016 ( 0.021)	Loss 2.0703e+00 (2.0796e+00)	Acc@1  93.75 ( 89.18)
-Epoch: [8][300/313]	Time  0.419 ( 0.418)	Data  0.016 ( 0.019)	Loss 2.0723e+00 (2.0796e+00)	Acc@1  89.84 ( 89.15)
-Validate: [ 0/79]	Time  0.938 ( 0.938)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.06 ( 89.06)
- * Prompt Acc@1 88.230
-There's no improvement for 3 epochs.
-Training mode
-Epoch: [9][  0/313]	Time  1.207 ( 1.207)	Data  0.781 ( 0.781)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  92.97 ( 92.97)
-Epoch: [9][100/313]	Time  0.415 ( 0.423)	Data  0.017 ( 0.025)	Loss 2.0859e+00 (2.0792e+00)	Acc@1  87.50 ( 89.04)
-Epoch: [9][200/313]	Time  0.414 ( 0.418)	Data  0.016 ( 0.021)	Loss 2.0703e+00 (2.0795e+00)	Acc@1  93.75 ( 89.18)
-Epoch: [9][300/313]	Time  0.414 ( 0.417)	Data  0.016 ( 0.019)	Loss 2.0723e+00 (2.0794e+00)	Acc@1  89.84 ( 89.14)
-Validate: [ 0/79]	Time  0.941 ( 0.941)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 88.210
-There's no improvement for 4 epochs.
-Training mode
-Epoch: [10][  0/313]	Time  1.117 ( 1.117)	Data  0.714 ( 0.714)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  92.19 ( 92.19)
-Epoch: [10][100/313]	Time  0.420 ( 0.424)	Data  0.017 ( 0.024)	Loss 2.0859e+00 (2.0791e+00)	Acc@1  87.50 ( 89.00)
-Epoch: [10][200/313]	Time  0.410 ( 0.420)	Data  0.017 ( 0.021)	Loss 2.0684e+00 (2.0794e+00)	Acc@1  93.75 ( 89.12)
-Epoch: [10][300/313]	Time  0.420 ( 0.420)	Data  0.016 ( 0.020)	Loss 2.0723e+00 (2.0793e+00)	Acc@1  89.84 ( 89.10)
-Validate: [ 0/79]	Time  1.041 ( 1.041)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 88.230
-There's no improvement for 5 epochs.
-Training mode
-Epoch: [11][  0/313]	Time  1.159 ( 1.159)	Data  0.727 ( 0.727)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  92.19 ( 92.19)
-Epoch: [11][100/313]	Time  0.445 ( 0.424)	Data  0.046 ( 0.025)	Loss 2.0859e+00 (2.0789e+00)	Acc@1  87.50 ( 88.95)
-Epoch: [11][200/313]	Time  0.407 ( 0.420)	Data  0.017 ( 0.021)	Loss 2.0684e+00 (2.0792e+00)	Acc@1  93.75 ( 89.11)
-Epoch: [11][300/313]	Time  0.411 ( 0.419)	Data  0.017 ( 0.020)	Loss 2.0723e+00 (2.0792e+00)	Acc@1  90.62 ( 89.09)
-Validate: [ 0/79]	Time  0.961 ( 0.961)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 88.160
-There's no improvement for 6 epochs.
-Training mode
-Epoch: [12][  0/313]	Time  1.120 ( 1.120)	Data  0.706 ( 0.706)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  92.19 ( 92.19)
-Epoch: [12][100/313]	Time  0.420 ( 0.424)	Data  0.018 ( 0.025)	Loss 2.0859e+00 (2.0789e+00)	Acc@1  87.50 ( 88.95)
-Epoch: [12][200/313]	Time  0.416 ( 0.420)	Data  0.017 ( 0.021)	Loss 2.0684e+00 (2.0792e+00)	Acc@1  93.75 ( 89.11)
-Epoch: [12][300/313]	Time  0.412 ( 0.419)	Data  0.016 ( 0.020)	Loss 2.0723e+00 (2.0792e+00)	Acc@1  90.62 ( 89.07)
-Validate: [ 0/79]	Time  0.916 ( 0.916)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 88.170
-There's no improvement for 7 epochs.
-Training mode
-Epoch: [13][  0/313]	Time  1.120 ( 1.120)	Data  0.685 ( 0.685)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  92.19 ( 92.19)
-Epoch: [13][100/313]	Time  0.413 ( 0.424)	Data  0.022 ( 0.024)	Loss 2.0859e+00 (2.0789e+00)	Acc@1  87.50 ( 88.92)
-Epoch: [13][200/313]	Time  0.413 ( 0.421)	Data  0.017 ( 0.021)	Loss 2.0684e+00 (2.0792e+00)	Acc@1  93.75 ( 89.08)
-Epoch: [13][300/313]	Time  0.415 ( 0.420)	Data  0.017 ( 0.020)	Loss 2.0723e+00 (2.0792e+00)	Acc@1  90.62 ( 89.05)
-Validate: [ 0/79]	Time  0.962 ( 0.962)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.06 ( 89.06)
- * Prompt Acc@1 88.160
-There's no improvement for 8 epochs.
-Training mode
-Epoch: [14][  0/313]	Time  1.198 ( 1.198)	Data  0.766 ( 0.766)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  92.19 ( 92.19)
-Epoch: [14][100/313]	Time  0.410 ( 0.422)	Data  0.017 ( 0.024)	Loss 2.0859e+00 (2.0787e+00)	Acc@1  87.50 ( 88.94)
-Epoch: [14][200/313]	Time  0.426 ( 0.418)	Data  0.017 ( 0.020)	Loss 2.0684e+00 (2.0791e+00)	Acc@1  93.75 ( 89.09)
-Epoch: [14][300/313]	Time  0.412 ( 0.418)	Data  0.016 ( 0.019)	Loss 2.0723e+00 (2.0791e+00)	Acc@1  89.84 ( 89.04)
-Validate: [ 0/79]	Time  0.968 ( 0.968)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 88.120
-There's no improvement for 9 epochs.
-Training mode
-Epoch: [15][  0/313]	Time  1.148 ( 1.148)	Data  0.729 ( 0.729)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  92.19 ( 92.19)
-Epoch: [15][100/313]	Time  0.417 ( 0.425)	Data  0.016 ( 0.025)	Loss 2.0859e+00 (2.0787e+00)	Acc@1  87.50 ( 88.92)
-Epoch: [15][200/313]	Time  0.412 ( 0.421)	Data  0.016 ( 0.021)	Loss 2.0684e+00 (2.0791e+00)	Acc@1  93.75 ( 89.09)
-Epoch: [15][300/313]	Time  0.429 ( 0.419)	Data  0.017 ( 0.020)	Loss 2.0723e+00 (2.0791e+00)	Acc@1  90.62 ( 89.06)
-Validate: [ 0/79]	Time  0.965 ( 0.965)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 88.170
-There's no improvement for 10 epochs.
-The training halted by early stopping criterion.
-Validate: [ 0/79]	Time  0.941 ( 0.941)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 88.170
-Validate: [ 0/79]	Time  0.993 ( 0.993)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 89.170
-Running experiment on cifar10 with random_patch and prompt size 1
-Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=10, model='clip', arch='ViT-B/32', method='random_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar10', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='random_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=False, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/random_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
-Files already downloaded and verified
-Files already downloaded and verified
-Building custom CLIP
-Loading CLIP (backbone: ViT-B/32)
-List of prompts:
-['This is a photo of a airplane',
- 'This is a photo of a automobile',
- 'This is a photo of a bird',
- 'This is a photo of a cat',
- 'This is a photo of a deer',
- 'This is a photo of a dog',
- 'This is a photo of a frog',
- 'This is a photo of a horse',
- 'This is a photo of a ship',
- 'This is a photo of a truck']
-Turning off gradients in both the image and the text encoder
-Parameters to be updated:
-"Parameters to be updated: {'prompt_learner.random_patch'}"
-Number of prompt parameters:  3
-Training mode
-Epoch: [0][  0/313]	Time  2.185 ( 2.185)	Data  0.756 ( 0.756)	Loss 3.4229e-01 (3.4229e-01)	Acc@1  86.72 ( 86.72)
-Epoch: [0][100/313]	Time  0.410 ( 0.428)	Data  0.016 ( 0.023)	Loss 2.0840e+00 (2.0677e+00)	Acc@1  87.50 ( 89.03)
-Epoch: [0][200/313]	Time  0.419 ( 0.422)	Data  0.016 ( 0.021)	Loss 2.0762e+00 (2.0741e+00)	Acc@1  89.06 ( 88.95)
-Epoch: [0][300/313]	Time  0.420 ( 0.420)	Data  0.017 ( 0.020)	Loss 2.0664e+00 (2.0764e+00)	Acc@1  91.41 ( 88.90)
-Validate: [ 0/79]	Time  0.904 ( 0.904)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 88.980
-saved best file
-Training mode
-Epoch: [1][  0/313]	Time  1.113 ( 1.113)	Data  0.717 ( 0.717)	Loss 2.0820e+00 (2.0820e+00)	Acc@1  85.94 ( 85.94)
-Epoch: [1][100/313]	Time  0.413 ( 0.420)	Data  0.015 ( 0.023)	Loss 2.0781e+00 (2.0798e+00)	Acc@1  89.06 ( 88.88)
-Epoch: [1][200/313]	Time  0.405 ( 0.417)	Data  0.016 ( 0.020)	Loss 2.0762e+00 (2.0796e+00)	Acc@1  90.62 ( 88.92)
-Epoch: [1][300/313]	Time  0.422 ( 0.415)	Data  0.016 ( 0.019)	Loss 2.0664e+00 (2.0798e+00)	Acc@1  91.41 ( 88.86)
-Validate: [ 0/79]	Time  0.971 ( 0.971)	Loss 2.0801e+00 (2.0801e+00)	Prompt Acc@1  87.50 ( 87.50)
- * Prompt Acc@1 88.900
-There's no improvement for 1 epochs.
-Training mode
-Epoch: [2][  0/313]	Time  1.207 ( 1.207)	Data  0.796 ( 0.796)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  89.84 ( 89.84)
-Epoch: [2][100/313]	Time  0.410 ( 0.422)	Data  0.016 ( 0.024)	Loss 2.0801e+00 (2.0795e+00)	Acc@1  89.06 ( 88.76)
-Epoch: [2][200/313]	Time  0.426 ( 0.417)	Data  0.016 ( 0.020)	Loss 2.0723e+00 (2.0795e+00)	Acc@1  88.28 ( 88.87)
-Epoch: [2][300/313]	Time  0.415 ( 0.416)	Data  0.016 ( 0.019)	Loss 2.0645e+00 (2.0796e+00)	Acc@1  90.62 ( 88.80)
-Validate: [ 0/79]	Time  1.012 ( 1.012)	Loss 2.0840e+00 (2.0840e+00)	Prompt Acc@1  85.16 ( 85.16)
- * Prompt Acc@1 88.610
-There's no improvement for 2 epochs.
-Training mode
-Epoch: [3][  0/313]	Time  1.166 ( 1.166)	Data  0.758 ( 0.758)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  86.72 ( 86.72)
-Epoch: [3][100/313]	Time  0.416 ( 0.421)	Data  0.016 ( 0.023)	Loss 2.0820e+00 (2.0792e+00)	Acc@1  89.06 ( 88.87)
-Epoch: [3][200/313]	Time  0.409 ( 0.419)	Data  0.016 ( 0.020)	Loss 2.0703e+00 (2.0792e+00)	Acc@1  89.84 ( 88.87)
-Epoch: [3][300/313]	Time  0.412 ( 0.418)	Data  0.017 ( 0.019)	Loss 2.0645e+00 (2.0794e+00)	Acc@1  89.06 ( 88.77)
-Validate: [ 0/79]	Time  1.091 ( 1.091)	Loss 2.0801e+00 (2.0801e+00)	Prompt Acc@1  88.28 ( 88.28)
- * Prompt Acc@1 88.840
-There's no improvement for 3 epochs.
-Training mode
-Epoch: [4][  0/313]	Time  1.112 ( 1.112)	Data  0.698 ( 0.698)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  89.06 ( 89.06)
-Epoch: [4][100/313]	Time  0.413 ( 0.423)	Data  0.016 ( 0.023)	Loss 2.0820e+00 (2.0791e+00)	Acc@1  90.62 ( 88.98)
-Epoch: [4][200/313]	Time  0.416 ( 0.419)	Data  0.016 ( 0.020)	Loss 2.0742e+00 (2.0788e+00)	Acc@1  91.41 ( 88.90)
-Epoch: [4][300/313]	Time  0.412 ( 0.418)	Data  0.016 ( 0.019)	Loss 2.0684e+00 (2.0790e+00)	Acc@1  90.62 ( 88.88)
-Validate: [ 0/79]	Time  0.993 ( 0.993)	Loss 2.0781e+00 (2.0781e+00)	Prompt Acc@1  88.28 ( 88.28)
- * Prompt Acc@1 88.740
-There's no improvement for 4 epochs.
-Training mode
-Epoch: [5][  0/313]	Time  1.214 ( 1.214)	Data  0.809 ( 0.809)	Loss 2.0742e+00 (2.0742e+00)	Acc@1  90.62 ( 90.62)
-Epoch: [5][100/313]	Time  0.415 ( 0.424)	Data  0.017 ( 0.025)	Loss 2.0781e+00 (2.0789e+00)	Acc@1  89.06 ( 88.87)
-Epoch: [5][200/313]	Time  0.408 ( 0.420)	Data  0.016 ( 0.021)	Loss 2.0742e+00 (2.0788e+00)	Acc@1  89.84 ( 88.93)
-Epoch: [5][300/313]	Time  0.415 ( 0.417)	Data  0.016 ( 0.019)	Loss 2.0625e+00 (2.0789e+00)	Acc@1  90.62 ( 88.81)
-Validate: [ 0/79]	Time  0.938 ( 0.938)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  87.50 ( 87.50)
- * Prompt Acc@1 88.810
-There's no improvement for 5 epochs.
-Training mode
-Epoch: [6][  0/313]	Time  1.120 ( 1.120)	Data  0.722 ( 0.722)	Loss 2.0801e+00 (2.0801e+00)	Acc@1  90.62 ( 90.62)
-Epoch: [6][100/313]	Time  0.414 ( 0.420)	Data  0.016 ( 0.023)	Loss 2.0820e+00 (2.0790e+00)	Acc@1  88.28 ( 88.99)
-Epoch: [6][200/313]	Time  0.410 ( 0.417)	Data  0.016 ( 0.020)	Loss 2.0762e+00 (2.0788e+00)	Acc@1  89.84 ( 89.06)
-Epoch: [6][300/313]	Time  0.417 ( 0.416)	Data  0.016 ( 0.019)	Loss 2.0684e+00 (2.0789e+00)	Acc@1  90.62 ( 88.88)
-Validate: [ 0/79]	Time  0.988 ( 0.988)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.06 ( 89.06)
- * Prompt Acc@1 88.830
-There's no improvement for 6 epochs.
-Training mode
-Epoch: [7][  0/313]	Time  1.100 ( 1.100)	Data  0.669 ( 0.669)	Loss 2.0801e+00 (2.0801e+00)	Acc@1  88.28 ( 88.28)
-Epoch: [7][100/313]	Time  0.417 ( 0.420)	Data  0.016 ( 0.023)	Loss 2.0801e+00 (2.0787e+00)	Acc@1  89.06 ( 89.00)
-Epoch: [7][200/313]	Time  0.416 ( 0.417)	Data  0.016 ( 0.019)	Loss 2.0762e+00 (2.0786e+00)	Acc@1  90.62 ( 88.94)
-Epoch: [7][300/313]	Time  0.410 ( 0.416)	Data  0.016 ( 0.018)	Loss 2.0684e+00 (2.0787e+00)	Acc@1  89.84 ( 88.83)
-Validate: [ 0/79]	Time  0.915 ( 0.915)	Loss 2.0859e+00 (2.0859e+00)	Prompt Acc@1  89.06 ( 89.06)
- * Prompt Acc@1 88.630
-There's no improvement for 7 epochs.
-Training mode
-Epoch: [8][  0/313]	Time  1.138 ( 1.138)	Data  0.720 ( 0.720)	Loss 2.0781e+00 (2.0781e+00)	Acc@1  89.84 ( 89.84)
-Epoch: [8][100/313]	Time  0.414 ( 0.420)	Data  0.015 ( 0.023)	Loss 2.0820e+00 (2.0786e+00)	Acc@1  89.84 ( 89.08)
-Epoch: [8][200/313]	Time  0.409 ( 0.417)	Data  0.016 ( 0.020)	Loss 2.0742e+00 (2.0781e+00)	Acc@1  89.84 ( 89.06)
-Epoch: [8][300/313]	Time  0.406 ( 0.415)	Data  0.015 ( 0.018)	Loss 2.0703e+00 (2.0785e+00)	Acc@1  90.62 ( 88.92)
-Validate: [ 0/79]	Time  0.923 ( 0.923)	Loss 2.0801e+00 (2.0801e+00)	Prompt Acc@1  89.06 ( 89.06)
- * Prompt Acc@1 88.610
-There's no improvement for 8 epochs.
-Training mode
-Epoch: [9][  0/313]	Time  1.113 ( 1.113)	Data  0.702 ( 0.702)	Loss 2.0703e+00 (2.0703e+00)	Acc@1  89.06 ( 89.06)
-Epoch: [9][100/313]	Time  0.410 ( 0.420)	Data  0.015 ( 0.022)	Loss 2.0801e+00 (2.0784e+00)	Acc@1  87.50 ( 88.87)
-Epoch: [9][200/313]	Time  0.405 ( 0.417)	Data  0.015 ( 0.019)	Loss 2.0742e+00 (2.0783e+00)	Acc@1  90.62 ( 88.89)
-Epoch: [9][300/313]	Time  0.414 ( 0.416)	Data  0.015 ( 0.018)	Loss 2.0645e+00 (2.0787e+00)	Acc@1  90.62 ( 88.81)
-Validate: [ 0/79]	Time  0.996 ( 0.996)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.06 ( 89.06)
- * Prompt Acc@1 88.810
-There's no improvement for 9 epochs.
-Training mode
-Epoch: [10][  0/313]	Time  1.198 ( 1.198)	Data  0.765 ( 0.765)	Loss 2.0762e+00 (2.0762e+00)	Acc@1  91.41 ( 91.41)
-Epoch: [10][100/313]	Time  0.414 ( 0.421)	Data  0.016 ( 0.023)	Loss 2.0723e+00 (2.0786e+00)	Acc@1  89.06 ( 88.78)
-Epoch: [10][200/313]	Time  0.413 ( 0.418)	Data  0.015 ( 0.020)	Loss 2.0723e+00 (2.0785e+00)	Acc@1  90.62 ( 88.81)
-Epoch: [10][300/313]	Time  0.415 ( 0.417)	Data  0.015 ( 0.019)	Loss 2.0645e+00 (2.0786e+00)	Acc@1  90.62 ( 88.78)
-Validate: [ 0/79]	Time  0.929 ( 0.929)	Loss 2.0762e+00 (2.0762e+00)	Prompt Acc@1  89.06 ( 89.06)
- * Prompt Acc@1 88.830
-There's no improvement for 10 epochs.
-The training halted by early stopping criterion.
-Validate: [ 0/79]	Time  0.957 ( 0.957)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  89.06 ( 89.06)
- * Prompt Acc@1 88.600
-Validate: [ 0/79]	Time  0.923 ( 0.923)	Loss 2.0820e+00 (2.0820e+00)	Prompt Acc@1  90.62 ( 90.62)
- * Prompt Acc@1 89.070
-Running experiment on cifar10 with padding and prompt size 30
-Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=10, model='clip', arch='ViT-B/32', method='padding', prompt_size=30, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar10', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=False, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
-Files already downloaded and verified
-Files already downloaded and verified
-Building custom CLIP
-Loading CLIP (backbone: ViT-B/32)
-List of prompts:
-['This is a photo of a airplane',
- 'This is a photo of a automobile',
- 'This is a photo of a bird',
- 'This is a photo of a cat',
- 'This is a photo of a deer',
- 'This is a photo of a dog',
- 'This is a photo of a frog',
- 'This is a photo of a horse',
- 'This is a photo of a ship',
- 'This is a photo of a truck']
-Turning off gradients in both the image and the text encoder
-Parameters to be updated:
-("Parameters to be updated: {'prompt_learner.pad_down', "
- "'prompt_learner.pad_left', 'prompt_learner.pad_up', "
- "'prompt_learner.pad_right'}")
-Number of prompt parameters:  69840
-Training mode
-Epoch: [0][  0/313]	Time  2.221 ( 2.221)	Data  0.751 ( 0.751)	Loss 6.9580e-01 (6.9580e-01)	Acc@1  76.56 ( 76.56)
-Epoch: [0][100/313]	Time  0.418 ( 0.435)	Data  0.016 ( 0.024)	Loss 2.0840e+00 (2.0960e+00)	Acc@1  85.94 ( 80.56)
-Epoch: [0][200/313]	Time  0.423 ( 0.427)	Data  0.021 ( 0.020)	Loss 2.0410e+00 (2.0846e+00)	Acc@1  92.19 ( 83.09)
-Epoch: [0][300/313]	Time  0.411 ( 0.424)	Data  0.015 ( 0.019)	Loss 2.0332e+00 (2.0718e+00)	Acc@1  86.72 ( 84.39)
-Validate: [ 0/79]	Time  0.869 ( 0.869)	Loss 2.0078e+00 (2.0078e+00)	Prompt Acc@1  89.06 ( 89.06)
- * Prompt Acc@1 88.170
-saved best file
-Training mode
-Epoch: [1][  0/313]	Time  1.147 ( 1.147)	Data  0.724 ( 0.724)	Loss 2.0098e+00 (2.0098e+00)	Acc@1  86.72 ( 86.72)
-Epoch: [1][100/313]	Time  0.415 ( 0.426)	Data  0.016 ( 0.024)	Loss 1.9287e+00 (1.9697e+00)	Acc@1  86.72 ( 87.59)
-Epoch: [1][200/313]	Time  0.422 ( 0.422)	Data  0.018 ( 0.020)	Loss 1.8652e+00 (1.9421e+00)	Acc@1  92.19 ( 87.35)
-Epoch: [1][300/313]	Time  0.420 ( 0.421)	Data  0.018 ( 0.019)	Loss 1.8838e+00 (1.9218e+00)	Acc@1  87.50 ( 87.19)
-Validate: [ 0/79]	Time  0.928 ( 0.928)	Loss 1.8604e+00 (1.8604e+00)	Prompt Acc@1  86.72 ( 86.72)
- * Prompt Acc@1 87.800
-There's no improvement for 1 epochs.
-Training mode
-Epoch: [2][  0/313]	Time  1.192 ( 1.192)	Data  0.782 ( 0.782)	Loss 1.8623e+00 (1.8623e+00)	Acc@1  89.06 ( 89.06)
-Epoch: [2][100/313]	Time  0.412 ( 0.425)	Data  0.016 ( 0.024)	Loss 1.8271e+00 (1.8502e+00)	Acc@1  87.50 ( 87.20)
-Epoch: [2][200/313]	Time  0.414 ( 0.421)	Data  0.016 ( 0.020)	Loss 1.7852e+00 (1.8397e+00)	Acc@1  92.19 ( 87.06)
-Epoch: [2][300/313]	Time  0.412 ( 0.420)	Data  0.015 ( 0.019)	Loss 1.8115e+00 (1.8302e+00)	Acc@1  88.28 ( 86.94)
-Validate: [ 0/79]	Time  0.887 ( 0.887)	Loss 1.8008e+00 (1.8008e+00)	Prompt Acc@1  85.16 ( 85.16)
- * Prompt Acc@1 87.810
-There's no improvement for 2 epochs.
-Training mode
-Epoch: [3][  0/313]	Time  1.120 ( 1.120)	Data  0.692 ( 0.692)	Loss 1.8037e+00 (1.8037e+00)	Acc@1  83.59 ( 83.59)
-Epoch: [3][100/313]	Time  0.422 ( 0.427)	Data  0.017 ( 0.024)	Loss 1.7666e+00 (1.7883e+00)	Acc@1  88.28 ( 86.96)
-Epoch: [3][200/313]	Time  0.438 ( 0.425)	Data  0.017 ( 0.020)	Loss 1.7256e+00 (1.7791e+00)	Acc@1  90.62 ( 86.82)
-Epoch: [3][300/313]	Time  0.419 ( 0.424)	Data  0.020 ( 0.019)	Loss 1.7520e+00 (1.7706e+00)	Acc@1  89.84 ( 86.61)
-Validate: [ 0/79]	Time  0.956 ( 0.956)	Loss 1.7441e+00 (1.7441e+00)	Prompt Acc@1  85.94 ( 85.94)
- * Prompt Acc@1 87.320
-There's no improvement for 3 epochs.
-Training mode
-Epoch: [4][  0/313]	Time  1.169 ( 1.169)	Data  0.737 ( 0.737)	Loss 1.7461e+00 (1.7461e+00)	Acc@1  82.81 ( 82.81)
-Epoch: [4][100/313]	Time  0.430 ( 0.429)	Data  0.016 ( 0.024)	Loss 1.7217e+00 (1.7356e+00)	Acc@1  85.94 ( 86.53)
-Epoch: [4][200/313]	Time  0.420 ( 0.426)	Data  0.016 ( 0.021)	Loss 1.6846e+00 (1.7307e+00)	Acc@1  92.19 ( 86.51)
-Epoch: [4][300/313]	Time  0.415 ( 0.425)	Data  0.017 ( 0.019)	Loss 1.7139e+00 (1.7258e+00)	Acc@1  88.28 ( 86.42)
-Validate: [ 0/79]	Time  1.000 ( 1.000)	Loss 1.7129e+00 (1.7129e+00)	Prompt Acc@1  84.38 ( 84.38)
- * Prompt Acc@1 87.280
-There's no improvement for 4 epochs.
-Training mode
-Epoch: [5][  0/313]	Time  1.122 ( 1.122)	Data  0.682 ( 0.682)	Loss 1.7158e+00 (1.7158e+00)	Acc@1  84.38 ( 84.38)
-Epoch: [5][100/313]	Time  0.413 ( 0.429)	Data  0.016 ( 0.023)	Loss 1.6992e+00 (1.7057e+00)	Acc@1  86.72 ( 86.69)
-Epoch: [5][200/313]	Time  0.421 ( 0.425)	Data  0.017 ( 0.020)	Loss 1.6602e+00 (1.7031e+00)	Acc@1  92.97 ( 86.56)
-Epoch: [5][300/313]	Time  0.417 ( 0.424)	Data  0.016 ( 0.019)	Loss 1.6904e+00 (1.7000e+00)	Acc@1  88.28 ( 86.56)
-Validate: [ 0/79]	Time  0.913 ( 0.913)	Loss 1.6914e+00 (1.6914e+00)	Prompt Acc@1  87.50 ( 87.50)
- * Prompt Acc@1 87.540
-There's no improvement for 5 epochs.
-Training mode
-Epoch: [6][  0/313]	Time  1.127 ( 1.127)	Data  0.704 ( 0.704)	Loss 1.6953e+00 (1.6953e+00)	Acc@1  82.03 ( 82.03)
-Epoch: [6][100/313]	Time  0.422 ( 0.430)	Data  0.015 ( 0.024)	Loss 1.6846e+00 (1.6863e+00)	Acc@1  85.16 ( 86.68)
-Epoch: [6][200/313]	Time  0.423 ( 0.426)	Data  0.018 ( 0.020)	Loss 1.6426e+00 (1.6844e+00)	Acc@1  91.41 ( 86.65)
-Epoch: [6][300/313]	Time  0.423 ( 0.425)	Data  0.016 ( 0.019)	Loss 1.6748e+00 (1.6819e+00)	Acc@1  89.06 ( 86.60)
-Validate: [ 0/79]	Time  0.937 ( 0.937)	Loss 1.6758e+00 (1.6758e+00)	Prompt Acc@1  87.50 ( 87.50)
- * Prompt Acc@1 87.490
-There's no improvement for 6 epochs.
-Training mode
-Epoch: [7][  0/313]	Time  1.186 ( 1.186)	Data  0.742 ( 0.742)	Loss 1.6787e+00 (1.6787e+00)	Acc@1  81.25 ( 81.25)
-Epoch: [7][100/313]	Time  0.418 ( 0.432)	Data  0.018 ( 0.025)	Loss 1.6748e+00 (1.6711e+00)	Acc@1  85.16 ( 86.60)
-Epoch: [7][200/313]	Time  0.424 ( 0.427)	Data  0.018 ( 0.021)	Loss 1.6299e+00 (1.6699e+00)	Acc@1  90.62 ( 86.65)
-Epoch: [7][300/313]	Time  0.417 ( 0.426)	Data  0.017 ( 0.020)	Loss 1.6631e+00 (1.6680e+00)	Acc@1  89.06 ( 86.64)
-Validate: [ 0/79]	Time  0.941 ( 0.941)	Loss 1.6641e+00 (1.6641e+00)	Prompt Acc@1  86.72 ( 86.72)
- * Prompt Acc@1 87.140
-There's no improvement for 7 epochs.
-Training mode
-Epoch: [8][  0/313]	Time  1.118 ( 1.118)	Data  0.679 ( 0.679)	Loss 1.6670e+00 (1.6670e+00)	Acc@1  81.25 ( 81.25)
-Epoch: [8][100/313]	Time  0.428 ( 0.428)	Data  0.016 ( 0.023)	Loss 1.6641e+00 (1.6591e+00)	Acc@1  85.16 ( 86.47)
-Epoch: [8][200/313]	Time  0.424 ( 0.425)	Data  0.015 ( 0.020)	Loss 1.6191e+00 (1.6584e+00)	Acc@1  91.41 ( 86.59)
-Epoch: [8][300/313]	Time  0.432 ( 0.424)	Data  0.018 ( 0.019)	Loss 1.6533e+00 (1.6570e+00)	Acc@1  89.84 ( 86.59)
-Validate: [ 0/79]	Time  1.009 ( 1.009)	Loss 1.6553e+00 (1.6553e+00)	Prompt Acc@1  86.72 ( 86.72)
- * Prompt Acc@1 87.030
-There's no improvement for 8 epochs.
-Training mode
-Epoch: [9][  0/313]	Time  1.121 ( 1.121)	Data  0.699 ( 0.699)	Loss 1.6572e+00 (1.6572e+00)	Acc@1  82.03 ( 82.03)
-Epoch: [9][100/313]	Time  0.416 ( 0.428)	Data  0.016 ( 0.023)	Loss 1.6553e+00 (1.6497e+00)	Acc@1  86.72 ( 86.42)
-Epoch: [9][200/313]	Time  0.420 ( 0.425)	Data  0.017 ( 0.020)	Loss 1.6113e+00 (1.6496e+00)	Acc@1  89.06 ( 86.47)
-Epoch: [9][300/313]	Time  0.422 ( 0.424)	Data  0.017 ( 0.019)	Loss 1.6465e+00 (1.6485e+00)	Acc@1  89.84 ( 86.53)
-Validate: [ 0/79]	Time  0.963 ( 0.963)	Loss 1.6475e+00 (1.6475e+00)	Prompt Acc@1  87.50 ( 87.50)
- * Prompt Acc@1 87.270
-There's no improvement for 9 epochs.
-Training mode
-Epoch: [10][  0/313]	Time  1.182 ( 1.182)	Data  0.762 ( 0.762)	Loss 1.6494e+00 (1.6494e+00)	Acc@1  81.25 ( 81.25)
-Epoch: [10][100/313]	Time  0.422 ( 0.430)	Data  0.017 ( 0.024)	Loss 1.6475e+00 (1.6422e+00)	Acc@1  85.16 ( 86.57)
-Epoch: [10][200/313]	Time  0.430 ( 0.426)	Data  0.015 ( 0.021)	Loss 1.6045e+00 (1.6422e+00)	Acc@1  88.28 ( 86.58)
-Epoch: [10][300/313]	Time  0.423 ( 0.425)	Data  0.022 ( 0.019)	Loss 1.6396e+00 (1.6412e+00)	Acc@1  90.62 ( 86.61)
-Validate: [ 0/79]	Time  1.015 ( 1.015)	Loss 1.6396e+00 (1.6396e+00)	Prompt Acc@1  86.72 ( 86.72)
- * Prompt Acc@1 87.480
-There's no improvement for 10 epochs.
-The training halted by early stopping criterion.
-Validate: [ 0/79]	Time  0.910 ( 0.910)	Loss 1.6396e+00 (1.6396e+00)	Prompt Acc@1  86.72 ( 86.72)
- * Prompt Acc@1 87.480
-Validate: [ 0/79]	Time  0.889 ( 0.889)	Loss 1.6494e+00 (1.6494e+00)	Prompt Acc@1  83.59 ( 83.59)
- * Prompt Acc@1 86.660
-Running experiment on cifar100 with fixed_patch and prompt size 1
-Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=10, model='clip', arch='ViT-B/32', method='fixed_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='fixed_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=False, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/fixed_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
-Downloading https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz to /scratch/lcur0649/cifar-100-python.tar.gz
-  0%|          | 0/169001437 [00:00<?, ?it/s]  0%|          | 65536/169001437 [00:00<08:02, 350083.56it/s]  0%|          | 163840/169001437 [00:00<06:22, 441632.01it/s]  0%|          | 393216/169001437 [00:00<02:47, 1004581.53it/s]  1%|          | 851968/169001437 [00:00<01:20, 2089735.35it/s]  1%|          | 1835008/169001437 [00:00<00:37, 4425874.20it/s]  2%|▏         | 3178496/169001437 [00:00<00:23, 7136497.84it/s]  3%|▎         | 5013504/169001437 [00:00<00:15, 10507856.48it/s]  4%|▍         | 6914048/169001437 [00:00<00:12, 13059261.22it/s]  5%|▌         | 8880128/169001437 [00:01<00:11, 14455585.11it/s]  6%|▋         | 10911744/169001437 [00:01<00:10, 15363702.11it/s]  8%|▊         | 12910592/169001437 [00:01<00:10, 14821514.70it/s]  9%|▉         | 14974976/169001437 [00:01<00:09, 16316405.04it/s] 10%|█         | 17203200/169001437 [00:01<00:08, 17886700.80it/s] 12%|█▏        | 19464192/169001437 [00:01<00:07, 19124891.44it/s] 13%|█▎        | 21823488/169001437 [00:01<00:07, 20378875.46it/s] 14%|█▍        | 24346624/169001437 [00:01<00:06, 21777929.73it/s] 16%|█▌        | 26935296/169001437 [00:01<00:06, 22974376.38it/s] 17%|█▋        | 29556736/169001437 [00:02<00:05, 23916551.46it/s] 19%|█▉        | 32276480/169001437 [00:02<00:05, 24879605.62it/s] 21%|██        | 35094528/169001437 [00:02<00:05, 25849385.99it/s] 23%|██▎       | 38043648/169001437 [00:02<00:04, 26929864.70it/s] 24%|██▍       | 40992768/169001437 [00:02<00:04, 27671412.61it/s] 26%|██▌       | 43974656/169001437 [00:02<00:04, 28298971.09it/s] 28%|██▊       | 46989312/169001437 [00:02<00:04, 28837256.75it/s] 30%|██▉       | 49971200/169001437 [00:02<00:04, 29124570.73it/s] 31%|███▏      | 52953088/169001437 [00:02<00:03, 29309427.00it/s] 33%|███▎      | 55967744/169001437 [00:02<00:03, 29537466.42it/s] 35%|███▍      | 58949632/169001437 [00:03<00:03, 29586613.81it/s] 37%|███▋      | 61931520/169001437 [00:03<00:03, 29649486.57it/s] 38%|███▊      | 64913408/169001437 [00:03<00:03, 29680539.48it/s] 40%|████      | 67895296/169001437 [00:03<00:03, 29699840.99it/s] 42%|████▏     | 70877184/169001437 [00:03<00:03, 29707564.06it/s] 44%|████▎     | 73891840/169001437 [00:03<00:03, 29805069.62it/s] 46%|████▌     | 77004800/169001437 [00:03<00:03, 30079193.75it/s] 47%|████▋     | 80183296/169001437 [00:03<00:02, 30430551.52it/s] 49%|████▉     | 83329024/169001437 [00:03<00:02, 30550943.49it/s] 51%|█████     | 86507520/169001437 [00:03<00:02, 30915243.58it/s] 53%|█████▎    | 89620480/169001437 [00:04<00:02, 30962253.98it/s] 55%|█████▍    | 92766208/169001437 [00:04<00:02, 30926568.75it/s] 57%|█████▋    | 95944704/169001437 [00:04<00:02, 31029777.06it/s] 59%|█████▊    | 99090432/169001437 [00:04<00:02, 30954450.60it/s] 61%|██████    | 102301696/169001437 [00:04<00:02, 31297206.11it/s] 62%|██████▏   | 105447424/169001437 [00:04<00:02, 31308249.64it/s] 64%|██████▍   | 108691456/169001437 [00:04<00:01, 31633068.78it/s] 66%|██████▌   | 111869952/169001437 [00:04<00:01, 31632739.56it/s] 68%|██████▊   | 115081216/169001437 [00:04<00:01, 31557011.76it/s] 70%|██████▉   | 118259712/169001437 [00:04<00:01, 30512863.98it/s] 72%|███████▏  | 121372672/169001437 [00:05<00:01, 30557072.75it/s] 74%|███████▎  | 124518400/169001437 [00:05<00:01, 30663774.51it/s] 76%|███████▌  | 127598592/169001437 [00:05<00:01, 30622134.31it/s] 77%|███████▋  | 130777088/169001437 [00:05<00:01, 30952136.06it/s] 79%|███████▉  | 133890048/169001437 [00:05<00:01, 31003173.73it/s] 81%|████████  | 137035776/169001437 [00:05<00:01, 30635773.87it/s] 83%|████████▎ | 140148736/169001437 [00:05<00:00, 30547514.10it/s] 85%|████████▍ | 143261696/169001437 [00:05<00:00, 30552973.84it/s] 87%|████████▋ | 146341888/169001437 [00:05<00:00, 30489435.52it/s] 88%|████████▊ | 149487616/169001437 [00:06<00:00, 30616035.59it/s] 90%|█████████ | 152567808/169001437 [00:06<00:00, 30443952.05it/s] 92%|█████████▏| 155615232/169001437 [00:06<00:00, 30339602.47it/s] 94%|█████████▍| 158662656/169001437 [00:06<00:00, 30290733.89it/s] 96%|█████████▌| 161775616/169001437 [00:06<00:00, 30271007.08it/s] 98%|█████████▊| 164888576/169001437 [00:06<00:00, 30230559.73it/s] 99%|█████████▉| 168001536/169001437 [00:06<00:00, 30162354.18it/s]100%|██████████| 169001437/169001437 [00:06<00:00, 25442900.40it/s]
-Extracting /scratch/lcur0649/cifar-100-python.tar.gz to /scratch/lcur0649
-Files already downloaded and verified
-Building custom CLIP
-Loading CLIP (backbone: ViT-B/32)
-List of prompts:
-['This is a photo of a apple',
- 'This is a photo of a aquarium fish',
- 'This is a photo of a baby',
- 'This is a photo of a bear',
- 'This is a photo of a beaver',
- 'This is a photo of a bed',
- 'This is a photo of a bee',
- 'This is a photo of a beetle',
- 'This is a photo of a bicycle',
- 'This is a photo of a bottle',
- 'This is a photo of a bowl',
- 'This is a photo of a boy',
- 'This is a photo of a bridge',
- 'This is a photo of a bus',
- 'This is a photo of a butterfly',
- 'This is a photo of a camel',
- 'This is a photo of a can',
- 'This is a photo of a castle',
- 'This is a photo of a caterpillar',
- 'This is a photo of a cattle',
- 'This is a photo of a chair',
- 'This is a photo of a chimpanzee',
- 'This is a photo of a clock',
- 'This is a photo of a cloud',
- 'This is a photo of a cockroach',
- 'This is a photo of a couch',
- 'This is a photo of a crab',
- 'This is a photo of a crocodile',
- 'This is a photo of a cup',
- 'This is a photo of a dinosaur',
- 'This is a photo of a dolphin',
- 'This is a photo of a elephant',
- 'This is a photo of a flatfish',
- 'This is a photo of a forest',
- 'This is a photo of a fox',
- 'This is a photo of a girl',
- 'This is a photo of a hamster',
- 'This is a photo of a house',
- 'This is a photo of a kangaroo',
- 'This is a photo of a keyboard',
- 'This is a photo of a lamp',
- 'This is a photo of a lawn mower',
- 'This is a photo of a leopard',
- 'This is a photo of a lion',
- 'This is a photo of a lizard',
- 'This is a photo of a lobster',
- 'This is a photo of a man',
- 'This is a photo of a maple tree',
- 'This is a photo of a motorcycle',
- 'This is a photo of a mountain',
- 'This is a photo of a mouse',
- 'This is a photo of a mushroom',
- 'This is a photo of a oak tree',
- 'This is a photo of a orange',
- 'This is a photo of a orchid',
- 'This is a photo of a otter',
- 'This is a photo of a palm tree',
- 'This is a photo of a pear',
- 'This is a photo of a pickup truck',
- 'This is a photo of a pine tree',
- 'This is a photo of a plain',
- 'This is a photo of a plate',
- 'This is a photo of a poppy',
- 'This is a photo of a porcupine',
- 'This is a photo of a possum',
- 'This is a photo of a rabbit',
- 'This is a photo of a raccoon',
- 'This is a photo of a ray',
- 'This is a photo of a road',
- 'This is a photo of a rocket',
- 'This is a photo of a rose',
- 'This is a photo of a sea',
- 'This is a photo of a seal',
- 'This is a photo of a shark',
- 'This is a photo of a shrew',
- 'This is a photo of a skunk',
- 'This is a photo of a skyscraper',
- 'This is a photo of a snail',
- 'This is a photo of a snake',
- 'This is a photo of a spider',
- 'This is a photo of a squirrel',
- 'This is a photo of a streetcar',
- 'This is a photo of a sunflower',
- 'This is a photo of a sweet pepper',
- 'This is a photo of a table',
- 'This is a photo of a tank',
- 'This is a photo of a telephone',
- 'This is a photo of a television',
- 'This is a photo of a tiger',
- 'This is a photo of a tractor',
- 'This is a photo of a train',
- 'This is a photo of a trout',
- 'This is a photo of a tulip',
- 'This is a photo of a turtle',
- 'This is a photo of a wardrobe',
- 'This is a photo of a whale',
- 'This is a photo of a willow tree',
- 'This is a photo of a wolf',
- 'This is a photo of a woman',
- 'This is a photo of a worm']
-Turning off gradients in both the image and the text encoder
-Parameters to be updated:
-"Parameters to be updated: {'prompt_learner.patch'}"
-Number of prompt parameters:  3
-Training mode
-Epoch: [0][  0/313]	Time  2.191 ( 2.191)	Data  0.687 ( 0.687)	Loss 1.4141e+00 (1.4141e+00)	Acc@1  64.84 ( 64.84)
-Epoch: [0][100/313]	Time  0.403 ( 0.427)	Data  0.016 ( 0.023)	Loss 4.3398e+00 (4.3161e+00)	Acc@1  60.16 ( 62.72)
-Epoch: [0][200/313]	Time  0.405 ( 0.419)	Data  0.017 ( 0.020)	Loss 4.3516e+00 (4.3293e+00)	Acc@1  58.59 ( 63.28)
-Epoch: [0][300/313]	Time  0.413 ( 0.416)	Data  0.016 ( 0.019)	Loss 4.3516e+00 (4.3338e+00)	Acc@1  60.94 ( 63.46)
-Validate: [ 0/79]	Time  0.903 ( 0.903)	Loss 4.3477e+00 (4.3477e+00)	Prompt Acc@1  60.94 ( 60.94)
- * Prompt Acc@1 63.790
-saved best file
-Training mode
-Epoch: [1][  0/313]	Time  1.184 ( 1.184)	Data  0.772 ( 0.772)	Loss 4.3438e+00 (4.3438e+00)	Acc@1  65.62 ( 65.62)
-Epoch: [1][100/313]	Time  0.407 ( 0.421)	Data  0.016 ( 0.025)	Loss 4.3398e+00 (4.3446e+00)	Acc@1  59.38 ( 62.81)
-Epoch: [1][200/313]	Time  0.411 ( 0.416)	Data  0.017 ( 0.021)	Loss 4.3477e+00 (4.3431e+00)	Acc@1  60.16 ( 63.40)
-Epoch: [1][300/313]	Time  0.427 ( 0.415)	Data  0.016 ( 0.019)	Loss 4.3477e+00 (4.3423e+00)	Acc@1  63.28 ( 63.58)
-Validate: [ 0/79]	Time  0.911 ( 0.911)	Loss 4.3359e+00 (4.3359e+00)	Prompt Acc@1  62.50 ( 62.50)
- * Prompt Acc@1 64.760
-saved best file
-Training mode
-Epoch: [2][  0/313]	Time  1.180 ( 1.180)	Data  0.781 ( 0.781)	Loss 4.3398e+00 (4.3398e+00)	Acc@1  64.06 ( 64.06)
-Epoch: [2][100/313]	Time  0.413 ( 0.420)	Data  0.016 ( 0.024)	Loss 4.3281e+00 (4.3377e+00)	Acc@1  63.28 ( 63.32)
-Epoch: [2][200/313]	Time  0.422 ( 0.416)	Data  0.016 ( 0.021)	Loss 4.3320e+00 (4.3348e+00)	Acc@1  62.50 ( 63.98)
-Epoch: [2][300/313]	Time  0.409 ( 0.414)	Data  0.016 ( 0.019)	Loss 4.3398e+00 (4.3337e+00)	Acc@1  63.28 ( 64.07)
-Validate: [ 0/79]	Time  0.939 ( 0.939)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.06 ( 64.06)
- * Prompt Acc@1 65.220
-saved best file
-Training mode
-Epoch: [3][  0/313]	Time  1.158 ( 1.158)	Data  0.729 ( 0.729)	Loss 4.3320e+00 (4.3320e+00)	Acc@1  65.62 ( 65.62)
-Epoch: [3][100/313]	Time  0.422 ( 0.422)	Data  0.016 ( 0.025)	Loss 4.3242e+00 (4.3323e+00)	Acc@1  64.06 ( 63.41)
-Epoch: [3][200/313]	Time  0.409 ( 0.418)	Data  0.016 ( 0.021)	Loss 4.3281e+00 (4.3307e+00)	Acc@1  61.72 ( 64.12)
-Epoch: [3][300/313]	Time  0.407 ( 0.417)	Data  0.015 ( 0.019)	Loss 4.3359e+00 (4.3303e+00)	Acc@1  63.28 ( 64.22)
-Validate: [ 0/79]	Time  0.979 ( 0.979)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.06 ( 64.06)
- * Prompt Acc@1 65.250
-saved best file
-Training mode
-Epoch: [4][  0/313]	Time  1.237 ( 1.237)	Data  0.818 ( 0.818)	Loss 4.3320e+00 (4.3320e+00)	Acc@1  64.06 ( 64.06)
-Epoch: [4][100/313]	Time  0.409 ( 0.424)	Data  0.017 ( 0.025)	Loss 4.3242e+00 (4.3313e+00)	Acc@1  64.84 ( 63.68)
-Epoch: [4][200/313]	Time  0.430 ( 0.420)	Data  0.016 ( 0.021)	Loss 4.3281e+00 (4.3297e+00)	Acc@1  60.16 ( 64.36)
-Epoch: [4][300/313]	Time  0.413 ( 0.419)	Data  0.016 ( 0.020)	Loss 4.3359e+00 (4.3294e+00)	Acc@1  64.84 ( 64.39)
-Validate: [ 0/79]	Time  0.947 ( 0.947)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.06 ( 64.06)
- * Prompt Acc@1 65.240
-There's no improvement for 1 epochs.
-Training mode
-Epoch: [5][  0/313]	Time  1.149 ( 1.149)	Data  0.745 ( 0.745)	Loss 4.3320e+00 (4.3320e+00)	Acc@1  64.84 ( 64.84)
-Epoch: [5][100/313]	Time  0.411 ( 0.423)	Data  0.016 ( 0.024)	Loss 4.3242e+00 (4.3307e+00)	Acc@1  64.84 ( 63.61)
-Epoch: [5][200/313]	Time  0.420 ( 0.419)	Data  0.017 ( 0.021)	Loss 4.3281e+00 (4.3292e+00)	Acc@1  60.94 ( 64.31)
-Epoch: [5][300/313]	Time  0.421 ( 0.418)	Data  0.017 ( 0.019)	Loss 4.3359e+00 (4.3290e+00)	Acc@1  63.28 ( 64.32)
-Validate: [ 0/79]	Time  1.137 ( 1.137)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.06 ( 64.06)
- * Prompt Acc@1 65.250
-There's no improvement for 2 epochs.
-Training mode
-Epoch: [6][  0/313]	Time  1.312 ( 1.312)	Data  0.877 ( 0.877)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  64.84 ( 64.84)
-Epoch: [6][100/313]	Time  0.407 ( 0.423)	Data  0.017 ( 0.025)	Loss 4.3242e+00 (4.3302e+00)	Acc@1  64.84 ( 63.61)
-Epoch: [6][200/313]	Time  0.415 ( 0.419)	Data  0.017 ( 0.021)	Loss 4.3281e+00 (4.3288e+00)	Acc@1  61.72 ( 64.35)
-Epoch: [6][300/313]	Time  0.414 ( 0.417)	Data  0.017 ( 0.019)	Loss 4.3359e+00 (4.3287e+00)	Acc@1  63.28 ( 64.37)
-Validate: [ 0/79]	Time  0.979 ( 0.979)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.230
-There's no improvement for 3 epochs.
-Training mode
-Epoch: [7][  0/313]	Time  1.105 ( 1.105)	Data  0.677 ( 0.677)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  64.06 ( 64.06)
-Epoch: [7][100/313]	Time  0.423 ( 0.422)	Data  0.019 ( 0.023)	Loss 4.3203e+00 (4.3299e+00)	Acc@1  64.84 ( 63.54)
-Epoch: [7][200/313]	Time  0.415 ( 0.419)	Data  0.016 ( 0.020)	Loss 4.3281e+00 (4.3286e+00)	Acc@1  61.72 ( 64.32)
-Epoch: [7][300/313]	Time  0.420 ( 0.418)	Data  0.016 ( 0.019)	Loss 4.3359e+00 (4.3285e+00)	Acc@1  64.06 ( 64.36)
-Validate: [ 0/79]	Time  1.038 ( 1.038)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.210
-There's no improvement for 4 epochs.
-Training mode
-Epoch: [8][  0/313]	Time  1.161 ( 1.161)	Data  0.725 ( 0.725)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  64.06 ( 64.06)
-Epoch: [8][100/313]	Time  0.416 ( 0.423)	Data  0.017 ( 0.024)	Loss 4.3203e+00 (4.3297e+00)	Acc@1  64.84 ( 63.54)
-Epoch: [8][200/313]	Time  0.425 ( 0.419)	Data  0.016 ( 0.021)	Loss 4.3281e+00 (4.3284e+00)	Acc@1  61.72 ( 64.33)
-Epoch: [8][300/313]	Time  0.413 ( 0.418)	Data  0.017 ( 0.019)	Loss 4.3359e+00 (4.3283e+00)	Acc@1  64.06 ( 64.35)
-Validate: [ 0/79]	Time  0.996 ( 0.996)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.180
-There's no improvement for 5 epochs.
-Training mode
-Epoch: [9][  0/313]	Time  1.230 ( 1.230)	Data  0.775 ( 0.775)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  64.06 ( 64.06)
-Epoch: [9][100/313]	Time  0.417 ( 0.424)	Data  0.022 ( 0.025)	Loss 4.3203e+00 (4.3295e+00)	Acc@1  64.84 ( 63.56)
-Epoch: [9][200/313]	Time  0.417 ( 0.419)	Data  0.017 ( 0.021)	Loss 4.3281e+00 (4.3282e+00)	Acc@1  62.50 ( 64.32)
-Epoch: [9][300/313]	Time  0.410 ( 0.418)	Data  0.017 ( 0.020)	Loss 4.3359e+00 (4.3282e+00)	Acc@1  64.06 ( 64.34)
-Validate: [ 0/79]	Time  0.927 ( 0.927)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.300
-saved best file
-Training mode
-Epoch: [10][  0/313]	Time  1.191 ( 1.191)	Data  0.779 ( 0.779)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  64.06 ( 64.06)
-Epoch: [10][100/313]	Time  0.413 ( 0.423)	Data  0.016 ( 0.025)	Loss 4.3203e+00 (4.3294e+00)	Acc@1  64.84 ( 63.56)
-Epoch: [10][200/313]	Time  0.407 ( 0.419)	Data  0.016 ( 0.021)	Loss 4.3281e+00 (4.3282e+00)	Acc@1  62.50 ( 64.30)
-Epoch: [10][300/313]	Time  0.420 ( 0.417)	Data  0.016 ( 0.020)	Loss 4.3359e+00 (4.3281e+00)	Acc@1  64.84 ( 64.31)
-Validate: [ 0/79]	Time  0.973 ( 0.973)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.250
-There's no improvement for 1 epochs.
-Training mode
-Epoch: [11][  0/313]	Time  1.208 ( 1.208)	Data  0.783 ( 0.783)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  63.28 ( 63.28)
-Epoch: [11][100/313]	Time  0.414 ( 0.423)	Data  0.016 ( 0.025)	Loss 4.3203e+00 (4.3294e+00)	Acc@1  64.06 ( 63.54)
-Epoch: [11][200/313]	Time  0.430 ( 0.419)	Data  0.017 ( 0.021)	Loss 4.3281e+00 (4.3280e+00)	Acc@1  62.50 ( 64.31)
-Epoch: [11][300/313]	Time  0.409 ( 0.418)	Data  0.016 ( 0.020)	Loss 4.3359e+00 (4.3280e+00)	Acc@1  64.06 ( 64.33)
-Validate: [ 0/79]	Time  0.969 ( 0.969)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.230
-There's no improvement for 2 epochs.
-Training mode
-Epoch: [12][  0/313]	Time  1.104 ( 1.104)	Data  0.707 ( 0.707)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  63.28 ( 63.28)
-Epoch: [12][100/313]	Time  0.415 ( 0.421)	Data  0.016 ( 0.024)	Loss 4.3203e+00 (4.3294e+00)	Acc@1  64.06 ( 63.61)
-Epoch: [12][200/313]	Time  0.411 ( 0.418)	Data  0.017 ( 0.020)	Loss 4.3281e+00 (4.3280e+00)	Acc@1  62.50 ( 64.35)
-Epoch: [12][300/313]	Time  0.421 ( 0.417)	Data  0.016 ( 0.019)	Loss 4.3359e+00 (4.3280e+00)	Acc@1  64.84 ( 64.34)
-Validate: [ 0/79]	Time  0.920 ( 0.920)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.250
-There's no improvement for 3 epochs.
-Training mode
-Epoch: [13][  0/313]	Time  1.156 ( 1.156)	Data  0.742 ( 0.742)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  63.28 ( 63.28)
-Epoch: [13][100/313]	Time  0.411 ( 0.422)	Data  0.016 ( 0.024)	Loss 4.3203e+00 (4.3293e+00)	Acc@1  64.06 ( 63.65)
-Epoch: [13][200/313]	Time  0.407 ( 0.418)	Data  0.017 ( 0.020)	Loss 4.3281e+00 (4.3280e+00)	Acc@1  62.50 ( 64.36)
-Epoch: [13][300/313]	Time  0.420 ( 0.417)	Data  0.017 ( 0.019)	Loss 4.3359e+00 (4.3279e+00)	Acc@1  64.84 ( 64.35)
-Validate: [ 0/79]	Time  1.014 ( 1.014)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.280
-There's no improvement for 4 epochs.
-Training mode
-Epoch: [14][  0/313]	Time  1.221 ( 1.221)	Data  0.781 ( 0.781)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  63.28 ( 63.28)
-Epoch: [14][100/313]	Time  0.421 ( 0.424)	Data  0.017 ( 0.025)	Loss 4.3203e+00 (4.3294e+00)	Acc@1  64.06 ( 63.63)
-Epoch: [14][200/313]	Time  0.420 ( 0.419)	Data  0.017 ( 0.021)	Loss 4.3281e+00 (4.3280e+00)	Acc@1  62.50 ( 64.35)
-Epoch: [14][300/313]	Time  0.417 ( 0.418)	Data  0.017 ( 0.020)	Loss 4.3359e+00 (4.3279e+00)	Acc@1  64.84 ( 64.35)
-Validate: [ 0/79]	Time  0.967 ( 0.967)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.310
-saved best file
-Training mode
-Epoch: [15][  0/313]	Time  1.141 ( 1.141)	Data  0.728 ( 0.728)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  63.28 ( 63.28)
-Epoch: [15][100/313]	Time  0.424 ( 0.425)	Data  0.024 ( 0.025)	Loss 4.3203e+00 (4.3294e+00)	Acc@1  64.06 ( 63.67)
-Epoch: [15][200/313]	Time  0.418 ( 0.420)	Data  0.017 ( 0.022)	Loss 4.3281e+00 (4.3280e+00)	Acc@1  62.50 ( 64.35)
-Epoch: [15][300/313]	Time  0.413 ( 0.419)	Data  0.017 ( 0.020)	Loss 4.3359e+00 (4.3279e+00)	Acc@1  64.84 ( 64.35)
-Validate: [ 0/79]	Time  0.987 ( 0.987)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.240
-There's no improvement for 1 epochs.
-Training mode
-Epoch: [16][  0/313]	Time  1.133 ( 1.133)	Data  0.720 ( 0.720)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  63.28 ( 63.28)
-Epoch: [16][100/313]	Time  0.409 ( 0.421)	Data  0.017 ( 0.024)	Loss 4.3203e+00 (4.3293e+00)	Acc@1  64.06 ( 63.64)
-Epoch: [16][200/313]	Time  0.410 ( 0.417)	Data  0.015 ( 0.020)	Loss 4.3281e+00 (4.3279e+00)	Acc@1  62.50 ( 64.35)
-Epoch: [16][300/313]	Time  0.409 ( 0.416)	Data  0.017 ( 0.019)	Loss 4.3359e+00 (4.3279e+00)	Acc@1  64.84 ( 64.35)
-Validate: [ 0/79]	Time  0.940 ( 0.940)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.300
-There's no improvement for 2 epochs.
-Training mode
-Epoch: [17][  0/313]	Time  1.134 ( 1.134)	Data  0.722 ( 0.722)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  63.28 ( 63.28)
-Epoch: [17][100/313]	Time  0.412 ( 0.421)	Data  0.016 ( 0.024)	Loss 4.3203e+00 (4.3294e+00)	Acc@1  64.06 ( 63.63)
-Epoch: [17][200/313]	Time  0.410 ( 0.418)	Data  0.017 ( 0.020)	Loss 4.3281e+00 (4.3279e+00)	Acc@1  62.50 ( 64.35)
-Epoch: [17][300/313]	Time  0.410 ( 0.417)	Data  0.016 ( 0.019)	Loss 4.3359e+00 (4.3278e+00)	Acc@1  64.84 ( 64.35)
-Validate: [ 0/79]	Time  0.941 ( 0.941)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.280
-There's no improvement for 3 epochs.
-Training mode
-Epoch: [18][  0/313]	Time  1.179 ( 1.179)	Data  0.781 ( 0.781)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  63.28 ( 63.28)
-Epoch: [18][100/313]	Time  0.409 ( 0.422)	Data  0.016 ( 0.025)	Loss 4.3203e+00 (4.3293e+00)	Acc@1  64.06 ( 63.61)
-Epoch: [18][200/313]	Time  0.408 ( 0.419)	Data  0.016 ( 0.021)	Loss 4.3281e+00 (4.3279e+00)	Acc@1  62.50 ( 64.32)
-Epoch: [18][300/313]	Time  0.412 ( 0.417)	Data  0.017 ( 0.020)	Loss 4.3359e+00 (4.3279e+00)	Acc@1  64.84 ( 64.34)
-Validate: [ 0/79]	Time  1.071 ( 1.071)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.270
-There's no improvement for 4 epochs.
-Training mode
-Epoch: [19][  0/313]	Time  1.162 ( 1.162)	Data  0.731 ( 0.731)	Loss 4.3281e+00 (4.3281e+00)	Acc@1  63.28 ( 63.28)
-Epoch: [19][100/313]	Time  0.414 ( 0.422)	Data  0.016 ( 0.024)	Loss 4.3203e+00 (4.3293e+00)	Acc@1  64.06 ( 63.68)
-Epoch: [19][200/313]	Time  0.416 ( 0.418)	Data  0.016 ( 0.021)	Loss 4.3281e+00 (4.3279e+00)	Acc@1  62.50 ( 64.36)
-Epoch: [19][300/313]	Time  0.434 ( 0.417)	Data  0.016 ( 0.019)	Loss 4.3359e+00 (4.3278e+00)	Acc@1  64.84 ( 64.35)
-Validate: [ 0/79]	Time  0.887 ( 0.887)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.250
-There's no improvement for 5 epochs.
-Validate: [ 0/79]	Time  0.950 ( 0.950)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 65.250
-Validate: [ 0/79]	Time  1.000 ( 1.000)	Loss 4.3047e+00 (4.3047e+00)	Prompt Acc@1  70.31 ( 70.31)
- * Prompt Acc@1 64.250
-Running experiment on cifar100 with random_patch and prompt size 1
-Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=10, model='clip', arch='ViT-B/32', method='random_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='random_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=False, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/random_patch_1_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
-Files already downloaded and verified
-Files already downloaded and verified
-Building custom CLIP
-Loading CLIP (backbone: ViT-B/32)
-List of prompts:
-['This is a photo of a apple',
- 'This is a photo of a aquarium fish',
- 'This is a photo of a baby',
- 'This is a photo of a bear',
- 'This is a photo of a beaver',
- 'This is a photo of a bed',
- 'This is a photo of a bee',
- 'This is a photo of a beetle',
- 'This is a photo of a bicycle',
- 'This is a photo of a bottle',
- 'This is a photo of a bowl',
- 'This is a photo of a boy',
- 'This is a photo of a bridge',
- 'This is a photo of a bus',
- 'This is a photo of a butterfly',
- 'This is a photo of a camel',
- 'This is a photo of a can',
- 'This is a photo of a castle',
- 'This is a photo of a caterpillar',
- 'This is a photo of a cattle',
- 'This is a photo of a chair',
- 'This is a photo of a chimpanzee',
- 'This is a photo of a clock',
- 'This is a photo of a cloud',
- 'This is a photo of a cockroach',
- 'This is a photo of a couch',
- 'This is a photo of a crab',
- 'This is a photo of a crocodile',
- 'This is a photo of a cup',
- 'This is a photo of a dinosaur',
- 'This is a photo of a dolphin',
- 'This is a photo of a elephant',
- 'This is a photo of a flatfish',
- 'This is a photo of a forest',
- 'This is a photo of a fox',
- 'This is a photo of a girl',
- 'This is a photo of a hamster',
- 'This is a photo of a house',
- 'This is a photo of a kangaroo',
- 'This is a photo of a keyboard',
- 'This is a photo of a lamp',
- 'This is a photo of a lawn mower',
- 'This is a photo of a leopard',
- 'This is a photo of a lion',
- 'This is a photo of a lizard',
- 'This is a photo of a lobster',
- 'This is a photo of a man',
- 'This is a photo of a maple tree',
- 'This is a photo of a motorcycle',
- 'This is a photo of a mountain',
- 'This is a photo of a mouse',
- 'This is a photo of a mushroom',
- 'This is a photo of a oak tree',
- 'This is a photo of a orange',
- 'This is a photo of a orchid',
- 'This is a photo of a otter',
- 'This is a photo of a palm tree',
- 'This is a photo of a pear',
- 'This is a photo of a pickup truck',
- 'This is a photo of a pine tree',
- 'This is a photo of a plain',
- 'This is a photo of a plate',
- 'This is a photo of a poppy',
- 'This is a photo of a porcupine',
- 'This is a photo of a possum',
- 'This is a photo of a rabbit',
- 'This is a photo of a raccoon',
- 'This is a photo of a ray',
- 'This is a photo of a road',
- 'This is a photo of a rocket',
- 'This is a photo of a rose',
- 'This is a photo of a sea',
- 'This is a photo of a seal',
- 'This is a photo of a shark',
- 'This is a photo of a shrew',
- 'This is a photo of a skunk',
- 'This is a photo of a skyscraper',
- 'This is a photo of a snail',
- 'This is a photo of a snake',
- 'This is a photo of a spider',
- 'This is a photo of a squirrel',
- 'This is a photo of a streetcar',
- 'This is a photo of a sunflower',
- 'This is a photo of a sweet pepper',
- 'This is a photo of a table',
- 'This is a photo of a tank',
- 'This is a photo of a telephone',
- 'This is a photo of a television',
- 'This is a photo of a tiger',
- 'This is a photo of a tractor',
- 'This is a photo of a train',
- 'This is a photo of a trout',
- 'This is a photo of a tulip',
- 'This is a photo of a turtle',
- 'This is a photo of a wardrobe',
- 'This is a photo of a whale',
- 'This is a photo of a willow tree',
- 'This is a photo of a wolf',
- 'This is a photo of a woman',
- 'This is a photo of a worm']
-Turning off gradients in both the image and the text encoder
-Parameters to be updated:
-"Parameters to be updated: {'prompt_learner.random_patch'}"
-Number of prompt parameters:  3
-Training mode
-Epoch: [0][  0/313]	Time  2.331 ( 2.331)	Data  0.759 ( 0.759)	Loss 1.3076e+00 (1.3076e+00)	Acc@1  63.28 ( 63.28)
-Epoch: [0][100/313]	Time  0.406 ( 0.430)	Data  0.017 ( 0.025)	Loss 4.3125e+00 (4.3024e+00)	Acc@1  62.50 ( 63.71)
-Epoch: [0][200/313]	Time  0.409 ( 0.421)	Data  0.017 ( 0.021)	Loss 4.3242e+00 (4.3143e+00)	Acc@1  64.06 ( 64.21)
-Epoch: [0][300/313]	Time  0.409 ( 0.418)	Data  0.017 ( 0.020)	Loss 4.3281e+00 (4.3185e+00)	Acc@1  62.50 ( 64.32)
-Validate: [ 0/79]	Time  0.976 ( 0.976)	Loss 4.3320e+00 (4.3320e+00)	Prompt Acc@1  60.94 ( 60.94)
- * Prompt Acc@1 64.140
-saved best file
-Training mode
-Epoch: [1][  0/313]	Time  1.111 ( 1.111)	Data  0.702 ( 0.702)	Loss 4.3164e+00 (4.3164e+00)	Acc@1  71.88 ( 71.88)
-Epoch: [1][100/313]	Time  0.414 ( 0.419)	Data  0.022 ( 0.024)	Loss 4.3164e+00 (4.3272e+00)	Acc@1  66.41 ( 64.01)
-Epoch: [1][200/313]	Time  0.413 ( 0.415)	Data  0.016 ( 0.020)	Loss 4.3242e+00 (4.3262e+00)	Acc@1  61.72 ( 64.11)
-Epoch: [1][300/313]	Time  0.417 ( 0.414)	Data  0.016 ( 0.019)	Loss 4.3242e+00 (4.3263e+00)	Acc@1  64.84 ( 64.20)
-Validate: [ 0/79]	Time  1.015 ( 1.015)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  60.16 ( 60.16)
- * Prompt Acc@1 64.150
-saved best file
-Training mode
-Epoch: [2][  0/313]	Time  1.096 ( 1.096)	Data  0.698 ( 0.698)	Loss 4.3164e+00 (4.3164e+00)	Acc@1  68.75 ( 68.75)
-Epoch: [2][100/313]	Time  0.406 ( 0.418)	Data  0.016 ( 0.023)	Loss 4.3125e+00 (4.3271e+00)	Acc@1  63.28 ( 63.68)
-Epoch: [2][200/313]	Time  0.413 ( 0.415)	Data  0.015 ( 0.020)	Loss 4.3242e+00 (4.3262e+00)	Acc@1  64.06 ( 64.11)
-Epoch: [2][300/313]	Time  0.407 ( 0.413)	Data  0.016 ( 0.019)	Loss 4.3242e+00 (4.3260e+00)	Acc@1  64.06 ( 64.26)
-Validate: [ 0/79]	Time  0.941 ( 0.941)	Loss 4.3320e+00 (4.3320e+00)	Prompt Acc@1  60.16 ( 60.16)
- * Prompt Acc@1 63.910
-There's no improvement for 1 epochs.
-Training mode
-Epoch: [3][  0/313]	Time  1.129 ( 1.129)	Data  0.721 ( 0.721)	Loss 4.3203e+00 (4.3203e+00)	Acc@1  68.75 ( 68.75)
-Epoch: [3][100/313]	Time  0.417 ( 0.417)	Data  0.016 ( 0.022)	Loss 4.3125e+00 (4.3264e+00)	Acc@1  64.84 ( 63.85)
-Epoch: [3][200/313]	Time  0.418 ( 0.414)	Data  0.015 ( 0.019)	Loss 4.3281e+00 (4.3259e+00)	Acc@1  60.94 ( 64.14)
-Epoch: [3][300/313]	Time  0.414 ( 0.414)	Data  0.016 ( 0.018)	Loss 4.3281e+00 (4.3260e+00)	Acc@1  61.72 ( 64.29)
-Validate: [ 0/79]	Time  0.973 ( 0.973)	Loss 4.3320e+00 (4.3320e+00)	Prompt Acc@1  58.59 ( 58.59)
- * Prompt Acc@1 64.130
-There's no improvement for 2 epochs.
-Training mode
-Epoch: [4][  0/313]	Time  1.130 ( 1.130)	Data  0.708 ( 0.708)	Loss 4.3203e+00 (4.3203e+00)	Acc@1  67.97 ( 67.97)
-Epoch: [4][100/313]	Time  0.417 ( 0.421)	Data  0.016 ( 0.023)	Loss 4.3125e+00 (4.3269e+00)	Acc@1  62.50 ( 63.75)
-Epoch: [4][200/313]	Time  0.414 ( 0.418)	Data  0.017 ( 0.020)	Loss 4.3242e+00 (4.3256e+00)	Acc@1  64.06 ( 64.14)
-Epoch: [4][300/313]	Time  0.416 ( 0.417)	Data  0.017 ( 0.019)	Loss 4.3242e+00 (4.3259e+00)	Acc@1  65.62 ( 64.14)
-Validate: [ 0/79]	Time  1.003 ( 1.003)	Loss 4.3359e+00 (4.3359e+00)	Prompt Acc@1  57.81 ( 57.81)
- * Prompt Acc@1 64.650
-saved best file
-Training mode
-Epoch: [5][  0/313]	Time  1.105 ( 1.105)	Data  0.678 ( 0.678)	Loss 4.3164e+00 (4.3164e+00)	Acc@1  67.97 ( 67.97)
-Epoch: [5][100/313]	Time  0.409 ( 0.421)	Data  0.017 ( 0.023)	Loss 4.3125e+00 (4.3267e+00)	Acc@1  67.97 ( 63.41)
-Epoch: [5][200/313]	Time  0.418 ( 0.418)	Data  0.017 ( 0.020)	Loss 4.3242e+00 (4.3258e+00)	Acc@1  60.94 ( 63.83)
-Epoch: [5][300/313]	Time  0.416 ( 0.417)	Data  0.017 ( 0.019)	Loss 4.3203e+00 (4.3261e+00)	Acc@1  64.84 ( 64.02)
-Validate: [ 0/79]	Time  0.907 ( 0.907)	Loss 4.3320e+00 (4.3320e+00)	Prompt Acc@1  58.59 ( 58.59)
- * Prompt Acc@1 64.090
-There's no improvement for 1 epochs.
-Training mode
-Epoch: [6][  0/313]	Time  1.147 ( 1.147)	Data  0.703 ( 0.703)	Loss 4.3125e+00 (4.3125e+00)	Acc@1  70.31 ( 70.31)
-Epoch: [6][100/313]	Time  0.412 ( 0.421)	Data  0.017 ( 0.023)	Loss 4.3125e+00 (4.3271e+00)	Acc@1  64.84 ( 63.42)
-Epoch: [6][200/313]	Time  0.422 ( 0.418)	Data  0.016 ( 0.020)	Loss 4.3203e+00 (4.3261e+00)	Acc@1  64.06 ( 63.95)
-Epoch: [6][300/313]	Time  0.409 ( 0.417)	Data  0.016 ( 0.019)	Loss 4.3320e+00 (4.3261e+00)	Acc@1  66.41 ( 64.08)
-Validate: [ 0/79]	Time  0.967 ( 0.967)	Loss 4.3398e+00 (4.3398e+00)	Prompt Acc@1  58.59 ( 58.59)
- * Prompt Acc@1 64.180
-There's no improvement for 2 epochs.
-Training mode
-Epoch: [7][  0/313]	Time  1.179 ( 1.179)	Data  0.755 ( 0.755)	Loss 4.3164e+00 (4.3164e+00)	Acc@1  69.53 ( 69.53)
-Epoch: [7][100/313]	Time  0.410 ( 0.421)	Data  0.017 ( 0.024)	Loss 4.3047e+00 (4.3275e+00)	Acc@1  64.06 ( 63.52)
-Epoch: [7][200/313]	Time  0.406 ( 0.417)	Data  0.015 ( 0.020)	Loss 4.3242e+00 (4.3263e+00)	Acc@1  60.16 ( 64.00)
-Epoch: [7][300/313]	Time  0.411 ( 0.416)	Data  0.016 ( 0.019)	Loss 4.3242e+00 (4.3262e+00)	Acc@1  65.62 ( 64.11)
-Validate: [ 0/79]	Time  0.916 ( 0.916)	Loss 4.3281e+00 (4.3281e+00)	Prompt Acc@1  60.16 ( 60.16)
- * Prompt Acc@1 63.820
-There's no improvement for 3 epochs.
-Training mode
-Epoch: [8][  0/313]	Time  1.198 ( 1.198)	Data  0.771 ( 0.771)	Loss 4.3203e+00 (4.3203e+00)	Acc@1  66.41 ( 66.41)
-Epoch: [8][100/313]	Time  0.420 ( 0.421)	Data  0.015 ( 0.024)	Loss 4.3164e+00 (4.3272e+00)	Acc@1  64.06 ( 63.33)
-Epoch: [8][200/313]	Time  0.421 ( 0.418)	Data  0.017 ( 0.020)	Loss 4.3242e+00 (4.3259e+00)	Acc@1  64.84 ( 63.81)
-Epoch: [8][300/313]	Time  0.418 ( 0.417)	Data  0.016 ( 0.019)	Loss 4.3203e+00 (4.3262e+00)	Acc@1  64.06 ( 63.85)
-Validate: [ 0/79]	Time  1.003 ( 1.003)	Loss 4.3359e+00 (4.3359e+00)	Prompt Acc@1  58.59 ( 58.59)
- * Prompt Acc@1 64.210
-There's no improvement for 4 epochs.
-Training mode
-Epoch: [9][  0/313]	Time  1.197 ( 1.197)	Data  0.799 ( 0.799)	Loss 4.3164e+00 (4.3164e+00)	Acc@1  68.75 ( 68.75)
-Epoch: [9][100/313]	Time  0.414 ( 0.423)	Data  0.016 ( 0.024)	Loss 4.3164e+00 (4.3267e+00)	Acc@1  62.50 ( 63.64)
-Epoch: [9][200/313]	Time  0.412 ( 0.419)	Data  0.016 ( 0.020)	Loss 4.3242e+00 (4.3262e+00)	Acc@1  64.06 ( 63.88)
-Epoch: [9][300/313]	Time  0.419 ( 0.418)	Data  0.016 ( 0.019)	Loss 4.3203e+00 (4.3260e+00)	Acc@1  64.06 ( 64.03)
-Validate: [ 0/79]	Time  1.051 ( 1.051)	Loss 4.3320e+00 (4.3320e+00)	Prompt Acc@1  59.38 ( 59.38)
- * Prompt Acc@1 64.180
-There's no improvement for 5 epochs.
-Training mode
-Epoch: [10][  0/313]	Time  1.164 ( 1.164)	Data  0.735 ( 0.735)	Loss 4.3242e+00 (4.3242e+00)	Acc@1  67.19 ( 67.19)
-Epoch: [10][100/313]	Time  0.412 ( 0.422)	Data  0.015 ( 0.023)	Loss 4.3125e+00 (4.3270e+00)	Acc@1  66.41 ( 63.68)
-Epoch: [10][200/313]	Time  0.411 ( 0.419)	Data  0.015 ( 0.020)	Loss 4.3242e+00 (4.3258e+00)	Acc@1  61.72 ( 63.88)
-Epoch: [10][300/313]	Time  0.426 ( 0.418)	Data  0.018 ( 0.019)	Loss 4.3164e+00 (4.3258e+00)	Acc@1  65.62 ( 64.01)
-Validate: [ 0/79]	Time  1.047 ( 1.047)	Loss 4.3359e+00 (4.3359e+00)	Prompt Acc@1  57.81 ( 57.81)
- * Prompt Acc@1 64.300
-There's no improvement for 6 epochs.
-Training mode
-Epoch: [11][  0/313]	Time  1.166 ( 1.166)	Data  0.737 ( 0.737)	Loss 4.3203e+00 (4.3203e+00)	Acc@1  66.41 ( 66.41)
-Epoch: [11][100/313]	Time  0.411 ( 0.423)	Data  0.016 ( 0.023)	Loss 4.3086e+00 (4.3274e+00)	Acc@1  66.41 ( 63.77)
-Epoch: [11][200/313]	Time  0.410 ( 0.419)	Data  0.017 ( 0.020)	Loss 4.3242e+00 (4.3261e+00)	Acc@1  61.72 ( 63.88)
-Epoch: [11][300/313]	Time  0.419 ( 0.419)	Data  0.016 ( 0.019)	Loss 4.3281e+00 (4.3262e+00)	Acc@1  64.84 ( 63.95)
-Validate: [ 0/79]	Time  0.978 ( 0.978)	Loss 4.3359e+00 (4.3359e+00)	Prompt Acc@1  58.59 ( 58.59)
- * Prompt Acc@1 63.950
-There's no improvement for 7 epochs.
-Training mode
-Epoch: [12][  0/313]	Time  1.214 ( 1.214)	Data  0.817 ( 0.817)	Loss 4.3203e+00 (4.3203e+00)	Acc@1  69.53 ( 69.53)
-Epoch: [12][100/313]	Time  0.411 ( 0.423)	Data  0.015 ( 0.025)	Loss 4.3125e+00 (4.3270e+00)	Acc@1  66.41 ( 63.53)
-Epoch: [12][200/313]	Time  0.410 ( 0.419)	Data  0.017 ( 0.021)	Loss 4.3242e+00 (4.3264e+00)	Acc@1  61.72 ( 63.87)
-Epoch: [12][300/313]	Time  0.416 ( 0.418)	Data  0.017 ( 0.019)	Loss 4.3242e+00 (4.3262e+00)	Acc@1  65.62 ( 63.95)
-Validate: [ 0/79]	Time  0.936 ( 0.936)	Loss 4.3320e+00 (4.3320e+00)	Prompt Acc@1  60.94 ( 60.94)
- * Prompt Acc@1 64.230
-There's no improvement for 8 epochs.
-Training mode
-Epoch: [13][  0/313]	Time  1.170 ( 1.170)	Data  0.765 ( 0.765)	Loss 4.3203e+00 (4.3203e+00)	Acc@1  71.09 ( 71.09)
-Epoch: [13][100/313]	Time  0.408 ( 0.423)	Data  0.015 ( 0.025)	Loss 4.3164e+00 (4.3266e+00)	Acc@1  67.19 ( 63.55)
-Epoch: [13][200/313]	Time  0.422 ( 0.420)	Data  0.017 ( 0.021)	Loss 4.3242e+00 (4.3259e+00)	Acc@1  61.72 ( 63.90)
-Epoch: [13][300/313]	Time  0.421 ( 0.419)	Data  0.022 ( 0.020)	Loss 4.3242e+00 (4.3259e+00)	Acc@1  59.38 ( 64.09)
-Validate: [ 0/79]	Time  1.132 ( 1.132)	Loss 4.3359e+00 (4.3359e+00)	Prompt Acc@1  60.16 ( 60.16)
- * Prompt Acc@1 64.010
-There's no improvement for 9 epochs.
-Training mode
-Epoch: [14][  0/313]	Time  1.295 ( 1.295)	Data  0.869 ( 0.869)	Loss 4.3203e+00 (4.3203e+00)	Acc@1  69.53 ( 69.53)
-Epoch: [14][100/313]	Time  0.416 ( 0.424)	Data  0.016 ( 0.025)	Loss 4.3086e+00 (4.3272e+00)	Acc@1  61.72 ( 63.33)
-Epoch: [14][200/313]	Time  0.413 ( 0.421)	Data  0.017 ( 0.021)	Loss 4.3203e+00 (4.3262e+00)	Acc@1  63.28 ( 63.76)
-Epoch: [14][300/313]	Time  0.408 ( 0.419)	Data  0.016 ( 0.020)	Loss 4.3242e+00 (4.3262e+00)	Acc@1  59.38 ( 63.97)
-Validate: [ 0/79]	Time  0.947 ( 0.947)	Loss 4.3359e+00 (4.3359e+00)	Prompt Acc@1  61.72 ( 61.72)
- * Prompt Acc@1 64.120
-There's no improvement for 10 epochs.
-The training halted by early stopping criterion.
-Validate: [ 0/79]	Time  0.948 ( 0.948)	Loss 4.3320e+00 (4.3320e+00)	Prompt Acc@1  58.59 ( 58.59)
- * Prompt Acc@1 63.910
-Validate: [ 0/79]	Time  0.988 ( 0.988)	Loss 4.3047e+00 (4.3047e+00)	Prompt Acc@1  71.09 ( 71.09)
- * Prompt Acc@1 63.790
-Running experiment on cifar100 with padding and prompt size 30
-Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=10, model='clip', arch='ViT-B/32', method='padding', prompt_size=30, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar100', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=False, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/padding_30_cifar100_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
-Files already downloaded and verified
-Files already downloaded and verified
-Building custom CLIP
-Loading CLIP (backbone: ViT-B/32)
-List of prompts:
-['This is a photo of a apple',
- 'This is a photo of a aquarium fish',
- 'This is a photo of a baby',
- 'This is a photo of a bear',
- 'This is a photo of a beaver',
- 'This is a photo of a bed',
- 'This is a photo of a bee',
- 'This is a photo of a beetle',
- 'This is a photo of a bicycle',
- 'This is a photo of a bottle',
- 'This is a photo of a bowl',
- 'This is a photo of a boy',
- 'This is a photo of a bridge',
- 'This is a photo of a bus',
- 'This is a photo of a butterfly',
- 'This is a photo of a camel',
- 'This is a photo of a can',
- 'This is a photo of a castle',
- 'This is a photo of a caterpillar',
- 'This is a photo of a cattle',
- 'This is a photo of a chair',
- 'This is a photo of a chimpanzee',
- 'This is a photo of a clock',
- 'This is a photo of a cloud',
- 'This is a photo of a cockroach',
- 'This is a photo of a couch',
- 'This is a photo of a crab',
- 'This is a photo of a crocodile',
- 'This is a photo of a cup',
- 'This is a photo of a dinosaur',
- 'This is a photo of a dolphin',
- 'This is a photo of a elephant',
- 'This is a photo of a flatfish',
- 'This is a photo of a forest',
- 'This is a photo of a fox',
- 'This is a photo of a girl',
- 'This is a photo of a hamster',
- 'This is a photo of a house',
- 'This is a photo of a kangaroo',
- 'This is a photo of a keyboard',
- 'This is a photo of a lamp',
- 'This is a photo of a lawn mower',
- 'This is a photo of a leopard',
- 'This is a photo of a lion',
- 'This is a photo of a lizard',
- 'This is a photo of a lobster',
- 'This is a photo of a man',
- 'This is a photo of a maple tree',
- 'This is a photo of a motorcycle',
- 'This is a photo of a mountain',
- 'This is a photo of a mouse',
- 'This is a photo of a mushroom',
- 'This is a photo of a oak tree',
- 'This is a photo of a orange',
- 'This is a photo of a orchid',
- 'This is a photo of a otter',
- 'This is a photo of a palm tree',
- 'This is a photo of a pear',
- 'This is a photo of a pickup truck',
- 'This is a photo of a pine tree',
- 'This is a photo of a plain',
- 'This is a photo of a plate',
- 'This is a photo of a poppy',
- 'This is a photo of a porcupine',
- 'This is a photo of a possum',
- 'This is a photo of a rabbit',
- 'This is a photo of a raccoon',
- 'This is a photo of a ray',
- 'This is a photo of a road',
- 'This is a photo of a rocket',
- 'This is a photo of a rose',
- 'This is a photo of a sea',
- 'This is a photo of a seal',
- 'This is a photo of a shark',
- 'This is a photo of a shrew',
- 'This is a photo of a skunk',
- 'This is a photo of a skyscraper',
- 'This is a photo of a snail',
- 'This is a photo of a snake',
- 'This is a photo of a spider',
- 'This is a photo of a squirrel',
- 'This is a photo of a streetcar',
- 'This is a photo of a sunflower',
- 'This is a photo of a sweet pepper',
- 'This is a photo of a table',
- 'This is a photo of a tank',
- 'This is a photo of a telephone',
- 'This is a photo of a television',
- 'This is a photo of a tiger',
- 'This is a photo of a tractor',
- 'This is a photo of a train',
- 'This is a photo of a trout',
- 'This is a photo of a tulip',
- 'This is a photo of a turtle',
- 'This is a photo of a wardrobe',
- 'This is a photo of a whale',
- 'This is a photo of a willow tree',
- 'This is a photo of a wolf',
- 'This is a photo of a woman',
- 'This is a photo of a worm']
-Turning off gradients in both the image and the text encoder
-Parameters to be updated:
-("Parameters to be updated: {'prompt_learner.pad_left', "
- "'prompt_learner.pad_up', 'prompt_learner.pad_down', "
- "'prompt_learner.pad_right'}")
-Number of prompt parameters:  69840
-Training mode
-Epoch: [0][  0/313]	Time  2.345 ( 2.345)	Data  0.790 ( 0.790)	Loss 1.7568e+00 (1.7568e+00)	Acc@1  57.81 ( 57.81)
-Epoch: [0][100/313]	Time  0.412 ( 0.436)	Data  0.016 ( 0.024)	Loss 4.3516e+00 (4.3423e+00)	Acc@1  57.81 ( 52.43)
-Epoch: [0][200/313]	Time  0.421 ( 0.427)	Data  0.020 ( 0.020)	Loss 4.2773e+00 (4.3319e+00)	Acc@1  67.97 ( 55.76)
-Epoch: [0][300/313]	Time  0.417 ( 0.424)	Data  0.016 ( 0.019)	Loss 4.2031e+00 (4.3025e+00)	Acc@1  60.16 ( 57.84)
-Validate: [ 0/79]	Time  0.935 ( 0.935)	Loss 4.1875e+00 (4.1875e+00)	Prompt Acc@1  60.94 ( 60.94)
- * Prompt Acc@1 62.410
-saved best file
-Training mode
-Epoch: [1][  0/313]	Time  1.111 ( 1.111)	Data  0.672 ( 0.672)	Loss 4.1797e+00 (4.1797e+00)	Acc@1  67.19 ( 67.19)
-Epoch: [1][100/313]	Time  0.424 ( 0.425)	Data  0.016 ( 0.023)	Loss 4.1758e+00 (4.1787e+00)	Acc@1  65.62 ( 62.52)
-Epoch: [1][200/313]	Time  0.423 ( 0.422)	Data  0.016 ( 0.020)	Loss 4.1172e+00 (4.1640e+00)	Acc@1  65.62 ( 62.54)
-Epoch: [1][300/313]	Time  0.416 ( 0.421)	Data  0.016 ( 0.019)	Loss 4.1172e+00 (4.1493e+00)	Acc@1  58.59 ( 63.20)
-Validate: [ 0/79]	Time  0.932 ( 0.932)	Loss 4.1016e+00 (4.1016e+00)	Prompt Acc@1  66.41 ( 66.41)
- * Prompt Acc@1 63.000
-saved best file
-Training mode
-Epoch: [2][  0/313]	Time  1.197 ( 1.197)	Data  0.781 ( 0.781)	Loss 4.0781e+00 (4.0781e+00)	Acc@1  71.88 ( 71.88)
-Epoch: [2][100/313]	Time  0.412 ( 0.428)	Data  0.016 ( 0.025)	Loss 4.1016e+00 (4.1014e+00)	Acc@1  70.31 ( 64.12)
-Epoch: [2][200/313]	Time  0.442 ( 0.424)	Data  0.035 ( 0.021)	Loss 4.0508e+00 (4.0938e+00)	Acc@1  67.19 ( 63.58)
-Epoch: [2][300/313]	Time  0.412 ( 0.423)	Data  0.016 ( 0.020)	Loss 4.0703e+00 (4.0834e+00)	Acc@1  57.81 ( 63.90)
-Validate: [ 0/79]	Time  1.010 ( 1.010)	Loss 4.0469e+00 (4.0469e+00)	Prompt Acc@1  64.84 ( 64.84)
- * Prompt Acc@1 64.060
-saved best file
-Training mode
-Epoch: [3][  0/313]	Time  1.162 ( 1.162)	Data  0.750 ( 0.750)	Loss 4.0156e+00 (4.0156e+00)	Acc@1  78.12 ( 78.12)
-Epoch: [3][100/313]	Time  0.422 ( 0.427)	Data  0.016 ( 0.024)	Loss 4.0547e+00 (4.0475e+00)	Acc@1  69.53 ( 64.32)
-Epoch: [3][200/313]	Time  0.422 ( 0.425)	Data  0.016 ( 0.020)	Loss 3.9961e+00 (4.0428e+00)	Acc@1  72.66 ( 63.97)
-Epoch: [3][300/313]	Time  0.423 ( 0.424)	Data  0.016 ( 0.019)	Loss 4.0391e+00 (4.0357e+00)	Acc@1  57.03 ( 63.99)
-Validate: [ 0/79]	Time  0.972 ( 0.972)	Loss 4.0117e+00 (4.0117e+00)	Prompt Acc@1  60.94 ( 60.94)
- * Prompt Acc@1 63.410
-There's no improvement for 1 epochs.
-Training mode
-Epoch: [4][  0/313]	Time  1.168 ( 1.168)	Data  0.738 ( 0.738)	Loss 3.9746e+00 (3.9746e+00)	Acc@1  75.78 ( 75.78)
-Epoch: [4][100/313]	Time  0.419 ( 0.430)	Data  0.016 ( 0.024)	Loss 4.0195e+00 (4.0110e+00)	Acc@1  69.53 ( 63.95)
-Epoch: [4][200/313]	Time  0.419 ( 0.426)	Data  0.016 ( 0.021)	Loss 3.9668e+00 (4.0083e+00)	Acc@1  70.31 ( 63.63)
-Epoch: [4][300/313]	Time  0.422 ( 0.424)	Data  0.016 ( 0.019)	Loss 4.0117e+00 (4.0032e+00)	Acc@1  56.25 ( 63.81)
-Validate: [ 0/79]	Time  0.940 ( 0.940)	Loss 3.9883e+00 (3.9883e+00)	Prompt Acc@1  63.28 ( 63.28)
- * Prompt Acc@1 63.410
-There's no improvement for 2 epochs.
-Training mode
-Epoch: [5][  0/313]	Time  1.121 ( 1.121)	Data  0.712 ( 0.712)	Loss 3.9492e+00 (3.9492e+00)	Acc@1  75.78 ( 75.78)
-Epoch: [5][100/313]	Time  0.437 ( 0.430)	Data  0.025 ( 0.024)	Loss 3.9980e+00 (3.9867e+00)	Acc@1  67.97 ( 64.05)
-Epoch: [5][200/313]	Time  0.417 ( 0.426)	Data  0.017 ( 0.021)	Loss 3.9473e+00 (3.9851e+00)	Acc@1  71.88 ( 63.75)
-Epoch: [5][300/313]	Time  0.416 ( 0.424)	Data  0.016 ( 0.019)	Loss 3.9961e+00 (3.9811e+00)	Acc@1  56.25 ( 63.88)
-Validate: [ 0/79]	Time  0.933 ( 0.933)	Loss 3.9688e+00 (3.9688e+00)	Prompt Acc@1  64.06 ( 64.06)
- * Prompt Acc@1 63.490
-There's no improvement for 3 epochs.
-Training mode
-Epoch: [6][  0/313]	Time  1.314 ( 1.314)	Data  0.892 ( 0.892)	Loss 3.9336e+00 (3.9336e+00)	Acc@1  74.22 ( 74.22)
-Epoch: [6][100/313]	Time  0.421 ( 0.430)	Data  0.016 ( 0.025)	Loss 3.9844e+00 (3.9688e+00)	Acc@1  65.62 ( 63.97)
-Epoch: [6][200/313]	Time  0.424 ( 0.426)	Data  0.016 ( 0.021)	Loss 3.9336e+00 (3.9678e+00)	Acc@1  71.88 ( 63.63)
-Epoch: [6][300/313]	Time  0.427 ( 0.425)	Data  0.017 ( 0.020)	Loss 3.9805e+00 (3.9645e+00)	Acc@1  57.03 ( 63.69)
-Validate: [ 0/79]	Time  1.058 ( 1.058)	Loss 3.9531e+00 (3.9531e+00)	Prompt Acc@1  62.50 ( 62.50)
- * Prompt Acc@1 63.050
-There's no improvement for 4 epochs.
-Training mode
-Epoch: [7][  0/313]	Time  1.168 ( 1.168)	Data  0.745 ( 0.745)	Loss 3.9199e+00 (3.9199e+00)	Acc@1  75.78 ( 75.78)
-Epoch: [7][100/313]	Time  0.422 ( 0.430)	Data  0.017 ( 0.024)	Loss 3.9727e+00 (3.9542e+00)	Acc@1  64.06 ( 63.78)
-Epoch: [7][200/313]	Time  0.414 ( 0.425)	Data  0.016 ( 0.021)	Loss 3.9219e+00 (3.9538e+00)	Acc@1  69.53 ( 63.55)
-Epoch: [7][300/313]	Time  0.423 ( 0.424)	Data  0.016 ( 0.019)	Loss 3.9688e+00 (3.9512e+00)	Acc@1  53.91 ( 63.58)
-Validate: [ 0/79]	Time  1.053 ( 1.053)	Loss 3.9395e+00 (3.9395e+00)	Prompt Acc@1  62.50 ( 62.50)
- * Prompt Acc@1 63.160
-There's no improvement for 5 epochs.
-Training mode
-Epoch: [8][  0/313]	Time  1.166 ( 1.166)	Data  0.732 ( 0.732)	Loss 3.9082e+00 (3.9082e+00)	Acc@1  73.44 ( 73.44)
-Epoch: [8][100/313]	Time  0.416 ( 0.431)	Data  0.017 ( 0.025)	Loss 3.9629e+00 (3.9431e+00)	Acc@1  65.62 ( 63.85)
-Epoch: [8][200/313]	Time  0.427 ( 0.427)	Data  0.016 ( 0.021)	Loss 3.9121e+00 (3.9431e+00)	Acc@1  68.75 ( 63.48)
-Epoch: [8][300/313]	Time  0.421 ( 0.425)	Data  0.016 ( 0.020)	Loss 3.9590e+00 (3.9407e+00)	Acc@1  53.12 ( 63.53)
-Validate: [ 0/79]	Time  0.909 ( 0.909)	Loss 3.9297e+00 (3.9297e+00)	Prompt Acc@1  62.50 ( 62.50)
- * Prompt Acc@1 63.050
-There's no improvement for 6 epochs.
-Training mode
-Epoch: [9][  0/313]	Time  1.219 ( 1.219)	Data  0.798 ( 0.798)	Loss 3.8984e+00 (3.8984e+00)	Acc@1  74.22 ( 74.22)
-Epoch: [9][100/313]	Time  0.420 ( 0.431)	Data  0.016 ( 0.025)	Loss 3.9531e+00 (3.9340e+00)	Acc@1  65.62 ( 63.79)
-Epoch: [9][200/313]	Time  0.424 ( 0.427)	Data  0.017 ( 0.021)	Loss 3.9023e+00 (3.9343e+00)	Acc@1  69.53 ( 63.44)
-Epoch: [9][300/313]	Time  0.417 ( 0.425)	Data  0.016 ( 0.020)	Loss 3.9492e+00 (3.9321e+00)	Acc@1  55.47 ( 63.51)
-Validate: [ 0/79]	Time  1.079 ( 1.079)	Loss 3.9199e+00 (3.9199e+00)	Prompt Acc@1  62.50 ( 62.50)
- * Prompt Acc@1 63.030
-There's no improvement for 7 epochs.
-Training mode
-Epoch: [10][  0/313]	Time  1.166 ( 1.166)	Data  0.755 ( 0.755)	Loss 3.8906e+00 (3.8906e+00)	Acc@1  73.44 ( 73.44)
-Epoch: [10][100/313]	Time  0.423 ( 0.429)	Data  0.016 ( 0.024)	Loss 3.9473e+00 (3.9263e+00)	Acc@1  65.62 ( 63.76)
-Epoch: [10][200/313]	Time  0.425 ( 0.425)	Data  0.016 ( 0.020)	Loss 3.8945e+00 (3.9268e+00)	Acc@1  68.75 ( 63.32)
-Epoch: [10][300/313]	Time  0.419 ( 0.424)	Data  0.016 ( 0.019)	Loss 3.9414e+00 (3.9248e+00)	Acc@1  56.25 ( 63.39)
-Validate: [ 0/79]	Time  1.043 ( 1.043)	Loss 3.9121e+00 (3.9121e+00)	Prompt Acc@1  63.28 ( 63.28)
- * Prompt Acc@1 62.800
-There's no improvement for 8 epochs.
-Training mode
-Epoch: [11][  0/313]	Time  1.198 ( 1.198)	Data  0.780 ( 0.780)	Loss 3.8828e+00 (3.8828e+00)	Acc@1  73.44 ( 73.44)
-Epoch: [11][100/313]	Time  0.419 ( 0.430)	Data  0.016 ( 0.025)	Loss 3.9395e+00 (3.9197e+00)	Acc@1  65.62 ( 63.76)
-Epoch: [11][200/313]	Time  0.418 ( 0.426)	Data  0.016 ( 0.021)	Loss 3.8887e+00 (3.9204e+00)	Acc@1  67.97 ( 63.30)
-Epoch: [11][300/313]	Time  0.423 ( 0.424)	Data  0.016 ( 0.020)	Loss 3.9336e+00 (3.9185e+00)	Acc@1  55.47 ( 63.37)
-Validate: [ 0/79]	Time  1.025 ( 1.025)	Loss 3.9062e+00 (3.9062e+00)	Prompt Acc@1  62.50 ( 62.50)
- * Prompt Acc@1 62.700
-There's no improvement for 9 epochs.
-Training mode
-Epoch: [12][  0/313]	Time  1.217 ( 1.217)	Data  0.799 ( 0.799)	Loss 3.8770e+00 (3.8770e+00)	Acc@1  73.44 ( 73.44)
-Epoch: [12][100/313]	Time  0.416 ( 0.430)	Data  0.017 ( 0.025)	Loss 3.9355e+00 (3.9141e+00)	Acc@1  64.06 ( 63.91)
-Epoch: [12][200/313]	Time  0.418 ( 0.426)	Data  0.016 ( 0.021)	Loss 3.8809e+00 (3.9149e+00)	Acc@1  69.53 ( 63.38)
-Epoch: [12][300/313]	Time  0.425 ( 0.425)	Data  0.016 ( 0.020)	Loss 3.9277e+00 (3.9131e+00)	Acc@1  55.47 ( 63.53)
-Validate: [ 0/79]	Time  0.941 ( 0.941)	Loss 3.9004e+00 (3.9004e+00)	Prompt Acc@1  62.50 ( 62.50)
- * Prompt Acc@1 62.690
-There's no improvement for 10 epochs.
-The training halted by early stopping criterion.
-Validate: [ 0/79]	Time  0.949 ( 0.949)	Loss 3.9004e+00 (3.9004e+00)	Prompt Acc@1  62.50 ( 62.50)
- * Prompt Acc@1 62.690
-Validate: [ 0/79]	Time  1.106 ( 1.106)	Loss 3.8887e+00 (3.8887e+00)	Prompt Acc@1  75.78 ( 75.78)
- * Prompt Acc@1 63.100

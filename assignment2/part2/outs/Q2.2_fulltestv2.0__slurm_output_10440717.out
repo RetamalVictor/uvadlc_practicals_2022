@@ -1,76 +1,0 @@
-Running experiment on cifar10 with fixed_patch and prompt size 1
-Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=10, model='clip', arch='ViT-B/32', method='fixed_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar10', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='fixed_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/fixed_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
-Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to /scratch/lcur0649/cifar-10-python.tar.gz
-  0%|          | 0/170498071 [00:00<?, ?it/s]  0%|          | 32768/170498071 [00:00<08:41, 326934.36it/s]  0%|          | 98304/170498071 [00:00<08:24, 337836.67it/s]  0%|          | 163840/170498071 [00:00<06:20, 448004.96it/s]  0%|          | 229376/170498071 [00:00<05:31, 514342.77it/s]  0%|          | 360448/170498071 [00:00<03:43, 761584.75it/s]  0%|          | 655360/170498071 [00:00<01:58, 1430069.60it/s]  1%|          | 1114112/170498071 [00:00<01:11, 2385398.24it/s]  1%|          | 1605632/170498071 [00:00<00:54, 3087798.41it/s]  1%|          | 2064384/170498071 [00:01<00:48, 3493489.27it/s]  1%|▏         | 2523136/170498071 [00:01<00:44, 3807808.13it/s]  2%|▏         | 3014656/170498071 [00:01<00:41, 4062802.39it/s]  2%|▏         | 3506176/170498071 [00:01<00:39, 4229611.67it/s]  2%|▏         | 3997696/170498071 [00:01<00:38, 4355547.22it/s]  3%|▎         | 4456448/170498071 [00:01<00:37, 4418919.31it/s]  3%|▎         | 4947968/170498071 [00:01<00:36, 4498192.83it/s]  3%|▎         | 5439488/170498071 [00:01<00:36, 4542271.27it/s]  3%|▎         | 5931008/170498071 [00:01<00:36, 4563318.30it/s]  4%|▍         | 6422528/170498071 [00:01<00:35, 4596746.64it/s]  4%|▍         | 6914048/170498071 [00:02<00:35, 4558036.70it/s]  4%|▍         | 7438336/170498071 [00:02<00:34, 4706241.44it/s]  5%|▍         | 7962624/170498071 [00:02<00:33, 4833096.13it/s]  5%|▍         | 8519680/170498071 [00:02<00:32, 5042016.38it/s]  5%|▌         | 9109504/170498071 [00:02<00:30, 5253224.42it/s]  6%|▌         | 9732096/170498071 [00:02<00:29, 5505244.62it/s]  6%|▌         | 10387456/170498071 [00:02<00:27, 5812158.28it/s]  6%|▋         | 11075584/170498071 [00:02<00:26, 6031528.23it/s]  7%|▋         | 11796480/170498071 [00:02<00:24, 6359067.09it/s]  7%|▋         | 12550144/170498071 [00:02<00:23, 6660176.03it/s]  8%|▊         | 13336576/170498071 [00:03<00:22, 6988043.42it/s]  8%|▊         | 14155776/170498071 [00:03<00:21, 7293723.90it/s]  9%|▉         | 15040512/170498071 [00:03<00:20, 7619118.01it/s]  9%|▉         | 16023552/170498071 [00:03<00:19, 8089442.95it/s] 10%|▉         | 16973824/170498071 [00:03<00:18, 8477265.39it/s] 11%|█         | 18022400/170498071 [00:03<00:16, 9004083.99it/s] 11%|█         | 19070976/170498071 [00:03<00:16, 9428627.36it/s] 12%|█▏        | 20185088/170498071 [00:03<00:15, 9907568.38it/s] 13%|█▎        | 21364736/170498071 [00:03<00:14, 10394076.20it/s] 13%|█▎        | 22609920/170498071 [00:04<00:13, 10882818.71it/s] 14%|█▍        | 23920640/170498071 [00:04<00:12, 11520465.40it/s] 15%|█▍        | 25264128/170498071 [00:04<00:12, 12001430.55it/s] 16%|█▌        | 26673152/170498071 [00:04<00:11, 12617043.81it/s] 17%|█▋        | 28213248/170498071 [00:04<00:10, 13391969.58it/s] 17%|█▋        | 29753344/170498071 [00:04<00:10, 13960213.97it/s] 18%|█▊        | 31424512/170498071 [00:04<00:09, 14718842.84it/s] 19%|█▉        | 33193984/170498071 [00:04<00:08, 15505474.17it/s] 21%|██        | 34996224/170498071 [00:04<00:08, 16214311.99it/s] 22%|██▏       | 36962304/170498071 [00:04<00:07, 17145146.80it/s] 23%|██▎       | 38961152/170498071 [00:05<00:07, 17948934.64it/s] 24%|██▍       | 41156608/170498071 [00:05<00:06, 19046547.84it/s] 25%|██▌       | 43384832/170498071 [00:05<00:06, 19784964.95it/s] 27%|██▋       | 45809664/170498071 [00:05<00:05, 20951953.02it/s] 28%|██▊       | 48300032/170498071 [00:05<00:05, 22094701.37it/s] 30%|██▉       | 50888704/170498071 [00:05<00:05, 23098819.79it/s] 31%|███▏      | 53608448/170498071 [00:05<00:04, 24157738.87it/s] 33%|███▎      | 56426496/170498071 [00:05<00:04, 25299080.77it/s] 35%|███▍      | 59342848/170498071 [00:05<00:04, 26022935.69it/s] 36%|███▋      | 62226432/170498071 [00:05<00:04, 26790250.14it/s] 38%|███▊      | 65208320/170498071 [00:06<00:03, 27479607.70it/s] 40%|████      | 68288512/170498071 [00:06<00:03, 28323165.50it/s] 42%|████▏     | 71467008/170498071 [00:06<00:03, 29342699.87it/s] 44%|████▎     | 74579968/170498071 [00:06<00:03, 29841333.55it/s] 46%|████▌     | 77725696/170498071 [00:06<00:03, 30143983.88it/s] 47%|████▋     | 80936960/170498071 [00:06<00:02, 30487097.23it/s] 49%|████▉     | 84082688/170498071 [00:06<00:02, 30494371.35it/s] 51%|█████     | 87228416/170498071 [00:06<00:02, 30593001.79it/s] 53%|█████▎    | 90406912/170498071 [00:06<00:02, 30700012.12it/s] 55%|█████▍    | 93552640/170498071 [00:06<00:02, 30712339.02it/s] 57%|█████▋    | 96731136/170498071 [00:07<00:02, 30770753.39it/s] 59%|█████▊    | 99876864/170498071 [00:07<00:02, 30744475.02it/s] 60%|██████    | 102989824/170498071 [00:07<00:02, 30603481.79it/s] 62%|██████▏   | 106233856/170498071 [00:07<00:02, 31077210.34it/s] 64%|██████▍   | 109379584/170498071 [00:07<00:01, 31000314.58it/s] 66%|██████▌   | 112525312/170498071 [00:07<00:01, 30744027.87it/s] 68%|██████▊   | 115671040/170498071 [00:07<00:01, 30747265.76it/s] 70%|██████▉   | 118882304/170498071 [00:07<00:01, 30819368.75it/s] 72%|███████▏  | 122060800/170498071 [00:07<00:01, 30872323.68it/s] 73%|███████▎  | 125272064/170498071 [00:07<00:01, 31226397.38it/s] 75%|███████▌  | 128417792/170498071 [00:08<00:01, 31194002.35it/s] 77%|███████▋  | 131596288/170498071 [00:08<00:01, 30714353.52it/s] 79%|███████▉  | 134709248/170498071 [00:08<00:01, 30206697.64it/s] 81%|████████  | 137953280/170498071 [00:08<00:01, 30540061.54it/s] 83%|████████▎ | 141131776/170498071 [00:08<00:00, 30701274.92it/s] 85%|████████▍ | 144277504/170498071 [00:08<00:00, 30714222.88it/s] 86%|████████▋ | 147390464/170498071 [00:08<00:00, 30550460.73it/s] 88%|████████▊ | 150536192/170498071 [00:08<00:00, 30559344.61it/s] 90%|█████████ | 153747456/170498071 [00:08<00:00, 30716425.06it/s] 92%|█████████▏| 156958720/170498071 [00:09<00:00, 30910001.07it/s] 94%|█████████▍| 160104448/170498071 [00:09<00:00, 30482887.07it/s] 96%|█████████▌| 163217408/170498071 [00:09<00:00, 30440560.82it/s] 98%|█████████▊| 166297600/170498071 [00:09<00:00, 30371245.49it/s] 99%|█████████▉| 169345024/170498071 [00:09<00:00, 30236251.02it/s]100%|██████████| 170498071/170498071 [00:09<00:00, 18042348.24it/s]
-Extracting /scratch/lcur0649/cifar-10-python.tar.gz to /scratch/lcur0649
-Files already downloaded and verified
-Building custom CLIP
-Loading CLIP (backbone: ViT-B/32)
-  0%|                                               | 0.00/338M [00:00<?, ?iB/s]  2%|▊                                     | 7.25M/338M [00:00<00:04, 75.8MiB/s]  5%|█▊                                    | 15.8M/338M [00:00<00:04, 83.6MiB/s]  8%|██▉                                   | 26.5M/338M [00:00<00:03, 96.7MiB/s] 11%|████                                  | 35.9M/338M [00:00<00:03, 97.2MiB/s] 13%|█████                                 | 45.3M/338M [00:00<00:03, 97.7MiB/s] 16%|██████▍                                | 55.3M/338M [00:00<00:02, 100MiB/s] 19%|███████▎                              | 64.9M/338M [00:00<00:02, 98.6MiB/s] 22%|████████▍                             | 74.4M/338M [00:00<00:02, 95.2MiB/s] 25%|█████████▍                            | 84.3M/338M [00:00<00:02, 97.5MiB/s] 28%|██████████▌                           | 93.6M/338M [00:01<00:02, 96.5MiB/s] 30%|███████████▉                           | 103M/338M [00:01<00:02, 92.1MiB/s] 33%|█████████████                          | 113M/338M [00:01<00:02, 95.8MiB/s] 36%|██████████████▏                        | 122M/338M [00:01<00:02, 96.7MiB/s] 39%|███████████████▏                       | 132M/338M [00:01<00:02, 97.4MiB/s] 42%|████████████████▎                      | 141M/338M [00:01<00:02, 89.3MiB/s] 45%|█████████████████▍                     | 151M/338M [00:01<00:02, 93.2MiB/s] 48%|██████████████████▌                    | 161M/338M [00:01<00:01, 96.0MiB/s] 50%|███████████████████▋                   | 170M/338M [00:01<00:01, 88.5MiB/s] 53%|████████████████████▋                  | 179M/338M [00:02<00:01, 90.7MiB/s] 56%|█████████████████████▊                 | 189M/338M [00:02<00:01, 93.4MiB/s] 59%|██████████████████████▉                | 198M/338M [00:02<00:01, 85.3MiB/s] 62%|████████████████████████               | 208M/338M [00:02<00:01, 90.4MiB/s] 64%|█████████████████████████▏             | 218M/338M [00:02<00:01, 87.0MiB/s] 67%|██████████████████████████             | 226M/338M [00:02<00:01, 80.2MiB/s] 70%|███████████████████████████▏           | 235M/338M [00:02<00:01, 84.8MiB/s] 72%|████████████████████████████▎          | 245M/338M [00:02<00:01, 88.0MiB/s] 75%|█████████████████████████████▎         | 254M/338M [00:02<00:00, 90.0MiB/s] 78%|██████████████████████████████▎        | 263M/338M [00:03<00:00, 91.2MiB/s] 80%|███████████████████████████████▍       | 272M/338M [00:03<00:01, 67.6MiB/s] 83%|████████████████████████████████▌      | 281M/338M [00:03<00:00, 75.6MiB/s] 86%|█████████████████████████████████▋     | 291M/338M [00:03<00:00, 82.5MiB/s] 89%|██████████████████████████████████▊    | 301M/338M [00:03<00:00, 87.3MiB/s] 92%|███████████████████████████████████▉   | 311M/338M [00:03<00:00, 91.6MiB/s] 95%|████████████████████████████████████▉  | 320M/338M [00:03<00:00, 74.7MiB/s] 97%|██████████████████████████████████████ | 329M/338M [00:03<00:00, 79.9MiB/s]100%|███████████████████████████████████████| 338M/338M [00:04<00:00, 88.3MiB/s]
-List of prompts:
-['This is a photo of a airplane',
- 'This is a photo of a automobile',
- 'This is a photo of a bird',
- 'This is a photo of a cat',
- 'This is a photo of a deer',
- 'This is a photo of a dog',
- 'This is a photo of a frog',
- 'This is a photo of a horse',
- 'This is a photo of a ship',
- 'This is a photo of a truck']
-Turning off gradients in both the image and the text encoder
-Parameters to be updated:
-"Parameters to be updated: {'prompt_learner.patch'}"
-Number of prompt parameters:  3
-Validate: [ 0/79]	Time  1.914 ( 1.914)	Loss 3.6108e-01 (3.6108e-01)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 88.890
-Running experiment on cifar10 with random_patch and prompt size 1
-Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=10, model='clip', arch='ViT-B/32', method='random_patch', prompt_size=1, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar10', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='random_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/random_patch_1_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
-Files already downloaded and verified
-Files already downloaded and verified
-Building custom CLIP
-Loading CLIP (backbone: ViT-B/32)
-List of prompts:
-['This is a photo of a airplane',
- 'This is a photo of a automobile',
- 'This is a photo of a bird',
- 'This is a photo of a cat',
- 'This is a photo of a deer',
- 'This is a photo of a dog',
- 'This is a photo of a frog',
- 'This is a photo of a horse',
- 'This is a photo of a ship',
- 'This is a photo of a truck']
-Turning off gradients in both the image and the text encoder
-Parameters to be updated:
-"Parameters to be updated: {'prompt_learner.random_patch'}"
-Number of prompt parameters:  3
-Validate: [ 0/79]	Time  1.877 ( 1.877)	Loss 3.5742e-01 (3.5742e-01)	Prompt Acc@1  89.84 ( 89.84)
- * Prompt Acc@1 89.100
-Running experiment on cifar10 with padding and prompt size 30
-Namespace(print_freq=100, save_freq=50, batch_size=128, num_workers=3, epochs=20, square_size=8, optim='sgd', learning_rate=40, weight_decay=0, warmup=1000, momentum=0.9, patience=10, model='clip', arch='ViT-B/32', method='padding', prompt_size=30, text_prompt_template='This is a photo of a {}', visualize_prompt=False, root='/scratch/lcur0649', dataset='cifar10', image_size=224, test_noise=False, seed=0, model_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints', image_dir='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/images', filename='padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1', trial=1, resume=None, evaluate=True, gpu=None, use_wandb=False, device='cuda', model_folder='/home/lcur0649/uvadlc_practicals_2022/assignment2/part2/checkpoints/padding_30_cifar10_clip_ViT-B/32_sgd_lr_40_decay_0_bsz_128_warmup_1000_trial_1')
-Files already downloaded and verified
-Files already downloaded and verified
-Building custom CLIP
-Loading CLIP (backbone: ViT-B/32)
-List of prompts:
-['This is a photo of a airplane',
- 'This is a photo of a automobile',
- 'This is a photo of a bird',
- 'This is a photo of a cat',
- 'This is a photo of a deer',
- 'This is a photo of a dog',
- 'This is a photo of a frog',
- 'This is a photo of a horse',
- 'This is a photo of a ship',
- 'This is a photo of a truck']
-Turning off gradients in both the image and the text encoder
-Parameters to be updated:
-("Parameters to be updated: {'prompt_learner.pad_up', "
- "'prompt_learner.pad_right', 'prompt_learner.pad_left', "
- "'prompt_learner.pad_down'}")
-Number of prompt parameters:  69840
-Validate: [ 0/79]	Time  1.990 ( 1.990)	Loss 7.2803e-01 (7.2803e-01)	Prompt Acc@1  76.56 ( 76.56)
- * Prompt Acc@1 77.340
-Running experiment on cifar10 with custom_patch and prompt size 30
-slurmstepd: error: *** JOB 10440717 ON r31n6 CANCELLED AT 2022-12-02T19:45:25 ***
